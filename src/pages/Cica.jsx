@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Send, Bot } from 'lucide-react';
+import { ArrowLeft, Send, Bot, Loader } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,6 +12,13 @@ const Cica = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const chatContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [chat]);
 
   const handleSendMessage = async () => {
     if (!apiKey || !message) return;
@@ -21,22 +28,36 @@ const Cica = () => {
     setMessage('');
 
     try {
-      // This is a placeholder for the actual API call
-      // You would need to implement the actual Gemini API call here
-      const response = await new Promise(resolve => 
-        setTimeout(() => resolve({ 
-          role: 'assistant', 
-          content: "Hello! I'm Cica, your AI assistant. How can I help you with technology today?" 
-        }), 1000)
-      );
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: message }] }]
+        })
+      });
 
-      setChat(prevChat => [...prevChat, response]);
+      if (!response.ok) {
+        throw new Error('Failed to get response from Gemini API');
+      }
+
+      const data = await response.json();
+      const aiResponse = data.candidates[0].content.parts[0].text;
+
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
       console.error('Error calling Gemini API:', error);
-      setChat(prevChat => [...prevChat, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' }]);
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: 'Sorry, I encountered an error. Please check your API key and try again.' }]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const messageBubbleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -65,18 +86,39 @@ const Cica = () => {
             />
           </div>
 
-          <div className="chat-container bg-gray-100 rounded-2xl p-4 h-96 overflow-y-auto mb-6">
-            {chat.map((msg, index) => (
-              <div key={index} className={`mb-4 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
-                <span className={`inline-block p-3 rounded-lg ${msg.role === 'user' ? 'bg-navy-blue text-white' : 'bg-white text-navy-blue'}`}>
-                  {msg.content}
-                </span>
-              </div>
-            ))}
+          <div ref={chatContainerRef} className="chat-container bg-gray-100 rounded-2xl p-4 h-[60vh] overflow-y-auto mb-6">
+            <AnimatePresence>
+              {chat.map((msg, index) => (
+                <motion.div
+                  key={index}
+                  className={`mb-4 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}
+                  variants={messageBubbleVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
+                  <motion.span
+                    className={`inline-block p-3 rounded-2xl ${
+                      msg.role === 'user' ? 'bg-navy-blue text-white' : 'bg-white text-navy-blue'
+                    } shadow-md`}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  >
+                    {msg.content}
+                  </motion.span>
+                </motion.div>
+              ))}
+            </AnimatePresence>
             {isLoading && (
-              <div className="text-center text-gray-500">
+              <motion.div
+                className="text-center text-gray-500 flex items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <Loader className="animate-spin mr-2" />
                 Cica is thinking...
-              </div>
+              </motion.div>
             )}
           </div>
 
@@ -87,7 +129,11 @@ const Cica = () => {
               placeholder="Ask Cica about technology..."
               className="flex-grow mr-2 p-2 border rounded"
             />
-            <Button onClick={handleSendMessage} disabled={isLoading || !apiKey} className="bg-navy-blue text-white px-4 py-2 rounded">
+            <Button
+              onClick={handleSendMessage}
+              disabled={isLoading || !apiKey}
+              className="bg-navy-blue text-white px-4 py-2 rounded flex items-center"
+            >
               <Send className="mr-2" /> Send
             </Button>
           </div>
