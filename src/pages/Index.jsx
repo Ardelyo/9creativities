@@ -21,7 +21,30 @@ const projects = [
     icon: "/placeholder.svg",
     category: "Food Technology"
   },
-  // Add more projects here
+  {
+    id: 3,
+    title: "Solar Cooker",
+    description: "A portable solar-powered cooking device for outdoor use.",
+    image: "/placeholder.svg",
+    icon: "/placeholder.svg",
+    category: "Environmental Technology"
+  },
+  {
+    id: 4,
+    title: "Vertical Garden",
+    description: "Space-efficient vertical gardening system for urban areas.",
+    image: "/placeholder.svg",
+    icon: "/placeholder.svg",
+    category: "Environmental Technology"
+  },
+  {
+    id: 5,
+    title: "Biodegradable Packaging",
+    description: "Eco-friendly packaging solutions made from plant-based materials.",
+    image: "/placeholder.svg",
+    icon: "/placeholder.svg",
+    category: "Food Technology"
+  }
 ];
 
 const Index = () => {
