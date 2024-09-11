@@ -9,13 +9,13 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div layout className="mb-8">
-      <Card className="bg-white shadow-lg rounded-full overflow-hidden">
+      <Card className="bg-navy-blue text-white shadow-lg rounded-3xl overflow-hidden">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">{project.title}</CardTitle>
-          <CardDescription>{project.description}</CardDescription>
+          <CardDescription className="text-gray-300">{project.description}</CardDescription>
         </CardHeader>
         <CardContent className="px-6">
-          <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded-full" />
+          <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded-2xl" />
           <AnimatePresence>
             {isExpanded && (
               <motion.div
@@ -25,11 +25,11 @@ const ProjectCard = ({ project }) => {
                 transition={{ duration: 0.3 }}
                 className="space-y-4"
               >
-                <div className="bg-gray-100 p-4 rounded-full">
+                <div className="bg-white text-navy-blue p-4 rounded-2xl">
                   <h3 className="text-lg font-semibold mb-2">Project Details</h3>
-                  <p className="text-gray-700">{project.details}</p>
+                  <p>{project.details}</p>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-full">
+                <div className="bg-white text-navy-blue p-4 rounded-2xl">
                   <h3 className="text-lg font-semibold mb-2">How It Works</h3>
                   <ol className="list-decimal list-inside">
                     {project.howItWorks.map((step, index) => (
@@ -37,9 +37,9 @@ const ProjectCard = ({ project }) => {
                     ))}
                   </ol>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-full">
+                <div className="bg-white text-navy-blue p-4 rounded-2xl">
                   <h3 className="text-lg font-semibold mb-2">Impact</h3>
-                  <p className="text-gray-700">{project.impact}</p>
+                  <p>{project.impact}</p>
                 </div>
               </motion.div>
             )}
@@ -47,7 +47,7 @@ const ProjectCard = ({ project }) => {
         </CardContent>
         <CardFooter>
           <Button 
-            className="w-full rounded-full flex items-center justify-center"
+            className="w-full rounded-full flex items-center justify-center bg-white text-navy-blue hover:bg-gray-200"
             onClick={() => setIsExpanded(!isExpanded)}
           >
             {isExpanded ? (

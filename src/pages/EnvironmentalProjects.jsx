@@ -25,14 +25,14 @@ const projects = [
 
 const EnvironmentalProjects = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-navy-blue via-white to-navy-blue p-4">
+    <div className="min-h-screen text-white p-4">
       <Link to="/" className="inline-block mb-4">
-        <Button variant="ghost" className="text-navy-blue rounded-full">
+        <Button variant="ghost" className="text-white rounded-full">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back
         </Button>
       </Link>
       <motion.h1 
-        className="text-4xl font-bold mb-8 text-center text-navy-blue"
+        className="text-4xl font-bold mb-8 text-center bg-navy-blue px-8 py-4 rounded-full"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

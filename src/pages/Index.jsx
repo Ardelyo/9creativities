@@ -12,15 +12,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-navy-blue via-white to-navy-blue">
-      <motion.h1 
-        className="text-4xl font-bold mb-8 text-center text-navy-blue"
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+      <motion.div 
+        className="text-4xl font-bold mb-8 text-center text-white bg-navy-blue px-8 py-4 rounded-full"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Welcome to Nine Creativities
-      </motion.h1>
+        Nine Creativities
+      </motion.div>
       <motion.div 
         className="flex flex-wrap justify-center gap-8"
         initial="initial"
@@ -35,7 +35,7 @@ const Index = () => {
       >
         <Link to="/environmental-projects">
           <motion.div
-            className="bubble w-48 h-48 bg-blue-400 flex flex-col items-center justify-center text-white rounded-full shadow-lg"
+            className="w-48 h-48 bg-navy-blue flex flex-col items-center justify-center text-white rounded-full shadow-lg"
             variants={bubbleVariants}
             whileHover="hover"
             whileTap="tap"
@@ -47,7 +47,7 @@ const Index = () => {
         </Link>
         <Link to="/food-projects">
           <motion.div
-            className="bubble w-48 h-48 bg-green-400 flex flex-col items-center justify-center text-white rounded-full shadow-lg"
+            className="w-48 h-48 bg-navy-blue flex flex-col items-center justify-center text-white rounded-full shadow-lg"
             variants={bubbleVariants}
             whileHover="hover"
             whileTap="tap"
