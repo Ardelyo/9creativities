@@ -12,9 +12,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 wavy-bg">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
       <motion.div 
-        className="text-4xl font-bold mb-8 text-center text-primary-foreground bg-primary px-8 py-4 rounded-full wavy-border"
+        className="text-4xl font-bold mb-8 text-center text-white bg-navy-blue px-8 py-4 rounded-full"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -35,7 +35,7 @@ const Index = () => {
       >
         <Link to="/environmental-projects">
           <motion.div
-            className="w-48 h-48 bg-primary flex flex-col items-center justify-center text-primary-foreground rounded-full shadow-lg wavy-border"
+            className="w-48 h-48 bg-navy-blue flex flex-col items-center justify-center text-white rounded-full shadow-lg"
             variants={bubbleVariants}
             whileHover="hover"
             whileTap="tap"
@@ -47,7 +47,7 @@ const Index = () => {
         </Link>
         <Link to="/food-projects">
           <motion.div
-            className="w-48 h-48 bg-primary flex flex-col items-center justify-center text-primary-foreground rounded-full shadow-lg wavy-border"
+            className="w-48 h-48 bg-navy-blue flex flex-col items-center justify-center text-white rounded-full shadow-lg"
             variants={bubbleVariants}
             whileHover="hover"
             whileTap="tap"

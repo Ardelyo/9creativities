@@ -12,9 +12,9 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen text-primary-foreground p-4 wavy-bg">
+    <div className="min-h-screen text-white p-4">
       <Link to="/" className="inline-block mb-4">
-        <Button variant="ghost" className="text-primary-foreground rounded-full">
+        <Button variant="ghost" className="text-white rounded-full">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back
         </Button>
       </Link>
@@ -24,10 +24,10 @@ const About = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-8 text-center bg-primary px-8 py-4 rounded-full wavy-border">About Nine Creativities</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center bg-navy-blue px-8 py-4 rounded-full">About Nine Creativities</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div 
-            className="bg-primary rounded-full shadow-lg p-6 wavy-border"
+            className="bg-navy-blue rounded-full shadow-lg p-6"
             variants={bubbleVariants}
             initial="initial"
             animate="animate"
@@ -39,7 +39,7 @@ const About = () => {
             </p>
           </motion.div>
           <motion.div 
-            className="bg-primary rounded-full shadow-lg p-6 wavy-border"
+            className="bg-navy-blue rounded-full shadow-lg p-6"
             variants={bubbleVariants}
             initial="initial"
             animate="animate"
