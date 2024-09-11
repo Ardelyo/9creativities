@@ -9,11 +9,11 @@ const DynamicIsland = () => {
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
   const navItems = [
-    { title: "Home", icon: <Home />, path: "/" },
-    { title: "About", icon: <Info />, path: "/about" },
-    { title: "Environmental", icon: <Droplet />, path: "/environmental-projects" },
-    { title: "Food", icon: <Utensils />, path: "/food-projects" },
-    { title: "Contact", icon: <Mail />, path: "/contact" },
+    { title: "Home", icon: <Home className="w-6 h-6" />, path: "/" },
+    { title: "About", icon: <Info className="w-6 h-6" />, path: "/about" },
+    { title: "Environmental", icon: <Droplet className="w-6 h-6" />, path: "/environmental-projects" },
+    { title: "Food", icon: <Utensils className="w-6 h-6" />, path: "/food-projects" },
+    { title: "Contact", icon: <Mail className="w-6 h-6" />, path: "/contact" },
   ];
 
   return (
@@ -43,11 +43,11 @@ const DynamicIsland = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="flex items-center text-white p-3 hover:bg-gray-800 w-full"
+                  className="flex items-center justify-center text-white p-3 hover:bg-gray-800 w-full transition-colors duration-200"
                   onClick={() => setIsExpanded(false)}
                 >
                   {item.icon}
-                  <span className="ml-2">{item.title}</span>
+                  <span className="ml-2 text-sm font-medium">{item.title}</span>
                 </Link>
               ))}
             </motion.nav>

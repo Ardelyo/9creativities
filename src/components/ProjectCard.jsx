@@ -24,7 +24,16 @@ const ProjectCard = ({ project }) => {
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <p className="text-gray-700">{project.details}</p>
+                <h3 className="text-lg font-semibold mb-2">Project Details</h3>
+                <p className="text-gray-700 mb-4">{project.details}</p>
+                <h3 className="text-lg font-semibold mb-2">How It Works</h3>
+                <ol className="list-decimal list-inside mb-4">
+                  {project.howItWorks.map((step, index) => (
+                    <li key={index} className="mb-1">{step}</li>
+                  ))}
+                </ol>
+                <h3 className="text-lg font-semibold mb-2">Impact</h3>
+                <p className="text-gray-700">{project.impact}</p>
               </motion.div>
             )}
           </AnimatePresence>
