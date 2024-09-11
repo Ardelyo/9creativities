@@ -28,7 +28,7 @@ const FoodProjects = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-navy-blue via-white to-navy-blue p-4">
       <Link to="/" className="inline-block mb-4">
-        <Button variant="ghost" className="text-navy-blue">
+        <Button variant="ghost" className="text-navy-blue rounded-full">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back
         </Button>
       </Link>

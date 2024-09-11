@@ -21,13 +21,13 @@ const DynamicIsland = () => {
       className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
       initial={{ width: '200px', height: '40px' }}
       animate={{
-        width: isExpanded ? '90%' : '200px',
+        width: isExpanded ? '300px' : '200px',
         height: isExpanded ? '300px' : '40px',
       }}
       transition={{ duration: 0.3 }}
     >
       <motion.div
-        className="w-full h-full bg-black rounded-full flex items-center justify-center cursor-pointer overflow-hidden"
+        className="w-full h-full bg-navy-blue rounded-full flex items-center justify-center cursor-pointer overflow-hidden shadow-lg"
         onClick={toggleExpand}
       >
         <AnimatePresence>
@@ -43,11 +43,17 @@ const DynamicIsland = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="flex items-center justify-center text-white p-3 hover:bg-gray-800 w-full transition-colors duration-200"
+                  className="flex items-center justify-center text-white p-3 hover:bg-opacity-50 hover:bg-white w-full transition-colors duration-200"
                   onClick={() => setIsExpanded(false)}
                 >
-                  {item.icon}
-                  <span className="ml-2 text-sm font-medium">{item.title}</span>
+                  <motion.div
+                    className="flex items-center space-x-2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.icon}
+                    <span className="text-sm font-medium">{item.title}</span>
+                  </motion.div>
                 </Link>
               ))}
             </motion.nav>

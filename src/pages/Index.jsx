@@ -5,13 +5,14 @@ import { Droplet, Utensils } from 'lucide-react';
 
 const Index = () => {
   const bubbleVariants = {
-    initial: { scale: 1 },
+    initial: { scale: 1, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
     hover: { scale: 1.1 },
     tap: { scale: 0.95 },
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-navy-blue via-white to-navy-blue">
       <motion.h1 
         className="text-4xl font-bold mb-8 text-center text-navy-blue"
         initial={{ opacity: 0, y: -50 }}
@@ -22,15 +23,20 @@ const Index = () => {
       </motion.h1>
       <motion.div 
         className="flex flex-wrap justify-center gap-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, staggerChildren: 0.1 }}
+        initial="initial"
+        animate="animate"
+        variants={{
+          animate: {
+            transition: {
+              staggerChildren: 0.1
+            }
+          }
+        }}
       >
         <Link to="/environmental-projects">
           <motion.div
             className="bubble w-48 h-48 bg-blue-400 flex flex-col items-center justify-center text-white rounded-full shadow-lg"
             variants={bubbleVariants}
-            initial="initial"
             whileHover="hover"
             whileTap="tap"
             transition={{ type: "spring", stiffness: 300 }}
@@ -43,7 +49,6 @@ const Index = () => {
           <motion.div
             className="bubble w-48 h-48 bg-green-400 flex flex-col items-center justify-center text-white rounded-full shadow-lg"
             variants={bubbleVariants}
-            initial="initial"
             whileHover="hover"
             whileTap="tap"
             transition={{ type: "spring", stiffness: 300 }}

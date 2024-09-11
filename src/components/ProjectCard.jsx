@@ -8,14 +8,14 @@ const ProjectCard = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <motion.div layout>
-      <Card className="bg-white shadow-lg rounded-3xl overflow-hidden">
-        <CardHeader>
-          <CardTitle>{project.title}</CardTitle>
+    <motion.div layout className="mb-8">
+      <Card className="bg-white shadow-lg rounded-full overflow-hidden">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-bold">{project.title}</CardTitle>
           <CardDescription>{project.description}</CardDescription>
         </CardHeader>
-        <CardContent>
-          <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded-md" />
+        <CardContent className="px-6">
+          <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded-full" />
           <AnimatePresence>
             {isExpanded && (
               <motion.div
@@ -23,24 +23,31 @@ const ProjectCard = ({ project }) => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
+                className="space-y-4"
               >
-                <h3 className="text-lg font-semibold mb-2">Project Details</h3>
-                <p className="text-gray-700 mb-4">{project.details}</p>
-                <h3 className="text-lg font-semibold mb-2">How It Works</h3>
-                <ol className="list-decimal list-inside mb-4">
-                  {project.howItWorks.map((step, index) => (
-                    <li key={index} className="mb-1">{step}</li>
-                  ))}
-                </ol>
-                <h3 className="text-lg font-semibold mb-2">Impact</h3>
-                <p className="text-gray-700">{project.impact}</p>
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <h3 className="text-lg font-semibold mb-2">Project Details</h3>
+                  <p className="text-gray-700">{project.details}</p>
+                </div>
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <h3 className="text-lg font-semibold mb-2">How It Works</h3>
+                  <ol className="list-decimal list-inside">
+                    {project.howItWorks.map((step, index) => (
+                      <li key={index} className="mb-1">{step}</li>
+                    ))}
+                  </ol>
+                </div>
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <h3 className="text-lg font-semibold mb-2">Impact</h3>
+                  <p className="text-gray-700">{project.impact}</p>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
         </CardContent>
         <CardFooter>
           <Button 
-            className="w-full flex items-center justify-center"
+            className="w-full rounded-full flex items-center justify-center"
             onClick={() => setIsExpanded(!isExpanded)}
           >
             {isExpanded ? (
