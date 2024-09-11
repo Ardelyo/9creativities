@@ -1,62 +1,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard from '../components/ProjectCard';
-import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
-
-const projects = [
-  {
-    id: 1,
-    title: "Yoghurt Production",
-    description: "A sustainable process for creating nutritious, probiotic-rich yoghurt.",
-    details: "Our yoghurt production project focuses on developing a sustainable and efficient method for creating probiotic-rich yoghurt. By optimizing fermentation processes and using locally sourced ingredients, we've created a product that's not only delicious but also promotes gut health and supports local dairy farmers.",
-    image: "/placeholder.svg",
-    howItWorks: [
-      "Fresh milk is sourced from local dairy farms",
-      "The milk is pasteurized to eliminate harmful bacteria",
-      "Beneficial bacteria cultures are added to the milk",
-      "The mixture is incubated at a controlled temperature for several hours",
-      "The yoghurt is cooled and packaged for distribution",
-    ],
-    impact: "This project promotes local agriculture, improves community health through probiotic consumption, and reduces carbon footprint by minimizing transportation of dairy products.",
-  },
-  // Add more food projects here
-];
+import { ArrowLeft } from 'lucide-react';
 
 const FoodProjects = () => {
+  const projects = [
+    {
+      id: 1,
+      title: "Yoghurt Production",
+      description: "A sustainable process for creating nutritious, probiotic-rich yoghurt.",
+      image: "/placeholder.svg",
+    },
+    // Add more projects here
+  ];
+
   return (
-    <div className="min-h-screen text-white p-4">
-      <Link to="/" className="inline-block mb-4">
-        <Button variant="ghost" className="text-white rounded-full">
-          <ArrowLeft className="mr-2 h-4 w-4" /> Back
-        </Button>
-      </Link>
-      <motion.h1 
-        className="text-4xl font-bold mb-8 text-center bg-navy-blue px-8 py-4 rounded-full"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Food Team Projects
-      </motion.h1>
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, staggerChildren: 0.1 }}
-      >
-        {projects.map(project => (
+    <div className="page-container">
+      <div className="content-card">
+        <Link to="/" className="back-button">
+          <ArrowLeft className="mr-2" /> Back
+        </Link>
+        <h1 className="title">Food Team Projects</h1>
+        {projects.map((project) => (
           <motion.div
             key={project.id}
+            className="project-circle"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <ProjectCard project={project} />
+            <h2 className="project-title">{project.title}</h2>
+            <p className="project-description">{project.description}</p>
+            <img src={project.image} alt={project.title} className="w-24 h-24 object-cover mt-4 rounded-full" />
+            <button className="more-info-button">More Info</button>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

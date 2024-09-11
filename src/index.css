@@ -48,35 +48,62 @@
   }
 }
 
-.bubble {
-  @apply rounded-full bg-navy-blue flex items-center justify-center transition-all duration-300 hover:scale-110;
+.page-container {
+  @apply min-h-screen bg-gradient-to-br from-gray-200 to-gray-400 p-4;
 }
 
-.page-transition {
-  @apply transition-opacity duration-300;
+.content-card {
+  @apply bg-white rounded-3xl shadow-lg overflow-hidden p-6 max-w-2xl mx-auto;
 }
 
-.fade-in {
-  @apply opacity-0 animate-fade-in;
+.title {
+  @apply text-3xl font-bold text-navy-blue mb-6 text-center;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.back-button {
+  @apply text-navy-blue mb-4 inline-flex items-center;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in forwards;
+.project-circle {
+  @apply bg-white rounded-full shadow-lg overflow-hidden p-6 mb-6 flex flex-col items-center justify-center text-center;
 }
 
-.card {
-  @apply bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl;
+.project-title {
+  @apply text-xl font-bold text-navy-blue mb-2;
 }
 
-.button {
-  @apply bg-navy-blue text-white rounded-full px-6 py-2 transition-all duration-300 hover:bg-opacity-80;
+.project-description {
+  @apply text-sm text-gray-600;
 }
 
-.input {
-  @apply bg-white border border-navy-blue rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-navy-blue;
+.more-info-button {
+  @apply mt-4 bg-navy-blue text-white px-4 py-2 rounded-full text-sm;
+}
+
+.nav-button {
+  @apply w-40 h-40 bg-navy-blue rounded-full flex flex-col items-center justify-center text-white shadow-lg transition-transform duration-300 hover:scale-105;
+}
+
+.nav-icon {
+  @apply text-4xl mb-2;
+}
+
+.nav-text {
+  @apply text-lg font-semibold;
+}
+
+.mission-vision-container {
+  @apply space-y-6;
+}
+
+.mission-vision-circle {
+  @apply bg-white rounded-full shadow-lg p-6 flex flex-col items-center justify-center text-center;
+}
+
+.mission-vision-title {
+  @apply text-xl font-bold text-navy-blue mb-2;
+}
+
+.mission-vision-text {
+  @apply text-sm text-gray-600;
 }
