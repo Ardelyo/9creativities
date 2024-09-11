@@ -5,6 +5,7 @@ import { ArrowLeft, Send, Bot, Loader } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import ReactMarkdown from 'react-markdown';
 import DropletAnimation from '../components/DropletAnimation';
 
 const Cica = () => {
@@ -38,7 +39,7 @@ const Cica = () => {
             {
               parts: [
                 {
-                  text: `You are Cica, an AI chatbot designed to assist users with technology-related inquiries. You are friendly, approachable, and knowledgeable about a wide range of technology topics. You possess human-like qualities, capable of empathy and emotional understanding. Respond to the following message in a helpful and empathetic manner: ${message}`
+                  text: `You are Cica, an AI chatbot designed to assist users with technology-related inquiries. You are friendly, approachable, and knowledgeable about a wide range of technology topics. You possess human-like qualities, capable of empathy and emotional understanding. Respond to the following message in a helpful and empathetic manner, using Markdown formatting where appropriate: ${message}`
                 }
               ]
             }
@@ -105,15 +106,15 @@ const Cica = () => {
                   animate="visible"
                   exit="hidden"
                 >
-                  <motion.span
+                  <motion.div
                     className={`inline-block p-3 rounded-2xl ${
                       msg.role === 'user' ? 'bg-navy-blue text-white' : 'bg-white text-navy-blue'
                     } shadow-md max-w-[80%]`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   >
-                    {msg.content}
-                  </motion.span>
+                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                  </motion.div>
                 </motion.div>
               ))}
             </AnimatePresence>
