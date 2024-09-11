@@ -28,13 +28,21 @@ const Cica = () => {
     setMessage('');
 
     try {
-      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: message }] }]
+          contents: [
+            {
+              parts: [
+                {
+                  text: `You are Cica, an AI chatbot designed to assist users with technology-related inquiries. You are friendly, approachable, and knowledgeable about a wide range of technology topics. You possess human-like qualities, capable of empathy and emotional understanding. Respond to the following message in a helpful and empathetic manner: ${message}`
+                }
+              ]
+            }
+          ]
         })
       });
 
@@ -49,7 +57,7 @@ const Cica = () => {
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
       console.error('Error calling Gemini API:', error);
-      setChat(prevChat => [...prevChat, { role: 'assistant', content: `Error: ${error.message}. Please check your API key and try again.` }]);
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: `I apologize, but I'm having trouble processing your request at the moment. This could be due to an issue with the API key or a temporary service disruption. Could you please try again in a few moments? If the problem persists, you might want to double-check your API key. I'm here to help once we get this sorted out!` }]);
     } finally {
       setIsLoading(false);
     }
@@ -100,7 +108,7 @@ const Cica = () => {
                   <motion.span
                     className={`inline-block p-3 rounded-2xl ${
                       msg.role === 'user' ? 'bg-navy-blue text-white' : 'bg-white text-navy-blue'
-                    } shadow-md`}
+                    } shadow-md max-w-[80%]`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   >
