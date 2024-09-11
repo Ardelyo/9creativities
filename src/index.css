@@ -4,33 +4,38 @@
  
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
  
-    --popover: 0 0% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
  
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
  
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+
+    --navy-blue: #1f3a5f;
+    --white: #ffffff;
   }
 }
  
@@ -44,7 +49,7 @@
 }
 
 .bubble {
-  @apply rounded-full bg-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110;
+  @apply rounded-full bg-navy-blue flex items-center justify-center transition-all duration-300 hover:scale-110;
 }
 
 .page-transition {
@@ -62,4 +67,16 @@
 
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in forwards;
+}
+
+.card {
+  @apply bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl;
+}
+
+.button {
+  @apply bg-navy-blue text-white rounded-full px-6 py-2 transition-all duration-300 hover:bg-opacity-80;
+}
+
+.input {
+  @apply bg-white border border-navy-blue rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-navy-blue;
 }

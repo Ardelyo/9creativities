@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        <div className="min-h-screen bg-gradient-to-br from-yellow-200 via-green-200 to-blue-200">
+        <div className="min-h-screen bg-gradient-to-br from-navy-blue via-white to-navy-blue">
           <DynamicIsland />
           <div className="container mx-auto px-4 py-8 pt-24">
             <Routes>
