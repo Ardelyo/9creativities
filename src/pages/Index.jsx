@@ -1,48 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import ProjectBubble from '../components/ProjectBubble';
-import ProjectCard from '../components/ProjectCard';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Droplet, Utensils } from "lucide-react";
 
 const projects = [
   {
     id: 1,
-    title: "Water Purifier",
+    title: "Water Filter",
     description: "An eco-friendly water purification system using natural materials.",
-    image: "/placeholder.svg",
-    icon: "/placeholder.svg",
+    icon: <Droplet className="h-12 w-12" />,
     category: "Environmental Technology"
   },
   {
     id: 2,
-    title: "Sustainable Snacks",
-    description: "Nutritious snacks made from locally-sourced, organic ingredients.",
-    image: "/placeholder.svg",
-    icon: "/placeholder.svg",
-    category: "Food Technology"
-  },
-  {
-    id: 3,
-    title: "Solar Cooker",
-    description: "A portable solar-powered cooking device for outdoor use.",
-    image: "/placeholder.svg",
-    icon: "/placeholder.svg",
-    category: "Environmental Technology"
-  },
-  {
-    id: 4,
-    title: "Vertical Garden",
-    description: "Space-efficient vertical gardening system for urban areas.",
-    image: "/placeholder.svg",
-    icon: "/placeholder.svg",
-    category: "Environmental Technology"
-  },
-  {
-    id: 5,
-    title: "Biodegradable Packaging",
-    description: "Eco-friendly packaging solutions made from plant-based materials.",
-    image: "/placeholder.svg",
-    icon: "/placeholder.svg",
+    title: "Yoghurt Production",
+    description: "A sustainable process for creating nutritious, probiotic-rich yoghurt.",
+    icon: <Utensils className="h-12 w-12" />,
     category: "Food Technology"
   }
 ];
@@ -52,7 +26,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Header />
       <main className="container mx-auto px-4 py-8">
         <motion.h1 
           className="text-4xl font-bold mb-8 text-center"
@@ -69,7 +42,16 @@ const Index = () => {
           transition={{ delay: 0.2, staggerChildren: 0.1 }}
         >
           {projects.map(project => (
-            <ProjectBubble key={project.id} project={project} onClick={setSelectedProject} />
+            <motion.div
+              key={project.id}
+              className="bubble w-40 h-40 cursor-pointer flex flex-col items-center justify-center"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedProject(project)}
+            >
+              {project.icon}
+              <span className="mt-2 text-center">{project.title}</span>
+            </motion.div>
           ))}
         </motion.div>
         {selectedProject && (
@@ -78,7 +60,18 @@ const Index = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <ProjectCard project={selectedProject} />
+            <Card className="bg-gray-800 text-white">
+              <CardHeader>
+                <CardTitle>{selectedProject.title}</CardTitle>
+                <CardDescription>{selectedProject.category}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>{selectedProject.description}</p>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full">Learn More</Button>
+              </CardFooter>
+            </Card>
           </motion.div>
         )}
       </main>
