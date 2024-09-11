@@ -8,8 +8,8 @@ const Index = () => {
     <div className="page-container">
       <div className="content-card">
         <h1 className="title">Welcome to Nine Creativities</h1>
-        <div className="flex justify-center space-x-8">
-          <Link to="/environmental-projects">
+        <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8">
+          <Link to="/environmental-team">
             <motion.div
               className="nav-button"
               whileHover={{ scale: 1.05 }}
@@ -19,7 +19,7 @@ const Index = () => {
               <span className="nav-text">Environmental Tech</span>
             </motion.div>
           </Link>
-          <Link to="/food-projects">
+          <Link to="/food-team">
             <motion.div
               className="nav-button"
               whileHover={{ scale: 1.05 }}

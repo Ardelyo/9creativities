@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DynamicIsland from "./components/DynamicIsland";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import EnvironmentalProjects from "./pages/EnvironmentalProjects";
-import FoodProjects from "./pages/FoodProjects";
+import EnvironmentalTeam from "./pages/EnvironmentalTeam";
+import FoodTeam from "./pages/FoodTeam";
 import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
@@ -16,14 +16,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        <div className="min-h-screen bg-gradient-to-br from-navy-blue to-navy-blue">
+        <div className="min-h-screen bg-gradient-to-br from-gray-200 to-gray-400">
           <DynamicIsland />
           <div className="container mx-auto px-4 py-8 pt-24">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
-              <Route path="/environmental-projects" element={<EnvironmentalProjects />} />
-              <Route path="/food-projects" element={<FoodProjects />} />
+              <Route path="/environmental-team" element={<EnvironmentalTeam />} />
+              <Route path="/food-team" element={<FoodTeam />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </div>

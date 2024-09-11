@@ -11,8 +11,8 @@ const DynamicIsland = () => {
   const navItems = [
     { title: "Home", icon: <Home className="w-6 h-6" />, path: "/" },
     { title: "About", icon: <Info className="w-6 h-6" />, path: "/about" },
-    { title: "Environmental", icon: <Droplet className="w-6 h-6" />, path: "/environmental-projects" },
-    { title: "Food", icon: <Utensils className="w-6 h-6" />, path: "/food-projects" },
+    { title: "Environmental", icon: <Droplet className="w-6 h-6" />, path: "/environmental-team" },
+    { title: "Food", icon: <Utensils className="w-6 h-6" />, path: "/food-team" },
     { title: "Contact", icon: <Mail className="w-6 h-6" />, path: "/contact" },
   ];
 
