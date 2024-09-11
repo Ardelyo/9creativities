@@ -27,7 +27,7 @@ const DynamicIsland = () => {
       transition={{ duration: 0.3 }}
     >
       <motion.div
-        className="w-full h-full bg-navy-blue rounded-full flex items-center justify-center cursor-pointer overflow-hidden shadow-lg"
+        className="w-full h-full bg-primary rounded-full flex items-center justify-center cursor-pointer overflow-hidden shadow-lg wavy-border"
         onClick={toggleExpand}
       >
         <AnimatePresence>
@@ -43,7 +43,7 @@ const DynamicIsland = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="flex items-center justify-center text-white p-3 hover:bg-opacity-50 hover:bg-white w-full transition-colors duration-200"
+                  className="flex items-center justify-center text-primary-foreground p-3 hover:bg-opacity-50 hover:bg-white w-full transition-colors duration-200"
                   onClick={() => setIsExpanded(false)}
                 >
                   <motion.div
@@ -63,7 +63,7 @@ const DynamicIsland = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-white font-bold"
+              className="text-primary-foreground font-bold"
             >
               Nine Creativities
             </motion.div>
