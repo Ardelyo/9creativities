@@ -28,11 +28,10 @@ const Cica = () => {
     setMessage('');
 
     try {
-      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent', {
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           contents: [{ parts: [{ text: message }] }]
@@ -40,7 +39,8 @@ const Cica = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to get response from Gemini API');
+        const errorData = await response.json();
+        throw new Error(errorData.error.message || 'Failed to get response from Gemini API');
       }
 
       const data = await response.json();
@@ -49,7 +49,7 @@ const Cica = () => {
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
       console.error('Error calling Gemini API:', error);
-      setChat(prevChat => [...prevChat, { role: 'assistant', content: 'Sorry, I encountered an error. Please check your API key and try again.' }]);
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: `Error: ${error.message}. Please check your API key and try again.` }]);
     } finally {
       setIsLoading(false);
     }
