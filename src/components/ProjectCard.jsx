@@ -2,16 +2,29 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Droplet, Cpu, Wifi, Zap } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const getIcon = (type) => {
+    switch (type) {
+      case 'water': return <Droplet className="w-6 h-6" />;
+      case 'tech': return <Cpu className="w-6 h-6" />;
+      case 'network': return <Wifi className="w-6 h-6" />;
+      case 'energy': return <Zap className="w-6 h-6" />;
+      default: return null;
+    }
+  };
 
   return (
     <motion.div layout className="mb-8">
       <Card className="bg-navy-blue text-white shadow-lg rounded-3xl overflow-hidden">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">{project.title}</CardTitle>
+          <CardTitle className="text-2xl font-bold flex items-center justify-center">
+            {getIcon(project.type)}
+            <span className="ml-2">{project.title}</span>
+          </CardTitle>
           <CardDescription className="text-gray-300">{project.description}</CardDescription>
         </CardHeader>
         <CardContent className="px-6">

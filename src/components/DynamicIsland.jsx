@@ -24,7 +24,7 @@ const DynamicIsland = () => {
         width: isExpanded ? '300px' : '200px',
         height: isExpanded ? '300px' : '40px',
       }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.3, type: 'spring', stiffness: 300, damping: 30 }}
     >
       <motion.div
         className="w-full h-full bg-navy-blue rounded-full flex items-center justify-center cursor-pointer overflow-hidden shadow-lg"
@@ -37,9 +37,10 @@ const DynamicIsland = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="w-full h-full flex flex-col items-center justify-center"
             >
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <Link
                   key={item.path}
                   to={item.path}
@@ -48,8 +49,9 @@ const DynamicIsland = () => {
                 >
                   <motion.div
                     className="flex items-center space-x-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.1 }}
                   >
                     {item.icon}
                     <span className="text-sm font-medium">{item.title}</span>

@@ -2,17 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Droplet, Utensils, Cpu, Wifi, Zap } from 'lucide-react';
+import BackgroundArt from '../components/BackgroundArt';
 
 const Index = () => {
   const techIcons = [Cpu, Wifi, Zap];
 
   return (
-    <div className="page-container bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="page-container bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen flex flex-col items-center justify-center p-4 relative">
+      <BackgroundArt />
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="content-card bg-white rounded-3xl shadow-lg p-6 w-full max-w-md"
+        className="content-card bg-white rounded-3xl shadow-lg p-6 w-full max-w-md relative z-10"
       >
         <motion.h1
           initial={{ y: -20, opacity: 0 }}
