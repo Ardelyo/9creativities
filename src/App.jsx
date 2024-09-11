@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import EnvironmentalTeam from "./pages/EnvironmentalTeam";
 import FoodTeam from "./pages/FoodTeam";
+import Cica from "./pages/Cica";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
                 <Route path="/about" element={<About />} />
                 <Route path="/environmental-team" element={<EnvironmentalTeam />} />
                 <Route path="/food-team" element={<FoodTeam />} />
+                <Route path="/cica" element={<Cica />} />
               </Routes>
             </AnimatePresence>
           </div>

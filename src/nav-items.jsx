@@ -1,8 +1,9 @@
-import { HomeIcon, InfoIcon, FolderIcon, MailIcon } from "lucide-react";
+import { HomeIcon, InfoIcon, FolderIcon, Droplet, Utensils, Bot } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import About from "./pages/About.jsx";
-import Projects from "./pages/Projects.jsx";
-import Contact from "./pages/Contact.jsx";
+import EnvironmentalTeam from "./pages/EnvironmentalTeam.jsx";
+import FoodTeam from "./pages/FoodTeam.jsx";
+import Cica from "./pages/Cica.jsx";
 
 export const navItems = [
   {
@@ -18,15 +19,21 @@ export const navItems = [
     page: <About />,
   },
   {
-    title: "Projects",
-    to: "/projects",
-    icon: <FolderIcon className="h-4 w-4" />,
-    page: <Projects />,
+    title: "Environmental Team",
+    to: "/environmental-team",
+    icon: <Droplet className="h-4 w-4" />,
+    page: <EnvironmentalTeam />,
   },
   {
-    title: "Contact",
-    to: "/contact",
-    icon: <MailIcon className="h-4 w-4" />,
-    page: <Contact />,
+    title: "Food Team",
+    to: "/food-team",
+    icon: <Utensils className="h-4 w-4" />,
+    page: <FoodTeam />,
+  },
+  {
+    title: "Cica",
+    to: "/cica",
+    icon: <Bot className="h-4 w-4" />,
+    page: <Cica />,
   },
 ];
