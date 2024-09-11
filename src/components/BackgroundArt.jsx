@@ -19,6 +19,7 @@ const BackgroundArt = () => {
           animate={{
             y: [0, -10, 0],
             rotate: [0, 5, -5, 0],
+            scale: [1, 1.1, 1],
           }}
           transition={{
             duration: Math.random() * 5 + 5,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Home, Info, Droplet, Utensils, Mail } from 'lucide-react';
+import { Home, Info, Droplet, Utensils } from 'lucide-react';
 
 const DynamicIsland = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,50 +13,81 @@ const DynamicIsland = () => {
     { title: "About", icon: <Info className="w-6 h-6" />, path: "/about" },
     { title: "Environmental", icon: <Droplet className="w-6 h-6" />, path: "/environmental-team" },
     { title: "Food", icon: <Utensils className="w-6 h-6" />, path: "/food-team" },
-    { title: "Contact", icon: <Mail className="w-6 h-6" />, path: "/contact" },
   ];
+
+  const islandVariants = {
+    collapsed: {
+      width: '200px',
+      height: '40px',
+      borderRadius: '20px',
+    },
+    expanded: {
+      width: '300px',
+      height: '300px',
+      borderRadius: '30px',
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.3,
+        type: 'spring',
+        stiffness: 300,
+        damping: 24,
+      },
+    }),
+  };
 
   return (
     <motion.div
       className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
-      initial={{ width: '200px', height: '40px' }}
-      animate={{
-        width: isExpanded ? '300px' : '200px',
-        height: isExpanded ? '300px' : '40px',
-      }}
-      transition={{ duration: 0.3, type: 'spring', stiffness: 300, damping: 30 }}
+      initial="collapsed"
+      animate={isExpanded ? "expanded" : "collapsed"}
+      variants={islandVariants}
+      transition={{ duration: 0.5, type: 'spring', stiffness: 300, damping: 30 }}
     >
       <motion.div
         className="w-full h-full bg-navy-blue rounded-full flex items-center justify-center cursor-pointer overflow-hidden shadow-lg"
         onClick={toggleExpand}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isExpanded ? (
             <motion.nav
               key="expanded"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
               className="w-full h-full flex flex-col items-center justify-center"
             >
               {navItems.map((item, index) => (
-                <Link
+                <motion.div
                   key={item.path}
-                  to={item.path}
-                  className="flex items-center justify-center text-white p-3 hover:bg-opacity-50 hover:bg-white w-full transition-colors duration-200"
-                  onClick={() => setIsExpanded(false)}
+                  custom={index}
+                  variants={itemVariants}
                 >
-                  <motion.div
-                    className="flex items-center space-x-2"
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
+                  <Link
+                    to={item.path}
+                    className="flex items-center justify-center text-white p-3 hover:bg-opacity-50 hover:bg-white w-full transition-colors duration-200"
+                    onClick={() => setIsExpanded(false)}
                   >
-                    {item.icon}
-                    <span className="text-sm font-medium">{item.title}</span>
-                  </motion.div>
-                </Link>
+                    <motion.div
+                      className="flex items-center space-x-2"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      {item.icon}
+                      <span className="text-sm font-medium">{item.title}</span>
+                    </motion.div>
+                  </Link>
+                </motion.div>
               ))}
             </motion.nav>
           ) : (
