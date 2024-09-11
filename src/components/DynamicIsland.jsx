@@ -46,10 +46,8 @@ const DynamicIsland = () => {
                   className="flex items-center justify-center text-white p-3 hover:bg-gray-800 w-full transition-colors duration-200"
                   onClick={() => setIsExpanded(false)}
                 >
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-3">
-                    {item.icon}
-                  </div>
-                  <span className="text-sm font-medium">{item.title}</span>
+                  {item.icon}
+                  <span className="ml-2 text-sm font-medium">{item.title}</span>
                 </Link>
               ))}
             </motion.nav>
