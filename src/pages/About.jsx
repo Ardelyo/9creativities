@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-navy-blue via-white to-navy-blue text-navy-blue p-4">
+    <div className="min-h-screen bg-background text-foreground p-4">
       <Link to="/" className="inline-block mb-4">
-        <Button variant="ghost" className="text-navy-blue">
+        <Button variant="ghost" className="text-primary">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back
         </Button>
       </Link>
       <motion.div 
-        className="max-w-2xl mx-auto bg-white rounded-3xl shadow-lg p-6"
+        className="max-w-2xl mx-auto bubble-info"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
