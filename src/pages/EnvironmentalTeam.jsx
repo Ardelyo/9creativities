@@ -8,28 +8,29 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
-    { name: "Alice Johnson", role: "Ketua Tim", interest: "Konservasi Air", image: "/placeholder.svg" },
-    { name: "Bob Smith", role: "Spesialis Riset", interest: "Material Berkelanjutan", image: "/placeholder.svg" },
-    { name: "Carol Davis", role: "Manajer Proyek", interest: "Teknologi Ramah Lingkungan", image: "/placeholder.svg" },
+    { name: "Gita Nirmala", role: "Ahli Lingkungan", interest: "Konservasi Air", image: "/placeholder.svg" },
+    { name: "Hadi Santoso", role: "Insinyur Lingkungan", interest: "Pengolahan Air Limbah", image: "/placeholder.svg" },
+    { name: "Indah Pertiwi", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/placeholder.svg" },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Filter Air",
-      description: "Sistem pemurnian air ramah lingkungan menggunakan bahan alami.",
+      title: "Filter Air Ramah Lingkungan",
+      description: "Sistem pemurnian air menggunakan bahan alami dan berkelanjutan.",
       image: "/placeholder.svg",
       type: "water",
-      details: "Proyek filter air kami menggunakan bahan berkelanjutan untuk menciptakan sistem pemurnian air yang terjangkau dan efektif. Dirancang untuk menghilangkan kontaminan dan menyediakan air minum bersih untuk masyarakat yang membutuhkan.",
+      details: "Proyek Filter Air Ramah Lingkungan kami menggunakan kombinasi bahan alami seperti pasir, kerikil, arang aktif, dan tanaman air untuk menciptakan sistem pemurnian air yang efektif dan ramah lingkungan. Sistem ini dirancang untuk menghilangkan kontaminan dan menyediakan air bersih untuk komunitas lokal.",
       howItWorks: [
-        "Kumpulkan bahan penyaring alami (pasir, kerikil, arang)",
-        "Susun lapisan dalam wadah",
-        "Tuangkan air tercemar melalui filter",
-        "Kumpulkan dan uji air yang telah disaring"
+        "Pengumpulan dan persiapan bahan filter alami",
+        "Penyusunan lapisan filter dalam wadah berkelanjutan",
+        "Proses filtrasi air melalui lapisan-lapisan bahan alami",
+        "Pengujian kualitas air hasil filtrasi",
+        "Perawatan dan regenerasi bahan filter secara berkala"
       ],
-      impact: "Proyek ini dapat menyediakan air bersih untuk ratusan orang, mengurangi penyakit yang ditularkan melalui air dan meningkatkan kesehatan masyarakat secara keseluruhan.",
+      impact: "Proyek ini dapat menyediakan akses air bersih yang terjangkau bagi masyarakat, mengurangi risiko penyakit yang ditularkan melalui air, dan meningkatkan kesadaran tentang pentingnya konservasi air.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi proyek terperinci termasuk temuan penelitian, spesifikasi bahan, dan hasil pengujian."
+      documentation: "Dokumentasi lengkap meliputi desain sistem, hasil uji laboratorium, dan panduan pemeliharaan."
     },
   ];
 
@@ -47,13 +48,32 @@ const EnvironmentalTeam = () => {
             transition={{ duration: 0.5 }}
             className="title text-4xl font-bold text-navy-blue mb-8"
           >
-            Tim Lingkungan
+            Tim Teknologi Lingkungan
           </motion.h1>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
+          >
+            <h2 className="text-2xl font-bold mb-4 text-navy-blue">Pengenalan Teknologi Lingkungan</h2>
+            <p className="text-gray-700 mb-4">
+              Teknologi Lingkungan adalah penerapan prinsip-prinsip ilmiah dan teknik untuk melindungi lingkungan alam dan sumber daya alam, serta mengurangi dampak negatif aktivitas manusia terhadap ekosistem. Fokus utamanya adalah pada pengelolaan air, udara, dan tanah, serta pengembangan solusi berkelanjutan untuk masalah lingkungan.
+            </p>
+            <p className="text-gray-700 mb-4">
+              Tim kami berkomitmen untuk mengembangkan solusi inovatif yang membantu melestarikan lingkungan dan meningkatkan kualitas hidup masyarakat, dengan fokus khusus pada pengelolaan dan konservasi air.
+            </p>
+            <h3 className="text-xl font-semibold mb-2 text-navy-blue">Kunjungan ke PDAM Tirtawening</h3>
+            <p className="text-gray-700 mb-4">
+              Sebagai bagian dari proyek kami, tim Teknologi Lingkungan berkesempatan mengunjungi PDAM Tirtawening. Kunjungan ini memberikan wawasan berharga tentang proses pengolahan air bersih skala besar dan praktik manajemen air yang efisien. Pengalaman ini memperkaya pemahaman kami tentang teknologi pengolahan air dan menginspirasi pengembangan proyek Filter Air Ramah Lingkungan kami.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
           >
             <h2 className="text-2xl font-bold mb-6 text-navy-blue flex items-center">

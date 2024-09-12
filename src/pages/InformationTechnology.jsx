@@ -1,36 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Utensils, Users, FileText, Camera } from 'lucide-react';
+import { ArrowLeft, Cpu, Users, FileText, Camera } from 'lucide-react';
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
 
-const FoodTeam = () => {
+const InformationTechnology = () => {
   const teamMembers = [
-    { name: "Joko Widodo", role: "Ahli Teknologi Pangan", interest: "Fermentasi Makanan", image: "/placeholder.svg" },
-    { name: "Kartini Sari", role: "Ahli Gizi", interest: "Makanan Fungsional", image: "/placeholder.svg" },
-    { name: "Laksono Adi", role: "Teknisi Pengolahan Pangan", interest: "Pengawetan Alami", image: "/placeholder.svg" },
+    { name: "Andi Pratama", role: "Pengembang Web", interest: "Desain UI/UX", image: "/placeholder.svg" },
+    { name: "Budi Santoso", role: "Analis Sistem", interest: "Keamanan Informasi", image: "/placeholder.svg" },
+    { name: "Citra Dewi", role: "Manajer Proyek IT", interest: "Agile Development", image: "/placeholder.svg" },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Produksi Yoghurt Probiotik",
-      description: "Pengembangan yoghurt kaya probiotik dengan bahan lokal.",
+      title: "Website Nine Creativities",
+      description: "Platform untuk memperkenalkan proyek-proyek inovatif dari berbagai tim teknologi.",
       image: "/placeholder.svg",
-      type: "food",
-      details: "Proyek Produksi Yoghurt Probiotik kami berfokus pada pengembangan yoghurt yang kaya akan bakteri baik (probiotik) menggunakan susu dan kultur bakteri lokal. Kami menggabungkan teknik fermentasi tradisional dengan teknologi modern untuk menghasilkan produk yang tidak hanya lezat tetapi juga menyehatkan pencernaan.",
+      type: "web",
+      details: "Website Nine Creativities adalah platform yang dirancang untuk memperkenalkan dan memamerkan proyek-proyek inovatif dari tim Teknologi Informasi, Komunikasi, Lingkungan, dan Pangan. Website ini menyediakan informasi tentang setiap tim, anggotanya, dan proyek-proyek yang sedang mereka kerjakan.",
       howItWorks: [
-        "Seleksi susu berkualitas tinggi dari peternak lokal",
-        "Pasteurisasi susu untuk menghilangkan bakteri yang tidak diinginkan",
-        "Inokulasi dengan kultur probiotik pilihan",
-        "Fermentasi pada suhu dan waktu yang terkontrol",
-        "Pendinginan dan pengemasan produk jadi"
+        "Pengembangan menggunakan React dan Tailwind CSS",
+        "Implementasi animasi dengan Framer Motion",
+        "Integrasi dengan API Gemini untuk fitur chatbot Cica",
+        "Penggunaan komponen yang dapat digunakan kembali untuk konsistensi desain"
       ],
-      impact: "Proyek ini mendukung peternak susu lokal, mempromosikan gaya hidup sehat melalui konsumsi probiotik, dan membuka peluang wirausaha dalam industri makanan sehat.",
+      impact: "Website ini memungkinkan pengunjung untuk menjelajahi dan mempelajari tentang berbagai proyek teknologi yang dikembangkan oleh siswa, meningkatkan visibilitas dan apresiasi terhadap inovasi teknologi di sekolah.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi proyek mencakup formula yoghurt, prosedur produksi terstandar, dan hasil uji laboratorium untuk kandungan nutrisi dan jumlah probiotik."
+      documentation: "Dokumentasi lengkap meliputi panduan pengembangan, struktur proyek, dan petunjuk deployment."
     },
   ];
 
@@ -48,7 +47,7 @@ const FoodTeam = () => {
             transition={{ duration: 0.5 }}
             className="title text-4xl font-bold text-navy-blue mb-8"
           >
-            Tim Teknologi Pangan
+            Tim Teknologi Informasi
           </motion.h1>
           
           <motion.div
@@ -57,12 +56,12 @@ const FoodTeam = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
           >
-            <h2 className="text-2xl font-bold mb-4 text-navy-blue">Pengenalan Teknologi Pangan</h2>
+            <h2 className="text-2xl font-bold mb-4 text-navy-blue">Pengenalan Teknologi Informasi</h2>
             <p className="text-gray-700 mb-4">
-              Teknologi Pangan adalah bidang ilmu yang menerapkan prinsip-prinsip sains dan teknik dalam pengolahan, pengawetan, dan distribusi makanan. Tujuannya adalah untuk menghasilkan makanan yang aman, bergizi, dan memiliki umur simpan yang panjang, sambil mempertahankan atau meningkatkan kualitas sensoriknya.
+              Teknologi Informasi (TI) adalah penggunaan komputer dan sistem digital untuk menyimpan, mengambil, mengirim, dan memanipulasi data atau informasi. TI mencakup berbagai aspek yang berkaitan dengan komputasi, termasuk perangkat keras, perangkat lunak, jaringan, dan infrastruktur yang mendukungnya.
             </p>
             <p className="text-gray-700 mb-4">
-              Tim kami fokus pada pengembangan produk pangan inovatif yang tidak hanya lezat tetapi juga memberikan manfaat kesehatan tambahan. Kami menggabungkan pengetahuan tradisional dengan teknologi modern untuk menciptakan makanan yang mendukung gaya hidup sehat dan berkelanjutan.
+              Dalam konteks Nine Creativities, tim Teknologi Informasi bertanggung jawab untuk merancang, mengembangkan, dan memelihara website yang Anda jelajahi saat ini. Website ini berfungsi sebagai platform untuk memperkenalkan proyek-proyek inovatif dari berbagai tim teknologi di sekolah kami.
             </p>
           </motion.div>
 
@@ -95,7 +94,7 @@ const FoodTeam = () => {
           </motion.div>
 
           <h2 className="text-3xl font-bold mb-8 text-navy-blue flex items-center">
-            <Utensils className="mr-2" /> Proyek Kami
+            <Cpu className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
             {projects.map((project) => (
@@ -130,4 +129,4 @@ const FoodTeam = () => {
   );
 };
 
-export default FoodTeam;
+export default InformationTechnology;

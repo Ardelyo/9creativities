@@ -1,36 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Utensils, Users, FileText, Camera } from 'lucide-react';
+import { ArrowLeft, Wifi, Users, FileText, Camera } from 'lucide-react';
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
 
-const FoodTeam = () => {
+const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Joko Widodo", role: "Ahli Teknologi Pangan", interest: "Fermentasi Makanan", image: "/placeholder.svg" },
-    { name: "Kartini Sari", role: "Ahli Gizi", interest: "Makanan Fungsional", image: "/placeholder.svg" },
-    { name: "Laksono Adi", role: "Teknisi Pengolahan Pangan", interest: "Pengawetan Alami", image: "/placeholder.svg" },
+    { name: "Dian Purnama", role: "Spesialis Konten Digital", interest: "Media Sosial", image: "/placeholder.svg" },
+    { name: "Eko Prasetyo", role: "Desainer Grafis", interest: "Infografis", image: "/placeholder.svg" },
+    { name: "Fira Rahmawati", role: "Penulis Teknis", interest: "Storytelling Digital", image: "/placeholder.svg" },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Produksi Yoghurt Probiotik",
-      description: "Pengembangan yoghurt kaya probiotik dengan bahan lokal.",
+      title: "Kampanye Edukasi Teknologi",
+      description: "Seri konten digital untuk mengedukasi tentang teknologi informasi, komunikasi, pangan, dan lingkungan.",
       image: "/placeholder.svg",
-      type: "food",
-      details: "Proyek Produksi Yoghurt Probiotik kami berfokus pada pengembangan yoghurt yang kaya akan bakteri baik (probiotik) menggunakan susu dan kultur bakteri lokal. Kami menggabungkan teknik fermentasi tradisional dengan teknologi modern untuk menghasilkan produk yang tidak hanya lezat tetapi juga menyehatkan pencernaan.",
+      type: "digital",
+      details: "Proyek Kampanye Edukasi Teknologi bertujuan untuk menciptakan serangkaian konten digital yang informatif dan menarik tentang berbagai aspek teknologi. Konten ini mencakup topik-topik seputar teknologi informasi, komunikasi, pangan, dan lingkungan, disajikan dalam format yang mudah dipahami oleh berbagai kalangan.",
       howItWorks: [
-        "Seleksi susu berkualitas tinggi dari peternak lokal",
-        "Pasteurisasi susu untuk menghilangkan bakteri yang tidak diinginkan",
-        "Inokulasi dengan kultur probiotik pilihan",
-        "Fermentasi pada suhu dan waktu yang terkontrol",
-        "Pendinginan dan pengemasan produk jadi"
+        "Riset mendalam tentang topik-topik teknologi terkini",
+        "Pembuatan konten dalam berbagai format (artikel, infografis, video pendek)",
+        "Distribusi konten melalui platform media sosial dan website Nine Creativities",
+        "Pengukuran dampak dan engagement untuk perbaikan konten berkelanjutan"
       ],
-      impact: "Proyek ini mendukung peternak susu lokal, mempromosikan gaya hidup sehat melalui konsumsi probiotik, dan membuka peluang wirausaha dalam industri makanan sehat.",
+      impact: "Kampanye ini meningkatkan kesadaran dan pemahaman masyarakat tentang perkembangan teknologi terkini, mendorong minat dalam sains dan teknologi di kalangan pelajar, serta mempromosikan inovasi teknologi yang dikembangkan di sekolah kami.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi proyek mencakup formula yoghurt, prosedur produksi terstandar, dan hasil uji laboratorium untuk kandungan nutrisi dan jumlah probiotik."
+      documentation: "Dokumentasi proyek meliputi strategi konten, panduan gaya, dan analisis metrik engagement."
     },
   ];
 
@@ -48,7 +47,7 @@ const FoodTeam = () => {
             transition={{ duration: 0.5 }}
             className="title text-4xl font-bold text-navy-blue mb-8"
           >
-            Tim Teknologi Pangan
+            Tim Teknologi Komunikasi
           </motion.h1>
           
           <motion.div
@@ -57,12 +56,12 @@ const FoodTeam = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
           >
-            <h2 className="text-2xl font-bold mb-4 text-navy-blue">Pengenalan Teknologi Pangan</h2>
+            <h2 className="text-2xl font-bold mb-4 text-navy-blue">Pengenalan Teknologi Komunikasi</h2>
             <p className="text-gray-700 mb-4">
-              Teknologi Pangan adalah bidang ilmu yang menerapkan prinsip-prinsip sains dan teknik dalam pengolahan, pengawetan, dan distribusi makanan. Tujuannya adalah untuk menghasilkan makanan yang aman, bergizi, dan memiliki umur simpan yang panjang, sambil mempertahankan atau meningkatkan kualitas sensoriknya.
+              Teknologi Komunikasi adalah perangkat dan sistem yang memungkinkan pertukaran informasi antara individu atau kelompok. Ini mencakup berbagai media dan alat, mulai dari telepon seluler hingga internet dan media sosial, yang memfasilitasi komunikasi jarak jauh dan penyebaran informasi secara luas.
             </p>
             <p className="text-gray-700 mb-4">
-              Tim kami fokus pada pengembangan produk pangan inovatif yang tidak hanya lezat tetapi juga memberikan manfaat kesehatan tambahan. Kami menggabungkan pengetahuan tradisional dengan teknologi modern untuk menciptakan makanan yang mendukung gaya hidup sehat dan berkelanjutan.
+              Dalam konteks Nine Creativities, tim Teknologi Komunikasi berperan penting dalam menciptakan dan menyebarkan konten edukatif tentang berbagai aspek teknologi. Mereka bertanggung jawab untuk mengkomunikasikan ide-ide kompleks tentang teknologi informasi, komunikasi, pangan, dan lingkungan dalam format yang menarik dan mudah dipahami oleh berbagai kalangan.
             </p>
           </motion.div>
 
@@ -95,7 +94,7 @@ const FoodTeam = () => {
           </motion.div>
 
           <h2 className="text-3xl font-bold mb-8 text-navy-blue flex items-center">
-            <Utensils className="mr-2" /> Proyek Kami
+            <Wifi className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
             {projects.map((project) => (
@@ -130,4 +129,4 @@ const FoodTeam = () => {
   );
 };
 
-export default FoodTeam;
+export default CommunicationTechnology;
