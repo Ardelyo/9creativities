@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Home, Info, Cpu, Wifi, Bot } from 'lucide-react';
+import { Home, Info, Bot } from 'lucide-react';
 
 const DynamicIsland = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -11,8 +11,6 @@ const DynamicIsland = () => {
   const navItems = [
     { title: "Beranda", icon: <Home className="w-6 h-6" />, path: "/" },
     { title: "Tentang", icon: <Info className="w-6 h-6" />, path: "/about" },
-    { title: "Teknologi Informasi", icon: <Cpu className="w-6 h-6" />, path: "/information-technology" },
-    { title: "Teknologi Komunikasi", icon: <Wifi className="w-6 h-6" />, path: "/communication-technology" },
     { title: "Cica", icon: <Bot className="w-6 h-6" />, path: "/cica" },
   ];
 
@@ -24,7 +22,7 @@ const DynamicIsland = () => {
     },
     expanded: {
       width: '300px',
-      height: '300px',
+      height: '200px',
       borderRadius: '30px',
     },
   };
