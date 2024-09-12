@@ -6,10 +6,10 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const About = () => {
   const teamMembers = [
-    { name: "Alice", role: "Project Manager" },
-    { name: "Bob", role: "Designer" },
-    { name: "Charlie", role: "Developer" },
-    { name: "Diana", role: "Content Creator" },
+    { name: "Alice", role: "Manajer Proyek" },
+    { name: "Bob", role: "Desainer" },
+    { name: "Charlie", role: "Pengembang" },
+    { name: "Diana", role: "Pembuat Konten" },
   ];
 
   return (
@@ -17,9 +17,9 @@ const About = () => {
       <div className="page-container">
         <div className="content-card bg-white rounded-3xl shadow-lg p-8">
           <Link to="/" className="back-button text-navy-blue">
-            <ArrowLeft className="mr-2" /> Back
+            <ArrowLeft className="mr-2" /> Kembali
           </Link>
-          <h1 className="title text-4xl font-bold text-navy-blue mb-8">About Nine Creativities</h1>
+          <h1 className="title text-4xl font-bold text-navy-blue mb-8">Tentang Nine Creativities</h1>
           
           <motion.div 
             className="mb-8 p-6 bg-gray-100 rounded-2xl"
@@ -28,10 +28,10 @@ const About = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
-              <Users className="mr-2" /> Our Team
+              <Users className="mr-2" /> Tim Kami
             </h2>
             <p className="text-gray-700 mb-4">
-              Nine Creativities was proudly created by Group 1, a team of passionate students dedicated to showcasing innovative projects in environmental and food technology.
+              Nine Creativities dibuat oleh Kelompok 1, tim siswa yang bersemangat untuk menampilkan proyek inovatif dalam teknologi lingkungan dan pangan.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {teamMembers.map((member, index) => (
@@ -53,11 +53,11 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h2 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
-              <Lightbulb className="mr-2" /> Our Mission
+              <Lightbulb className="mr-2" /> Misi Kami
             </h2>
             <p className="text-gray-700">
-              Nine Creativities is dedicated to showcasing innovative projects developed by Class 9C students. 
-              We aim to highlight the creativity and hard work of our classmates in the fields of environmental and food technology.
+              Nine Creativities bertujuan untuk menampilkan proyek inovatif yang dikembangkan oleh siswa Kelas 9C. 
+              Kami ingin menunjukkan kreativitas dan kerja keras teman-teman kami di bidang teknologi lingkungan dan pangan.
             </p>
           </motion.div>
 
@@ -68,11 +68,11 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <h2 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
-              <Award className="mr-2" /> Our Vision
+              <Award className="mr-2" /> Visi Kami
             </h2>
             <p className="text-gray-700">
-              We envision a future where young minds contribute significantly to solving real-world challenges. 
-              Through our projects, we strive to inspire and drive positive change in our communities and beyond.
+              Kami membayangkan masa depan di mana anak muda berkontribusi besar dalam menyelesaikan masalah dunia nyata. 
+              Melalui proyek kami, kami berusaha menginspirasi dan mendorong perubahan positif di komunitas kami dan sekitarnya.
             </p>
           </motion.div>
         </div>

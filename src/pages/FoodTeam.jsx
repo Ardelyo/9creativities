@@ -8,30 +8,29 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const FoodTeam = () => {
   const teamMembers = [
-    { name: "David Lee", role: "Culinary Expert", interest: "Sustainable Cooking", image: "/placeholder.svg" },
-    { name: "Emma Wilson", role: "Nutrition Specialist", interest: "Plant-based Diets", image: "/placeholder.svg" },
-    { name: "Frank Miller", role: "Food Technology Researcher", interest: "Food Preservation", image: "/placeholder.svg" },
+    { name: "David Lee", role: "Ahli Kuliner", interest: "Memasak Berkelanjutan", image: "/placeholder.svg" },
+    { name: "Emma Wilson", role: "Spesialis Gizi", interest: "Diet Nabati", image: "/placeholder.svg" },
+    { name: "Frank Miller", role: "Peneliti Teknologi Pangan", interest: "Pengawetan Makanan", image: "/placeholder.svg" },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Yoghurt Production",
-      description: "A sustainable process for creating nutritious, probiotic-rich yoghurt.",
+      title: "Produksi Yoghurt",
+      description: "Proses berkelanjutan untuk membuat yoghurt bergizi kaya probiotik.",
       image: "/placeholder.svg",
       type: "tech",
-      details: "Our yoghurt production project focuses on creating a sustainable and efficient process to make nutritious, probiotic-rich yoghurt. We use locally sourced milk and cultures to produce a healthy and delicious product.",
+      details: "Proyek produksi yoghurt kami berfokus pada menciptakan proses yang berkelanjutan dan efisien untuk membuat yoghurt bergizi kaya probiotik. Kami menggunakan susu dan kultur lokal untuk menghasilkan produk yang sehat dan lezat.",
       howItWorks: [
-        "Source fresh, high-quality milk",
-        "Heat milk to the correct temperature",
-        "Add live cultures and ferment",
-        "Cool and package the yoghurt"
+        "Dapatkan susu segar berkualitas tinggi",
+        "Panaskan susu hingga suhu yang tepat",
+        "Tambahkan kultur hidup dan fermentasi",
+        "Dinginkan dan kemas yoghurt"
       ],
-      impact: "This project promotes local dairy farming, provides a nutritious food source, and creates job opportunities in the community.",
+      impact: "Proyek ini mendukung peternakan susu lokal, menyediakan sumber makanan bergizi, dan menciptakan peluang kerja di masyarakat.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Comprehensive documentation covering the yoghurt production process, quality control measures, and nutritional analysis."
+      documentation: "Dokumentasi lengkap meliputi proses produksi yoghurt, langkah-langkah pengendalian mutu, dan analisis gizi."
     },
-    // Add more projects here
   ];
 
   return (
@@ -40,7 +39,7 @@ const FoodTeam = () => {
         <BackgroundArt />
         <div className="content-card relative z-10">
           <Link to="/" className="back-button">
-            <ArrowLeft className="mr-2" /> Back
+            <ArrowLeft className="mr-2" /> Kembali
           </Link>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -48,7 +47,7 @@ const FoodTeam = () => {
             transition={{ duration: 0.5 }}
             className="title text-4xl font-bold text-navy-blue mb-8"
           >
-            Food Team
+            Tim Pangan
           </motion.h1>
           
           <motion.div
@@ -58,7 +57,7 @@ const FoodTeam = () => {
             className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
           >
             <h2 className="text-2xl font-bold mb-6 text-navy-blue flex items-center">
-              <Users className="mr-2" /> Meet Our Team
+              <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {teamMembers.map((member, index) => (
@@ -72,7 +71,7 @@ const FoodTeam = () => {
                   <h3 className="text-lg font-semibold text-navy-blue">{member.name}</h3>
                   <p className="text-sm text-gray-600 mb-2">{member.role}</p>
                   <p className="text-sm">
-                    <span className="font-medium">Interest:</span> {member.interest}
+                    <span className="font-medium">Minat:</span> {member.interest}
                   </p>
                 </motion.div>
               ))}
@@ -80,7 +79,7 @@ const FoodTeam = () => {
           </motion.div>
 
           <h2 className="text-3xl font-bold mb-8 text-navy-blue flex items-center">
-            <Utensils className="mr-2" /> Our Projects
+            <Utensils className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
             {projects.map((project) => (
@@ -94,15 +93,15 @@ const FoodTeam = () => {
                 <SliderDocumentationCard project={project} />
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
-                    <Camera className="mr-2" /> Project Photos
+                    <Camera className="mr-2" /> Foto Proyek
                   </h3>
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     {project.photos.map((photo, index) => (
-                      <img key={index} src={photo} alt={`${project.title} photo ${index + 1}`} className="rounded-lg shadow-md" />
+                      <img key={index} src={photo} alt={`${project.title} foto ${index + 1}`} className="rounded-lg shadow-md" />
                     ))}
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
-                    <FileText className="mr-2" /> Documentation
+                    <FileText className="mr-2" /> Dokumentasi
                   </h3>
                   <p className="text-gray-700">{project.documentation}</p>
                 </div>

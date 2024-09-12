@@ -5,16 +5,16 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const SliderDocumentationCard = ({ project }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { title: 'Overview', content: project.description },
-    { title: 'Details', content: project.details },
-    { title: 'How It Works', content: (
+    { title: 'Ringkasan', content: project.description },
+    { title: 'Detail', content: project.details },
+    { title: 'Cara Kerja', content: (
       <ol className="list-decimal list-inside">
         {project.howItWorks.map((step, index) => (
           <li key={index} className="mb-1">{step}</li>
         ))}
       </ol>
     )},
-    { title: 'Impact', content: project.impact },
+    { title: 'Dampak', content: project.impact },
   ];
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);

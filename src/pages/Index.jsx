@@ -35,7 +35,7 @@ const Index = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="title text-3xl font-bold text-navy-blue mb-8 text-center"
           >
-            Welcome to Nine Creativities
+            Selamat Datang di Nine Creativities
           </motion.h1>
           <div className="flex flex-col space-y-6 items-center">
             <Link to="/environmental-team">
@@ -46,7 +46,7 @@ const Index = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Droplet className="nav-icon text-5xl" />
-                <span className="nav-text text-xl font-semibold">Environmental Tech</span>
+                <span className="nav-text text-xl font-semibold">Teknologi Lingkungan</span>
               </motion.div>
             </Link>
             <Link to="/food-team">
@@ -57,7 +57,7 @@ const Index = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Utensils className="nav-icon text-5xl" />
-                <span className="nav-text text-xl font-semibold">Food Tech</span>
+                <span className="nav-text text-xl font-semibold">Teknologi Pangan</span>
               </motion.div>
             </Link>
           </div>

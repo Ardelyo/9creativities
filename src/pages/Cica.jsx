@@ -39,7 +39,7 @@ const Cica = () => {
             {
               parts: [
                 {
-                  text: `You are Cica, an AI chatbot designed to assist users with technology-related inquiries. You are friendly, approachable, and knowledgeable about a wide range of technology topics. You possess human-like qualities, capable of empathy and emotional understanding. Respond to the following message in a helpful and empathetic manner, using Markdown formatting where appropriate: ${message}`
+                  text: `Kamu adalah Cica, asisten AI yang dirancang untuk membantu pengguna dengan pertanyaan terkait teknologi. Kamu ramah, mudah didekati, dan berpengetahuan luas tentang berbagai topik teknologi. Kamu memiliki kualitas seperti manusia, mampu berempati dan memahami emosi. Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format Markdown jika sesuai: ${message}`
                 }
               ]
             }
@@ -49,7 +49,7 @@ const Cica = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error.message || 'Failed to get response from Gemini API');
+        throw new Error(errorData.error.message || 'Gagal mendapatkan respons dari API Gemini');
       }
 
       const data = await response.json();
@@ -57,8 +57,8 @@ const Cica = () => {
 
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
-      setChat(prevChat => [...prevChat, { role: 'assistant', content: `I apologize, but I'm having trouble processing your request at the moment. This could be due to an issue with the API key or a temporary service disruption. Could you please try again in a few moments? If the problem persists, you might want to double-check your API key. I'm here to help once we get this sorted out!` }]);
+      console.error('Error memanggil API Gemini:', error);
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: `Maaf, saya mengalami kesulitan memproses permintaan Anda saat ini. Ini mungkin karena masalah dengan kunci API atau gangguan layanan sementara. Bisakah Anda mencoba lagi dalam beberapa saat? Jika masalah berlanjut, Anda mungkin ingin memeriksa kembali kunci API Anda. Saya siap membantu begitu masalah ini teratasi!` }]);
     } finally {
       setIsLoading(false);
     }
@@ -74,7 +74,7 @@ const Cica = () => {
       <div className="page-container">
         <div className="content-card bg-white rounded-3xl shadow-lg p-8 max-w-4xl mx-auto">
           <Link to="/" className="back-button text-navy-blue mb-6 inline-block">
-            <ArrowLeft className="mr-2 inline" /> Back
+            <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -82,13 +82,13 @@ const Cica = () => {
             transition={{ duration: 0.5 }}
             className="title text-4xl font-bold text-navy-blue mb-8 flex items-center justify-center"
           >
-            <Bot className="mr-3" /> Chat with Cica
+            <Bot className="mr-3" /> Ngobrol dengan Cica
           </motion.h1>
           
           <div className="mb-6">
             <Input
               type="password"
-              placeholder="Enter your Gemini API key"
+              placeholder="Masukkan kunci API Gemini Anda"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               className="w-full p-2 border rounded"
@@ -126,7 +126,7 @@ const Cica = () => {
                 exit={{ opacity: 0 }}
               >
                 <Loader className="animate-spin mr-2" />
-                Cica is thinking...
+                Cica sedang berpikir...
               </motion.div>
             )}
           </div>
@@ -135,7 +135,7 @@ const Cica = () => {
             <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ask Cica about technology..."
+              placeholder="Tanya Cica tentang teknologi..."
               className="flex-grow mr-2 p-2 border rounded"
             />
             <Button
@@ -143,7 +143,7 @@ const Cica = () => {
               disabled={isLoading || !apiKey}
               className="bg-navy-blue text-white px-4 py-2 rounded flex items-center"
             >
-              <Send className="mr-2" /> Send
+              <Send className="mr-2" /> Kirim
             </Button>
           </div>
         </div>
