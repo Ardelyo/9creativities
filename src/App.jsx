@@ -19,7 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        <div className="min-h-screen bg-gradient-to-br from-gray-200 to-gray-400">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 overflow-hidden">
           <DynamicIsland />
           <div className="container mx-auto px-4 py-8 pt-24">
             <AnimatePresence mode="wait">
