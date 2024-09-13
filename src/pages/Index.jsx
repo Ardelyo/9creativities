@@ -37,7 +37,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 p-4 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
@@ -46,21 +46,21 @@ const Index = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 mt-16"
         >
-          <h1 className="text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x">
-            Nine Creativities
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Nine <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-white">Creativities</span>
           </h1>
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mx-auto mb-4"
+            className="h-1 bg-gradient-to-r from-blue-300 via-blue-500 to-white mx-auto mb-4"
           />
-          <p className="text-gray-300 text-xl">
+          <p className="text-gray-300 text-lg md:text-xl">
             Jelajahi inovasi teknologi dari berbagai tim kreatif kami
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {teams.map((team, index) => (
             <motion.div
               key={team.title}
@@ -69,17 +69,17 @@ const Index = () => {
               initial="hidden"
               animate="visible"
               whileHover="hover"
-              className={`bg-gradient-to-br ${team.color} rounded-[30px] p-8 text-white shadow-lg transform transition-all duration-300 perspective-1000`}
+              className={`bg-gradient-to-br ${team.color} rounded-[20px] p-6 text-white shadow-lg transform transition-all duration-300 perspective-1000`}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <Link to={team.to} className="flex flex-col items-center space-y-6">
+              <Link to={team.to} className="flex flex-col items-center space-y-4">
                 <motion.div 
-                  className="bg-white p-6 rounded-full shadow-inner"
+                  className="bg-white p-4 rounded-full shadow-inner"
                   whileHover={{ rotateY: 180, transition: { duration: 0.5 } }}
                 >
-                  <team.icon className="w-16 h-16 text-gray-800" />
+                  <team.icon className="w-10 h-10 md:w-12 md:h-12 text-gray-800" />
                 </motion.div>
-                <span className="text-2xl font-semibold text-center">{team.title}</span>
+                <span className="text-lg md:text-xl font-semibold text-center">{team.title}</span>
               </Link>
             </motion.div>
           ))}
