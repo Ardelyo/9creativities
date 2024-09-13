@@ -11,20 +11,12 @@ const DynamicIsland = () => {
   const navItems = [
     { title: "Beranda", icon: <Home className="w-6 h-6" />, path: "/" },
     { title: "Tentang", icon: <Info className="w-6 h-6" />, path: "/about" },
-    { title: "Cica", icon: <Bot className="w-6 h-6" />, path: "/cica" },
+    { title: "Robot C", icon: <Bot className="w-6 h-6" />, path: "/robot-c" },
   ];
 
   const islandVariants = {
-    collapsed: {
-      width: '200px',
-      height: '40px',
-      borderRadius: '20px',
-    },
-    expanded: {
-      width: '300px',
-      height: '200px',
-      borderRadius: '30px',
-    },
+    collapsed: { width: '200px', height: '40px', borderRadius: '20px' },
+    expanded: { width: '300px', height: '200px', borderRadius: '30px' },
   };
 
   const itemVariants = {
@@ -32,13 +24,7 @@ const DynamicIsland = () => {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.3,
-        type: 'spring',
-        stiffness: 300,
-        damping: 24,
-      },
+      transition: { delay: i * 0.1, duration: 0.3, type: 'spring', stiffness: 300, damping: 24 },
     }),
   };
 
@@ -67,11 +53,7 @@ const DynamicIsland = () => {
               className="w-full h-full flex flex-col items-center justify-center"
             >
               {navItems.map((item, index) => (
-                <motion.div
-                  key={item.path}
-                  custom={index}
-                  variants={itemVariants}
-                >
+                <motion.div key={item.path} custom={index} variants={itemVariants}>
                   <Link
                     to={item.path}
                     className="flex items-center justify-center text-white p-3 hover:bg-opacity-50 hover:bg-white w-full transition-colors duration-200"
