@@ -20,7 +20,7 @@ const InformationTechnology = () => {
       description: "Platform untuk memperkenalkan proyek-proyek inovatif dari berbagai tim teknologi.",
       image: "/placeholder.svg",
       type: "web",
-      details: "Website Nine Creativities adalah platform yang dirancang untuk memperkenalkan dan memamerkan proyek-proyek inovatif dari tim Teknologi Informasi, Komunikasi, Lingkungan, dan P angan. Website ini menyediakan informasi tentang setiap tim, anggotanya, dan proyek-proyek yang sedang mereka kerjakan.",
+      details: "Website Nine Creativities adalah platform yang dirancang untuk memperkenalkan dan memamerkan proyek-proyek inovatif dari tim Teknologi Informasi, Komunikasi, Lingkungan, dan Pangan. Website ini menyediakan informasi tentang setiap tim, anggotanya, dan proyek-proyek yang sedang mereka kerjakan.",
       howItWorks: [
         "Pengembangan menggunakan React dan Tailwind CSS",
         "Implementasi animasi dengan Framer Motion",
@@ -47,7 +47,7 @@ const InformationTechnology = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-500 animate-gradient-x">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-500">
               Tim Teknologi Informasi
             </h1>
             <motion.div
@@ -62,13 +62,13 @@ const InformationTechnology = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 p-6 bg-blue-800 bg-opacity-50 rounded-[30px] shadow-lg transform hover:scale-105 transition-all duration-300"
+            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 md:p-8 shadow-lg"
           >
-            <h2 className="text-3xl font-bold mb-4 text-blue-200">Pengenalan Teknologi Informasi</h2>
-            <p className="text-blue-100 mb-4 text-lg">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-200">Pengenalan Teknologi Informasi</h2>
+            <p className="text-blue-100 mb-4 text-base md:text-lg">
               Teknologi Informasi (TI) adalah penggunaan komputer dan sistem digital untuk menyimpan, mengambil, mengirim, dan memanipulasi data atau informasi. TI mencakup berbagai aspek yang berkaitan dengan komputasi, termasuk perangkat keras, perangkat lunak, jaringan, dan infrastruktur yang mendukungnya.
             </p>
-            <p className="text-blue-100 mb-4 text-lg">
+            <p className="text-blue-100 mb-4 text-base md:text-lg">
               Dalam konteks Nine Creativities, tim Teknologi Informasi bertanggung jawab untuk merancang, mengembangkan, dan memelihara website yang Anda jelajahi saat ini. Website ini berfungsi sebagai platform untuk memperkenalkan proyek-proyek inovatif dari berbagai tim teknologi di sekolah kami.
             </p>
           </motion.div>
@@ -77,21 +77,21 @@ const InformationTechnology = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 p-6 bg-blue-800 bg-opacity-50 rounded-[30px] shadow-lg"
+            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 md:p-8 shadow-lg"
           >
-            <h2 className="text-3xl font-bold mb-6 text-blue-200 flex items-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-200 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-blue-700 p-6 rounded-[20px] text-center shadow-lg transform hover:rotate-3 transition-all duration-300"
-                  whileHover={{ scale: 1.05, rotateY: 10 }}
+                  className="bg-blue-800 bg-opacity-50 p-6 rounded-lg text-center"
+                  whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <img src={member.image} alt={member.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-                  <h3 className="text-xl font-semibold text-blue-200">{member.name}</h3>
+                  <img src={member.image} alt={member.name} className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 object-cover" />
+                  <h3 className="text-lg md:text-xl font-semibold text-blue-200">{member.name}</h3>
                   <p className="text-blue-300 mb-2">{member.role}</p>
                   <p className="text-blue-400">
                     <span className="font-medium">Minat:</span> {member.interest}
@@ -101,7 +101,7 @@ const InformationTechnology = () => {
             </div>
           </motion.div>
 
-          <h2 className="text-4xl font-bold mb-8 text-blue-100 flex items-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-blue-100 flex items-center">
             <Cpu className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
@@ -111,11 +111,11 @@ const InformationTechnology = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-blue-800 bg-opacity-50 rounded-[30px] shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
+                className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg overflow-hidden shadow-lg"
               >
                 <SliderDocumentationCard project={project} />
                 <div className="p-6">
-                  <h3 className="text-3xl font-bold mb-4 text-blue-200 flex items-center">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-blue-200 flex items-center">
                     <Camera className="mr-2" /> Foto Proyek
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -124,16 +124,16 @@ const InformationTechnology = () => {
                         key={index} 
                         src={photo} 
                         alt={`${project.title} foto ${index + 1}`} 
-                        className="rounded-[20px] shadow-md w-full h-64 object-cover"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="rounded-lg shadow-md w-full h-48 md:h-64 object-cover"
+                        whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     ))}
                   </div>
-                  <h3 className="text-3xl font-bold mb-4 text-blue-200 flex items-center">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-blue-200 flex items-center">
                     <FileText className="mr-2" /> Dokumentasi
                   </h3>
-                  <p className="text-blue-100 text-lg">{project.documentation}</p>
+                  <p className="text-blue-100 text-base md:text-lg">{project.documentation}</p>
                 </div>
               </motion.div>
             ))}
