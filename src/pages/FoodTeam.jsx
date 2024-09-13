@@ -38,24 +38,26 @@ const FoodTeam = () => {
     <DropletAnimation>
       <div className="min-h-screen bg-gradient-to-br from-orange-900 to-red-700 p-4 relative overflow-hidden">
         <BackgroundArt />
-        <div className="max-w-6xl mx-auto relative z-10 bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 mt-16">
+        <div className="max-w-6xl mx-auto relative z-10">
           <Link to="/" className="text-orange-300 hover:text-orange-100 transition-colors mb-8 inline-block">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-5xl font-bold text-orange-100 mb-8 text-center"
+            className="bg-white bg-opacity-10 backdrop-blur-lg rounded-[40px] p-8 mb-8"
           >
-            Tim Teknologi Pangan
-          </motion.h1>
+            <h1 className="text-5xl font-bold text-orange-100 mb-4 text-center">
+              Tim Teknologi Pangan
+            </h1>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 p-6 bg-orange-800 bg-opacity-50 rounded-3xl shadow-lg transform hover:scale-105 transition-all duration-300"
+            className="mb-12 p-6 bg-orange-800 bg-opacity-50 rounded-[30px] shadow-lg transform hover:scale-105 transition-all duration-300"
           >
             <h2 className="text-3xl font-bold mb-4 text-orange-200">Pengenalan Teknologi Pangan</h2>
             <p className="text-orange-100 mb-4 text-lg">
@@ -70,7 +72,7 @@ const FoodTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 p-6 bg-orange-800 bg-opacity-50 rounded-3xl shadow-lg"
+            className="mb-12 p-6 bg-orange-800 bg-opacity-50 rounded-[30px] shadow-lg"
           >
             <h2 className="text-3xl font-bold mb-6 text-orange-200 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
@@ -79,7 +81,7 @@ const FoodTeam = () => {
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-orange-700 p-6 rounded-2xl text-center shadow-lg transform hover:rotate-3 transition-all duration-300"
+                  className="bg-orange-700 p-6 rounded-[20px] text-center shadow-lg transform hover:rotate-3 transition-all duration-300"
                   whileHover={{ scale: 1.05, rotateY: 10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -104,7 +106,7 @@ const FoodTeam = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-orange-800 bg-opacity-50 rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
+                className="bg-orange-800 bg-opacity-50 rounded-[30px] shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
               >
                 <SliderDocumentationCard project={project} />
                 <div className="p-6">
@@ -117,7 +119,7 @@ const FoodTeam = () => {
                         key={index} 
                         src={photo} 
                         alt={`${project.title} foto ${index + 1}`} 
-                        className="rounded-lg shadow-md w-full h-64 object-cover"
+                        className="rounded-[20px] shadow-md w-full h-64 object-cover"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />

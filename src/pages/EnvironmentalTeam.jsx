@@ -42,20 +42,22 @@ const EnvironmentalTeam = () => {
           <Link to="/" className="text-emerald-300 hover:text-emerald-100 transition-colors mb-8 inline-block">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-5xl font-bold text-emerald-100 mb-8 text-center"
+            className="bg-white bg-opacity-10 backdrop-blur-lg rounded-[40px] p-8 mb-8"
           >
-            Tim Teknologi Lingkungan
-          </motion.h1>
+            <h1 className="text-5xl font-bold text-emerald-100 mb-4 text-center">
+              Tim Teknologi Lingkungan
+            </h1>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-[40px] p-8 shadow-lg transform hover:scale-105 transition-all duration-300"
+            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-[30px] p-8 shadow-lg transform hover:scale-105 transition-all duration-300"
           >
             <h2 className="text-3xl font-bold mb-4 text-emerald-200">Pengenalan Teknologi Lingkungan</h2>
             <p className="text-emerald-100 mb-4 text-lg">
@@ -81,7 +83,7 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-[40px] p-8 shadow-lg"
+            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-[30px] p-8 shadow-lg"
           >
             <h2 className="text-3xl font-bold mb-6 text-emerald-200 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
@@ -90,7 +92,7 @@ const EnvironmentalTeam = () => {
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-emerald-800 bg-opacity-50 p-6 rounded-[30px] text-center transform hover:rotate-3 transition-all duration-300"
+                  className="bg-emerald-800 bg-opacity-50 p-6 rounded-[20px] text-center transform hover:rotate-3 transition-all duration-300"
                   whileHover={{ scale: 1.05, rotateY: 10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -115,7 +117,7 @@ const EnvironmentalTeam = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white bg-opacity-10 backdrop-blur-md rounded-[40px] overflow-hidden shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="bg-white bg-opacity-10 backdrop-blur-md rounded-[30px] overflow-hidden shadow-lg transform hover:scale-105 transition-all duration-300"
               >
                 <SliderDocumentationCard project={project} />
                 <div className="p-6">

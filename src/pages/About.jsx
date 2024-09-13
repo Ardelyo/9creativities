@@ -39,21 +39,23 @@ const About = () => {
           <Link to="/" className="text-blue-300 hover:text-blue-100 transition-colors mb-8 inline-block">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
-          <motion.h1
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-5xl font-bold text-white mb-8 text-center"
+            className="bg-white bg-opacity-10 backdrop-blur-lg rounded-[40px] p-8 mb-8"
           >
-            Tentang Nine Creativities
-          </motion.h1>
+            <h1 className="text-5xl font-bold text-white mb-4 text-center">
+              Tentang Nine Creativities
+            </h1>
+          </motion.div>
           
           <motion.div 
             variants={cardVariants}
             initial="hidden"
             animate="visible"
             whileHover="hover"
-            className="mb-12 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-3xl shadow-xl"
+            className="mb-12 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-[30px] shadow-xl"
           >
             <h2 className="text-3xl font-bold mb-4 text-blue-300 flex items-center">
               <Users className="mr-2" /> Tim Kami
@@ -84,7 +86,7 @@ const About = () => {
             initial="hidden"
             animate="visible"
             whileHover="hover"
-            className="mb-12 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-3xl shadow-xl"
+            className="mb-12 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-[30px] shadow-xl"
           >
             <h2 className="text-3xl font-bold mb-4 text-blue-300 flex items-center">
               <Lightbulb className="mr-2" /> Misi Kami
@@ -100,7 +102,7 @@ const About = () => {
             initial="hidden"
             animate="visible"
             whileHover="hover"
-            className="mb-12 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-3xl shadow-xl"
+            className="mb-12 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-[30px] shadow-xl"
           >
             <h2 className="text-3xl font-bold mb-4 text-blue-300 flex items-center">
               <Award className="mr-2" /> Visi Kami

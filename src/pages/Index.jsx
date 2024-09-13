@@ -40,23 +40,19 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-4 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto relative z-10">
-        <motion.h1
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-5xl font-bold text-white mb-8 text-center mt-16"
+          className="bg-white bg-opacity-10 backdrop-blur-lg rounded-[40px] p-8 mb-8 mt-16"
         >
-          Nine Creativities
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center text-gray-300 mb-12 text-xl"
-        >
-          Jelajahi inovasi teknologi dari berbagai tim kreatif kami
-        </motion.p>
+          <h1 className="text-5xl font-bold text-white mb-4 text-center">
+            Nine Creativities
+          </h1>
+          <p className="text-center text-gray-300 text-xl">
+            Jelajahi inovasi teknologi dari berbagai tim kreatif kami
+          </p>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {teams.map((team, index) => (
@@ -67,7 +63,7 @@ const Index = () => {
               initial="hidden"
               animate="visible"
               whileHover="hover"
-              className={`bg-gradient-to-br ${team.color} rounded-3xl p-8 text-white shadow-lg transform transition-all duration-300 perspective-1000`}
+              className={`bg-gradient-to-br ${team.color} rounded-[30px] p-8 text-white shadow-lg transform transition-all duration-300 perspective-1000`}
               style={{ transformStyle: "preserve-3d" }}
             >
               <Link to={team.to} className="flex flex-col items-center space-y-6">
