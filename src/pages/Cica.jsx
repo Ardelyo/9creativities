@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from 'react-markdown';
+import BackgroundArt from '../components/BackgroundArt';
 
 const Cica = () => {
   const [apiKey, setApiKey] = useState('');
@@ -63,20 +64,44 @@ const Cica = () => {
   };
 
   const messageBubbleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 20, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }
+    },
+    hover: { 
+      scale: 1.05,
+      boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-100 to-teal-200 p-4">
-      <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
-        <div className="bg-gradient-to-r from-emerald-400 to-teal-500 p-6">
-          <Link to="/" className="text-white mb-6 inline-flex items-center">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-800 p-4 relative overflow-hidden">
+      <BackgroundArt />
+      <div className="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden relative z-10">
+        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6">
+          <Link to="/" className="text-white mb-6 inline-flex items-center hover:text-purple-200 transition-colors">
             <ArrowLeft className="mr-2" /> Kembali
           </Link>
-          <h1 className="text-3xl font-bold text-white mb-4 flex items-center justify-center">
-            <Bot className="mr-3" /> Ngobrol dengan Cica
-          </h1>
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold text-white mb-4 flex items-center justify-center"
+          >
+            <Bot className="mr-3 text-purple-300" /> Ngobrol dengan Cica
+          </motion.h1>
         </div>
         
         <div className="p-6">
@@ -85,10 +110,10 @@ const Cica = () => {
             placeholder="Masukkan kunci API Gemini Anda"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="w-full p-2 border rounded-full mb-4"
+            className="w-full p-3 border border-purple-300 rounded-full mb-4 bg-white bg-opacity-20 text-white placeholder-purple-200"
           />
 
-          <div ref={chatContainerRef} className="bg-gray-100 rounded-2xl p-4 h-[50vh] overflow-y-auto mb-6">
+          <div ref={chatContainerRef} className="bg-white bg-opacity-5 rounded-2xl p-4 h-[50vh] overflow-y-auto mb-6">
             <AnimatePresence>
               {chat.map((msg, index) => (
                 <motion.div
@@ -98,12 +123,12 @@ const Cica = () => {
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
+                  whileHover="hover"
                 >
                   <motion.div
-                    className={`inline-block p-3 rounded-2xl ${
-                      msg.role === 'user' ? 'bg-emerald-500 text-white' : 'bg-white text-emerald-800'
+                    className={`inline-block p-4 rounded-2xl ${
+                      msg.role === 'user' ? 'bg-purple-600 text-white' : 'bg-indigo-600 text-white'
                     } shadow-md max-w-[80%]`}
-                    whileHover={{ scale: 1.02 }}
                   >
                     <ReactMarkdown>{msg.content}</ReactMarkdown>
                   </motion.div>
@@ -112,7 +137,7 @@ const Cica = () => {
             </AnimatePresence>
             {isLoading && (
               <motion.div
-                className="text-center text-emerald-600 flex items-center justify-center"
+                className="text-center text-purple-300 flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -128,12 +153,12 @@ const Cica = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Tanya Cica tentang teknologi..."
-              className="flex-grow mr-2 p-2 border rounded-2xl"
+              className="flex-grow mr-2 p-3 border border-purple-300 rounded-2xl bg-white bg-opacity-20 text-white placeholder-purple-200 resize-none"
             />
             <Button
               onClick={handleSendMessage}
               disabled={isLoading || !apiKey}
-              className="bg-gradient-to-r from-emerald-400 to-teal-500 text-white px-6 py-2 rounded-full flex items-center hover:from-emerald-500 hover:to-teal-600 transition-colors duration-300"
+              className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-3 rounded-full flex items-center hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105"
             >
               <Send className="mr-2" /> Kirim
             </Button>
