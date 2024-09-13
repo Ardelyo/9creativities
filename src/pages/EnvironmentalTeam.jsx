@@ -46,11 +46,17 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white bg-opacity-10 backdrop-blur-lg rounded-[40px] p-8 mb-8"
+            className="text-center mb-12"
           >
-            <h1 className="text-5xl font-bold text-emerald-100 mb-4 text-center">
+            <h1 className="text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-teal-400 to-green-500 animate-gradient-x">
               Tim Teknologi Lingkungan
             </h1>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="h-1 bg-gradient-to-r from-emerald-300 via-teal-400 to-green-500 mx-auto mb-4"
+            />
           </motion.div>
           
           <motion.div
