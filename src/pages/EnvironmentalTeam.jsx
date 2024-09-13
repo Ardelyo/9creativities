@@ -38,7 +38,7 @@ const EnvironmentalTeam = () => {
     <DropletAnimation>
       <div className="page-container relative min-h-screen bg-gradient-to-br from-emerald-100 to-teal-200">
         <BackgroundArt />
-        <div className="content-card relative z-10 max-w-4xl mx-auto bg-white bg-opacity-90 rounded-3xl shadow-xl p-8 mt-16">
+        <div className="content-card relative z-10 max-w-4xl mx-auto bg-white bg-opacity-90 rounded-3xl shadow-xl p-8 mt-16 transform hover:rotate-1 transition-all duration-300">
           <Link to="/" className="back-button text-emerald-600 hover:text-emerald-700 transition-colors">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
@@ -55,7 +55,7 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 p-6 bg-emerald-50 rounded-3xl shadow-md"
+            className="mb-12 p-6 bg-emerald-50 rounded-3xl shadow-md transform hover:scale-105 transition-all duration-300"
           >
             <h2 className="text-2xl font-bold mb-4 text-emerald-700">Pengenalan Teknologi Lingkungan</h2>
             <p className="text-emerald-800 mb-4">
@@ -74,7 +74,7 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 p-6 bg-emerald-50 rounded-3xl shadow-md"
+            className="mb-12 p-6 bg-emerald-50 rounded-3xl shadow-md transform hover:scale-105 transition-all duration-300"
           >
             <h2 className="text-2xl font-bold mb-6 text-emerald-700 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
@@ -83,7 +83,7 @@ const EnvironmentalTeam = () => {
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white p-6 rounded-2xl text-center shadow-md"
+                  className="bg-white p-6 rounded-2xl text-center shadow-md transform hover:rotate-3 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -108,7 +108,7 @@ const EnvironmentalTeam = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl shadow-lg overflow-hidden"
+                className="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
               >
                 <SliderDocumentationCard project={project} />
                 <div className="p-6">
@@ -117,7 +117,7 @@ const EnvironmentalTeam = () => {
                   </h3>
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     {project.photos.map((photo, index) => (
-                      <img key={index} src={photo} alt={`${project.title} foto ${index + 1}`} className="rounded-lg shadow-md" />
+                      <img key={index} src={photo} alt={`${project.title} foto ${index + 1}`} className="rounded-lg shadow-md transform hover:scale-110 transition-all duration-300" />
                     ))}
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-emerald-700 flex items-center">
