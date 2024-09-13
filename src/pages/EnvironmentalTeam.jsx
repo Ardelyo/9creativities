@@ -36,17 +36,17 @@ const EnvironmentalTeam = () => {
 
   return (
     <DropletAnimation>
-      <div className="page-container relative">
+      <div className="page-container relative min-h-screen bg-gradient-to-br from-emerald-100 to-teal-200">
         <BackgroundArt />
-        <div className="content-card relative z-10">
-          <Link to="/" className="back-button">
-            <ArrowLeft className="mr-2" /> Kembali
+        <div className="content-card relative z-10 max-w-4xl mx-auto bg-white bg-opacity-90 rounded-3xl shadow-xl p-8 mt-16">
+          <Link to="/" className="back-button text-emerald-600 hover:text-emerald-700 transition-colors">
+            <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="title text-4xl font-bold text-navy-blue mb-8"
+            className="title text-4xl font-bold text-emerald-800 mb-8 text-center"
           >
             Tim Teknologi Lingkungan
           </motion.h1>
@@ -55,17 +55,17 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
+            className="mb-12 p-6 bg-emerald-50 rounded-3xl shadow-md"
           >
-            <h2 className="text-2xl font-bold mb-4 text-navy-blue">Pengenalan Teknologi Lingkungan</h2>
-            <p className="text-gray-700 mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-700">Pengenalan Teknologi Lingkungan</h2>
+            <p className="text-emerald-800 mb-4">
               Teknologi Lingkungan adalah penerapan prinsip-prinsip ilmiah dan teknik untuk melindungi lingkungan alam dan sumber daya alam, serta mengurangi dampak negatif aktivitas manusia terhadap ekosistem. Fokus utamanya adalah pada pengelolaan air, udara, dan tanah, serta pengembangan solusi berkelanjutan untuk masalah lingkungan.
             </p>
-            <p className="text-gray-700 mb-4">
+            <p className="text-emerald-800 mb-4">
               Tim kami berkomitmen untuk mengembangkan solusi inovatif yang membantu melestarikan lingkungan dan meningkatkan kualitas hidup masyarakat, dengan fokus khusus pada pengelolaan dan konservasi air.
             </p>
-            <h3 className="text-xl font-semibold mb-2 text-navy-blue">Kunjungan ke PDAM Tirtawening</h3>
-            <p className="text-gray-700 mb-4">
+            <h3 className="text-xl font-semibold mb-2 text-emerald-700">Kunjungan ke PDAM Tirtawening</h3>
+            <p className="text-emerald-800 mb-4">
               Sebagai bagian dari proyek kami, tim Teknologi Lingkungan berkesempatan mengunjungi PDAM Tirtawening. Kunjungan ini memberikan wawasan berharga tentang proses pengolahan air bersih skala besar dan praktik manajemen air yang efisien. Pengalaman ini memperkaya pemahaman kami tentang teknologi pengolahan air dan menginspirasi pengembangan proyek Filter Air Ramah Lingkungan kami.
             </p>
           </motion.div>
@@ -74,23 +74,23 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 p-6 bg-white rounded-3xl shadow-lg"
+            className="mb-12 p-6 bg-emerald-50 rounded-3xl shadow-md"
           >
-            <h2 className="text-2xl font-bold mb-6 text-navy-blue flex items-center">
+            <h2 className="text-2xl font-bold mb-6 text-emerald-700 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-100 p-6 rounded-2xl text-center"
+                  className="bg-white p-6 rounded-2xl text-center shadow-md"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img src={member.image} alt={member.name} className="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
-                  <h3 className="text-lg font-semibold text-navy-blue">{member.name}</h3>
-                  <p className="text-sm text-gray-600 mb-2">{member.role}</p>
-                  <p className="text-sm">
+                  <h3 className="text-lg font-semibold text-emerald-700">{member.name}</h3>
+                  <p className="text-sm text-emerald-600 mb-2">{member.role}</p>
+                  <p className="text-sm text-emerald-800">
                     <span className="font-medium">Minat:</span> {member.interest}
                   </p>
                 </motion.div>
@@ -98,7 +98,7 @@ const EnvironmentalTeam = () => {
             </div>
           </motion.div>
 
-          <h2 className="text-3xl font-bold mb-8 text-navy-blue flex items-center">
+          <h2 className="text-3xl font-bold mb-8 text-emerald-800 flex items-center">
             <Droplet className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
@@ -112,7 +112,7 @@ const EnvironmentalTeam = () => {
               >
                 <SliderDocumentationCard project={project} />
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
+                  <h3 className="text-2xl font-bold mb-4 text-emerald-700 flex items-center">
                     <Camera className="mr-2" /> Foto Proyek
                   </h3>
                   <div className="grid grid-cols-3 gap-4 mb-6">
@@ -120,10 +120,10 @@ const EnvironmentalTeam = () => {
                       <img key={index} src={photo} alt={`${project.title} foto ${index + 1}`} className="rounded-lg shadow-md" />
                     ))}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-navy-blue flex items-center">
+                  <h3 className="text-2xl font-bold mb-4 text-emerald-700 flex items-center">
                     <FileText className="mr-2" /> Dokumentasi
                   </h3>
-                  <p className="text-gray-700">{project.documentation}</p>
+                  <p className="text-emerald-800">{project.documentation}</p>
                 </div>
               </motion.div>
             ))}

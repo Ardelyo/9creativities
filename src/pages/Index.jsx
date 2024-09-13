@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Droplet, Utensils, Info, Bot } from 'lucide-react';
+import { Droplet, Utensils, Cpu, Wifi, Info, Bot } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 
 const Index = () => {
@@ -27,6 +27,8 @@ const Index = () => {
   const teams = [
     { title: "Teknologi Lingkungan", icon: Droplet, color: "from-emerald-400 to-teal-500", to: "/environmental-team" },
     { title: "Teknologi Pangan", icon: Utensils, color: "from-lime-400 to-green-500", to: "/food-team" },
+    { title: "Teknologi Informasi", icon: Cpu, color: "from-blue-400 to-indigo-500", to: "/information-technology" },
+    { title: "Teknologi Komunikasi", icon: Wifi, color: "from-purple-400 to-pink-500", to: "/communication-technology" },
   ];
 
   return (
@@ -77,7 +79,7 @@ const Index = () => {
           initial="hidden"
           animate="visible"
           whileHover="hover"
-          custom={2}
+          custom={4}
           className="mt-8"
         >
           <Link to="/about" className="flex items-center justify-center space-x-2 bg-white text-emerald-600 py-3 px-6 rounded-full hover:bg-emerald-50 transition-all duration-300 shadow-md">
@@ -91,7 +93,7 @@ const Index = () => {
           initial="hidden"
           animate="visible"
           whileHover="hover"
-          custom={3}
+          custom={5}
           className="mt-8"
         >
           <Link to="/cica" className="flex items-center justify-center space-x-2 bg-gradient-to-r from-emerald-400 to-teal-500 text-white py-3 px-6 rounded-full hover:from-emerald-500 hover:to-teal-600 transition-all duration-300 shadow-md">
