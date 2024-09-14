@@ -1,10 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Wrench, Calculator } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
-import CarbonCalculator from '../components/CarbonCalculator';
 
 const ProdukKami = () => {
   const products = [
@@ -13,24 +12,27 @@ const ProdukKami = () => {
       name: "Website Nine Creativities",
       description: "Platform untuk memamerkan proyek inovatif dari berbagai tim teknologi.",
       icon: "🌐",
+      tag: "Web Development",
     },
     {
       id: 2,
       name: "Chatbot Robot C",
       description: "Asisten AI interaktif untuk menjawab pertanyaan tentang Nine Creativities.",
       icon: "🤖",
+      tag: "AI",
     },
     {
       id: 3,
       name: "Carbon Calculator",
       description: "Alat untuk menghitung dan memvisualisasikan jejak karbon.",
       icon: "🌿",
+      tag: "Environment",
     },
   ];
 
   return (
     <DropletAnimation>
-      <div className="min-h-screen bg-gradient-to-br from-blue-900 to-indigo-700 p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 p-4 relative overflow-hidden">
         <BackgroundArt />
         <div className="max-w-6xl mx-auto relative z-10">
           <Link to="/" className="text-blue-300 hover:text-blue-100 transition-colors mb-8 inline-block">
@@ -42,46 +44,47 @@ const ProdukKami = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-500">
-              Produk Kami
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-400 to-pink-500">
+              Explore future possibilities with AI
             </h1>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-500 mx-auto mb-4"
-            />
+            <p className="text-xl text-gray-300">
+              Try experimental demos featuring the latest AI research from Nine Creativities.
+            </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 shadow-lg"
+                className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               >
-                <div className="flex items-center mb-4">
-                  <span className="text-4xl mr-4">{product.icon}</span>
-                  <h2 className="text-2xl font-bold text-blue-200">{product.name}</h2>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-4xl">{product.icon}</span>
+                    {product.id === 1 && (
+                      <span className="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
+                        New
+                      </span>
+                    )}
+                  </div>
+                  <h2 className="text-2xl font-bold text-white mb-2">{product.name}</h2>
+                  <p className="text-gray-400 mb-4">{product.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-blue-400">{product.tag}</span>
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+                    >
+                      Try it →
+                    </Link>
+                  </div>
                 </div>
-                <p className="text-blue-100">{product.description}</p>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 shadow-lg"
-          >
-            <h2 className="text-3xl font-bold text-blue-200 mb-6 flex items-center">
-              <Calculator className="mr-2" /> Carbon Calculator
-            </h2>
-            <CarbonCalculator />
-          </motion.div>
         </div>
       </div>
     </DropletAnimation>
