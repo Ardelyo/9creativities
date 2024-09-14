@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, Loader, User, Mic, Image as ImageIcon } from 'lucide-react';
+import { Send, Bot, Loader, User } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from 'react-markdown';
@@ -54,22 +54,24 @@ const RobotC = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      <header className="bg-white shadow-sm p-4 flex items-center justify-between">
-        <div className="flex items-center">
-          <Bot className="w-8 h-8 text-blue-500 mr-2" />
-          <h1 className="text-xl font-semibold">Robot C</h1>
+      <header className="bg-white shadow-sm p-4 rounded-b-2xl">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <Bot className="w-8 h-8 text-blue-500 mr-2" />
+            <h1 className="text-xl font-semibold">Robot C</h1>
+          </div>
+          <Input
+            type="password"
+            placeholder="Enter your Gemini API key"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+            className="max-w-xs rounded-full"
+          />
         </div>
-        <Input
-          type="password"
-          placeholder="Enter your Gemini API key"
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
-          className="max-w-xs"
-        />
       </header>
 
-      <main className="flex-grow overflow-hidden flex flex-col">
-        <div ref={chatContainerRef} className="flex-grow overflow-y-auto p-4 space-y-4">
+      <main className="flex-grow overflow-hidden flex flex-col p-4">
+        <div ref={chatContainerRef} className="flex-grow overflow-y-auto space-y-4">
           <AnimatePresence>
             {chat.map((msg, index) => (
               <motion.div
@@ -79,9 +81,11 @@ const RobotC = () => {
                 exit={{ opacity: 0, y: -20 }}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`max-w-[70%] p-3 rounded-lg ${
-                  msg.role === 'user' ? 'bg-blue-500 text-white' : 'bg-white'
-                }`}>
+                <div className={`max-w-[70%] p-3 ${
+                  msg.role === 'user' 
+                    ? 'bg-blue-500 text-white rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl' 
+                    : 'bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
+                } shadow-md`}>
                   {msg.role === 'user' ? (
                     <User className="w-5 h-5 inline mr-2" />
                   ) : (
@@ -99,23 +103,17 @@ const RobotC = () => {
           )}
         </div>
 
-        <div className="p-4 bg-white">
+        <div className="mt-4">
           <div className="flex items-center space-x-2">
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type a message..."
-              className="flex-grow"
+              className="flex-grow rounded-full"
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             />
-            <Button onClick={handleSendMessage} disabled={isLoading || !apiKey}>
+            <Button onClick={handleSendMessage} disabled={isLoading || !apiKey} className="rounded-full">
               <Send className="w-5 h-5" />
-            </Button>
-            <Button variant="outline">
-              <Mic className="w-5 h-5" />
-            </Button>
-            <Button variant="outline">
-              <ImageIcon className="w-5 h-5" />
             </Button>
           </div>
         </div>
