@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Send, Bot, Loader, User, ArrowLeft } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from 'react-markdown';
-import { Link } from 'react-router-dom';
+import BackgroundArt from '../components/BackgroundArt';
 
 const RobotC = () => {
   const [apiKey, setApiKey] = useState('');
@@ -52,110 +54,93 @@ const RobotC = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5 } },
-  };
-
-  const messageVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
-
   return (
-    <motion.div 
-      className="flex flex-col h-screen bg-gradient-to-br from-blue-100 to-purple-100"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <header className="bg-white shadow-md p-4 rounded-b-3xl">
-        <div className="flex items-center justify-between max-w-4xl mx-auto">
-          <Link to="/" className="text-blue-500 hover:text-blue-700 transition-colors">
-            <ArrowLeft className="w-6 h-6" />
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 p-4 relative overflow-hidden">
+      <BackgroundArt />
+      <div className="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden relative z-10">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-t-3xl">
+          <Link to="/" className="text-white mb-6 inline-flex items-center hover:text-blue-200 transition-colors">
+            <ArrowLeft className="mr-2" /> Kembali
           </Link>
-          <div className="flex items-center">
-            <Bot className="w-8 h-8 text-blue-500 mr-2" />
-            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Robot C</h1>
-          </div>
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold text-white mb-4 flex items-center justify-center"
+          >
+            <Bot className="mr-3 text-blue-300" /> Ngobrol dengan Robot C
+          </motion.h1>
+        </div>
+        
+        <div className="p-6">
           <Input
             type="password"
-            placeholder="Masukkan kunci API Gemini"
+            placeholder="Masukkan kunci API Gemini Anda"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="max-w-xs rounded-full text-sm"
+            className="w-full p-3 border border-blue-300 rounded-full mb-4 bg-white bg-opacity-20 text-white placeholder-blue-200"
           />
-        </div>
-      </header>
 
-      <main className="flex-grow overflow-hidden flex flex-col p-4 max-w-4xl mx-auto w-full">
-        <motion.div 
-          ref={chatContainerRef} 
-          className="flex-grow overflow-y-auto space-y-4 mb-4 p-4 bg-white bg-opacity-50 rounded-3xl shadow-inner"
-          variants={containerVariants}
-        >
-          <AnimatePresence>
-            {chat.map((msg, index) => (
+          <div ref={chatContainerRef} className="bg-white bg-opacity-5 rounded-2xl p-4 h-[50vh] overflow-y-auto mb-6">
+            <AnimatePresence>
+              {chat.map((msg, index) => (
+                <motion.div
+                  key={index}
+                  className={`mb-4 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className={`inline-block p-4 rounded-2xl ${
+                      msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-indigo-600 text-white'
+                    } shadow-md max-w-[80%] flex items-start`}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {msg.role === 'user' ? (
+                      <User className="w-6 h-6 mr-2 mt-1" />
+                    ) : (
+                      <Bot className="w-6 h-6 mr-2 mt-1" />
+                    )}
+                    <div>
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            {isLoading && (
               <motion.div
-                key={index}
-                variants={messageVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                className="text-center text-blue-300 flex items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
-                <div className={`max-w-[70%] p-3 ${
-                  msg.role === 'user' 
-                    ? 'bg-blue-500 text-white rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl' 
-                    : 'bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
-                } shadow-md transition-all duration-300 hover:shadow-lg`}>
-                  {msg.role === 'user' ? (
-                    <User className="w-5 h-5 inline mr-2" />
-                  ) : (
-                    <Bot className="w-5 h-5 inline mr-2" />
-                  )}
-                  <ReactMarkdown className="inline">{msg.content}</ReactMarkdown>
-                </div>
+                <Loader className="animate-spin mr-2" />
+                Robot C sedang berpikir...
               </motion.div>
-            ))}
-          </AnimatePresence>
-          {isLoading && (
-            <motion.div 
-              className="flex justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <Loader className="animate-spin text-blue-500" />
-            </motion.div>
-          )}
-        </motion.div>
+            )}
+          </div>
 
-        <motion.div 
-          className="mt-auto bg-white p-4 rounded-3xl shadow-md"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="flex items-center space-x-2">
-            <Input
+          <div className="flex">
+            <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ketik pesan Anda..."
-              className="flex-grow rounded-full text-sm"
-              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              placeholder="Tanya Robot C tentang teknologi..."
+              className="flex-grow mr-2 p-3 border border-blue-300 rounded-2xl bg-white bg-opacity-20 text-white placeholder-blue-200 resize-none"
             />
-            <Button 
-              onClick={handleSendMessage} 
-              disabled={isLoading || !apiKey} 
-              className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+            <Button
+              onClick={handleSendMessage}
+              disabled={isLoading || !apiKey}
+              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full flex items-center hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105"
             >
-              <Send className="w-5 h-5" />
+              <Send className="mr-2" /> Kirim
             </Button>
           </div>
-        </motion.div>
-      </main>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   );
 };
 
