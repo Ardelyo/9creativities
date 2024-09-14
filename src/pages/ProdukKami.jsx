@@ -25,7 +25,7 @@ const ProdukKami = () => {
     },
     {
       id: 3,
-      name: "Carbon Calculator",
+      name: "Kalkulator Karbon",
       description: "Alat untuk menghitung dan memvisualisasikan jejak karbon.",
       icon: "🌿",
       tag: "Environment",
@@ -47,7 +47,7 @@ const ProdukKami = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-400 to-pink-500">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
               Produk Nine Creativities
             </h1>
             <p className="text-xl text-gray-300">
@@ -68,7 +68,7 @@ const ProdukKami = () => {
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-4xl">{product.icon}</span>
                     {product.id === 2 && (
-                      <span className="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
+                      <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
                         New
                       </span>
                     )}
@@ -79,9 +79,9 @@ const ProdukKami = () => {
                     <span className="text-sm text-blue-400">{product.tag}</span>
                     <Link
                       to={product.link}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full transition-colors duration-300"
                     >
-                      Try it →
+                      Coba Sekarang →
                     </Link>
                   </div>
                 </div>

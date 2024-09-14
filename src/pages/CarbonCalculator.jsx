@@ -13,6 +13,7 @@ const CarbonCalculator = () => {
   const [transportation, setTransportation] = useState(0);
   const [waste, setWaste] = useState(0);
   const [result, setResult] = useState(null);
+  const [scenario, setScenario] = useState('');
 
   const calculateCarbon = () => {
     const totalCarbon = electricity * 0.5 + transportation * 0.2 + waste * 0.3;
@@ -24,15 +25,25 @@ const CarbonCalculator = () => {
         { name: 'Limbah', value: waste * 0.3 },
       ],
     });
+    generateScenario(totalCarbon);
   };
 
-  const COLORS = ['#34D399', '#60A5FA', '#F87171'];
+  const generateScenario = (totalCarbon) => {
+    const scenarios = [
+      `Dengan jejak karbon sebesar ${totalCarbon.toFixed(2)} ton CO2e/bulan, emisi Anda setara dengan menebang ${(totalCarbon * 50).toFixed(0)} pohon dewasa. Ini berdampak pada habitat ${Math.floor(totalCarbon * 10)} burung dan ${Math.floor(totalCarbon * 5)} mamalia kecil.`,
+      `Jejak karbon Anda berkontribusi pada kenaikan permukaan laut sebesar ${(totalCarbon * 0.0001).toFixed(4)} mm. Ini mengancam ${Math.floor(totalCarbon * 20)} rumah di pesisir pantai Indonesia.`,
+      `Emisi karbon Anda setara dengan mencairkan ${(totalCarbon * 3).toFixed(2)} m³ es di kutub. Ini mengurangi habitat ${Math.floor(totalCarbon * 2)} beruang kutub dan ${Math.floor(totalCarbon * 5)} anjing laut.`,
+    ];
+    setScenario(scenarios[Math.floor(Math.random() * scenarios.length)]);
+  };
+
+  const COLORS = ['#8FBC8F', '#87CEFA', '#F08080'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-900 to-blue-900 p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 to-blue-900 p-4 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto relative z-10">
-        <Link to="/" className="text-green-300 hover:text-green-100 transition-colors mb-8 inline-block">
+        <Link to="/" className="text-blue-300 hover:text-blue-100 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
         </Link>
         <motion.div
@@ -41,7 +52,7 @@ const CarbonCalculator = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
             Kalkulator Jejak Karbon
           </h1>
           <p className="text-xl text-gray-300">
@@ -53,11 +64,11 @@ const CarbonCalculator = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-xl"
+          className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-xl mb-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="space-y-4">
-              <label className="block text-lg font-medium text-green-300 flex items-center">
+              <label className="block text-lg font-medium text-blue-200 flex items-center">
                 <Lightbulb className="mr-2" /> Penggunaan Listrik (kWh/bulan)
               </label>
               <Slider
@@ -71,11 +82,11 @@ const CarbonCalculator = () => {
                 type="number"
                 value={electricity}
                 onChange={(e) => setElectricity(Number(e.target.value))}
-                className="mt-2 bg-white bg-opacity-20 border-green-500 text-white"
+                className="mt-2 bg-white bg-opacity-20 border-blue-300 text-white"
               />
             </div>
             <div className="space-y-4">
-              <label className="block text-lg font-medium text-blue-300 flex items-center">
+              <label className="block text-lg font-medium text-blue-200 flex items-center">
                 <Car className="mr-2" /> Jarak Transportasi (km/bulan)
               </label>
               <Slider
@@ -89,11 +100,11 @@ const CarbonCalculator = () => {
                 type="number"
                 value={transportation}
                 onChange={(e) => setTransportation(Number(e.target.value))}
-                className="mt-2 bg-white bg-opacity-20 border-blue-500 text-white"
+                className="mt-2 bg-white bg-opacity-20 border-blue-300 text-white"
               />
             </div>
             <div className="space-y-4">
-              <label className="block text-lg font-medium text-red-300 flex items-center">
+              <label className="block text-lg font-medium text-blue-200 flex items-center">
                 <Trash2 className="mr-2" /> Produksi Limbah (kg/bulan)
               </label>
               <Slider
@@ -107,13 +118,13 @@ const CarbonCalculator = () => {
                 type="number"
                 value={waste}
                 onChange={(e) => setWaste(Number(e.target.value))}
-                className="mt-2 bg-white bg-opacity-20 border-red-500 text-white"
+                className="mt-2 bg-white bg-opacity-20 border-blue-300 text-white"
               />
             </div>
           </div>
           <Button 
             onClick={calculateCarbon} 
-            className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full transition-all duration-300 transform hover:scale-105"
           >
             Hitung Jejak Karbon
           </Button>
@@ -124,13 +135,13 @@ const CarbonCalculator = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-8 bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-xl"
+            className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-xl mb-8"
           >
-            <h2 className="text-3xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-blue-400">
+            <h2 className="text-3xl font-bold text-center mb-6 text-white">
               Hasil Perhitungan
             </h2>
             <p className="text-2xl text-center text-white mb-6">
-              Total Jejak Karbon: <span className="font-bold text-green-300">{result.total}</span> ton CO2e/bulan
+              Total Jejak Karbon: <span className="font-bold text-blue-300">{result.total}</span> ton CO2e/bulan
             </p>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
@@ -152,6 +163,18 @@ const CarbonCalculator = () => {
                 <Legend />
               </PieChart>
             </ResponsiveContainer>
+          </motion.div>
+        )}
+
+        {scenario && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-xl"
+          >
+            <h2 className="text-2xl font-bold mb-4 text-white">Dampak Jejak Karbon Anda</h2>
+            <p className="text-lg text-gray-200">{scenario}</p>
           </motion.div>
         )}
       </div>
