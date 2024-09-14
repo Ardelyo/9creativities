@@ -54,8 +54,8 @@ const RobotC = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      <header className="bg-white shadow-sm p-4 rounded-b-2xl">
-        <div className="flex items-center justify-between">
+      <header className="bg-white shadow-sm p-4 rounded-b-3xl">
+        <div className="flex items-center justify-between max-w-4xl mx-auto">
           <div className="flex items-center">
             <Bot className="w-8 h-8 text-blue-500 mr-2" />
             <h1 className="text-xl font-semibold">Robot C</h1>
@@ -70,8 +70,8 @@ const RobotC = () => {
         </div>
       </header>
 
-      <main className="flex-grow overflow-hidden flex flex-col p-4">
-        <div ref={chatContainerRef} className="flex-grow overflow-y-auto space-y-4">
+      <main className="flex-grow overflow-hidden flex flex-col p-4 max-w-4xl mx-auto w-full">
+        <div ref={chatContainerRef} className="flex-grow overflow-y-auto space-y-4 mb-4">
           <AnimatePresence>
             {chat.map((msg, index) => (
               <motion.div
@@ -103,7 +103,7 @@ const RobotC = () => {
           )}
         </div>
 
-        <div className="mt-4">
+        <div className="mt-auto">
           <div className="flex items-center space-x-2">
             <Input
               value={message}
