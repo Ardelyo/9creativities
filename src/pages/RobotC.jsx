@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Send, Bot, Loader, User } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from 'react-markdown';
 import BackgroundArt from '../components/BackgroundArt';
 
@@ -95,16 +94,16 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
     <div className="min-h-screen bg-gradient-to-br from-blue-900 to-indigo-800 p-4 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden relative z-10">
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 sm:p-6">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4">
           <Link to="/" className="text-white mb-4 inline-flex items-center hover:text-blue-200 transition-colors">
             <ArrowLeft className="mr-2" /> Kembali
           </Link>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center justify-center">
+          <h1 className="text-2xl font-bold text-white mb-4 flex items-center justify-center">
             <Bot className="mr-3 text-blue-300" /> Ngobrol dengan Robot C
           </h1>
         </div>
         
-        <div className="p-4 sm:p-6">
+        <div className="p-4">
           <Input
             type="password"
             placeholder="Masukkan kunci API Gemini Anda"
@@ -113,7 +112,7 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
             className="w-full p-3 border border-blue-300 rounded-full mb-4 bg-white bg-opacity-20 text-white placeholder-blue-200"
           />
 
-          <div ref={chatContainerRef} className="bg-white bg-opacity-5 rounded-2xl p-4 h-[50vh] overflow-y-auto mb-6">
+          <div ref={chatContainerRef} className="bg-white bg-opacity-5 rounded-2xl p-4 h-[50vh] overflow-y-auto mb-4">
             <AnimatePresence>
               {chat.map((msg, index) => (
                 <motion.div
@@ -125,13 +124,13 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
                 >
                   <div className={`inline-block p-3 rounded-2xl ${
                     msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-indigo-600 text-white'
-                  } shadow-md max-w-[80%] flex items-start`}>
+                  } shadow-md max-w-[80%] break-words`}>
                     {msg.role === 'user' ? (
-                      <User className="w-5 h-5 mr-2 mt-1" />
+                      <User className="w-5 h-5 inline mr-2" />
                     ) : (
-                      <Bot className="w-5 h-5 mr-2 mt-1" />
+                      <Bot className="w-5 h-5 inline mr-2" />
                     )}
-                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    <ReactMarkdown className="inline">{msg.content}</ReactMarkdown>
                   </div>
                 </motion.div>
               ))}
@@ -145,14 +144,14 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
           </div>
 
           {followUpQuestions.length > 0 && (
-            <div className="mb-4">
+            <div className="mb-4 overflow-x-auto whitespace-nowrap">
               <h3 className="text-white mb-2 text-sm">Pertanyaan Lanjutan:</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex gap-2">
                 {followUpQuestions.map((question, index) => (
                   <Button
                     key={index}
                     onClick={() => setMessage(question)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-blue-600 transition-colors"
+                    className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs whitespace-normal hover:bg-blue-600 transition-colors"
                   >
                     {question}
                   </Button>
@@ -161,17 +160,17 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
             </div>
           )}
 
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Textarea
+          <div className="flex gap-2">
+            <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Tanya Robot C tentang teknologi..."
-              className="flex-grow p-3 border border-blue-300 rounded-2xl bg-white bg-opacity-20 text-white placeholder-blue-200 resize-none"
+              className="flex-grow p-3 border border-blue-300 rounded-full bg-white bg-opacity-20 text-white placeholder-blue-200"
             />
             <Button
               onClick={handleSendMessage}
               disabled={isLoading || !apiKey}
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full flex items-center hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full flex items-center hover:from-blue-600 hover:to-indigo-600 transition-all duration-300"
             >
               <Send className="mr-2" /> Kirim
             </Button>
