@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Droplet, Utensils, Cpu, Wifi, Bot, Package, Calculator } from 'lucide-react';
+import { Droplet, Utensils, Cpu, Wifi, Bot, Package } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 
 const Index = () => {
@@ -28,12 +28,11 @@ const Index = () => {
   };
 
   const teams = [
-    { title: "Teknologi Lingkungan", icon: Droplet, color: "from-emerald-700 to-teal-600", to: "/environmental-team" },
-    { title: "Teknologi Pangan", icon: Utensils, color: "from-orange-700 to-red-600", to: "/food-team" },
-    { title: "Teknologi Informasi", icon: Cpu, color: "from-blue-700 to-indigo-600", to: "/information-technology" },
-    { title: "Teknologi Komunikasi", icon: Wifi, color: "from-purple-700 to-pink-600", to: "/communication-technology" },
-    { title: "Produk Kami", icon: Package, color: "from-yellow-600 to-amber-600", to: "/produk-kami" },
-    { title: "Kalkulator Karbon", icon: Calculator, color: "from-green-700 to-teal-600", to: "/carbon-calculator" },
+    { title: "Teknologi Lingkungan", icon: Droplet, color: "from-emerald-400 to-teal-500", to: "/environmental-team" },
+    { title: "Teknologi Pangan", icon: Utensils, color: "from-orange-400 to-red-500", to: "/food-team" },
+    { title: "Teknologi Informasi", icon: Cpu, color: "from-blue-400 to-indigo-500", to: "/information-technology" },
+    { title: "Teknologi Komunikasi", icon: Wifi, color: "from-purple-400 to-pink-500", to: "/communication-technology" },
+    { title: "Produk Kami", icon: Package, color: "from-yellow-400 to-amber-500", to: "/produk-kami" },
   ];
 
   return (
@@ -95,7 +94,7 @@ const Index = () => {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="mt-8 text-center"
         >
-          <Link to="/robot-c" className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-3 rounded-full hover:from-cyan-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+          <Link to="/robot-c" className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-full hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105">
             <Bot className="w-6 h-6" />
             <span>Chat with Robot C</span>
           </Link>
