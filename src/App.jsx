@@ -12,6 +12,7 @@ import InformationTechnology from "./pages/InformationTechnology";
 import CommunicationTechnology from "./pages/CommunicationTechnology";
 import RobotC from "./pages/RobotC";
 import ProdukKami from "./pages/ProdukKami";
+import CarbonCalculator from "./pages/CarbonCalculator";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/communication-technology" element={<CommunicationTechnology />} />
                 <Route path="/robot-c" element={<RobotC />} />
                 <Route path="/produk-kami" element={<ProdukKami />} />
+                <Route path="/carbon-calculator" element={<CarbonCalculator />} />
               </Routes>
             </AnimatePresence>
           </div>
