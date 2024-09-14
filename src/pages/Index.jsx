@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Droplet, Utensils, Cpu, Wifi, Bot } from 'lucide-react';
+import { Droplet, Utensils, Cpu, Wifi, Bot, Package } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 
 const Index = () => {
@@ -32,6 +32,7 @@ const Index = () => {
     { title: "Teknologi Pangan", icon: Utensils, color: "from-orange-400 to-red-500", to: "/food-team" },
     { title: "Teknologi Informasi", icon: Cpu, color: "from-blue-400 to-indigo-500", to: "/information-technology" },
     { title: "Teknologi Komunikasi", icon: Wifi, color: "from-purple-400 to-pink-500", to: "/communication-technology" },
+    { title: "Produk Kami", icon: Package, color: "from-yellow-400 to-amber-500", to: "/produk-kami" },
   ];
 
   return (
@@ -63,7 +64,7 @@ const Index = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teams.map((team, index) => (
             <motion.div
               key={team.title}

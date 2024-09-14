@@ -11,6 +11,7 @@ import FoodTeam from "./pages/FoodTeam";
 import InformationTechnology from "./pages/InformationTechnology";
 import CommunicationTechnology from "./pages/CommunicationTechnology";
 import RobotC from "./pages/RobotC";
+import ProdukKami from "./pages/ProdukKami";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
                 <Route path="/information-technology" element={<InformationTechnology />} />
                 <Route path="/communication-technology" element={<CommunicationTechnology />} />
                 <Route path="/robot-c" element={<RobotC />} />
+                <Route path="/produk-kami" element={<ProdukKami />} />
               </Routes>
             </AnimatePresence>
           </div>
