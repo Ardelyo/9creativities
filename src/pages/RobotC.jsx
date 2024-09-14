@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Send, Bot, Loader, User } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from 'react-markdown';
 import BackgroundArt from '../components/BackgroundArt';
 
@@ -40,25 +41,37 @@ const RobotC = () => {
 Konteks Nine Creativities:
 Nine Creativities adalah proyek yang menampilkan inovasi teknologi dari empat tim:
 
-1. Tim Teknologi Lingkungan:
-   - Fokus pada teknologi pemurnian air dan konservasi lingkungan.
-   - Proyek utama: Filter Air Ramah Lingkungan menggunakan bahan alami.
-   - Anggota tim: Gita Nirmala (Ahli Lingkungan), Hadi Santoso (Insinyur Lingkungan), Indah Pertiwi (Analis Kualitas Air).
+1. 🌿 Tim Teknologi Lingkungan:
+   • Fokus: Teknologi pemurnian air dan konservasi lingkungan
+   • Proyek utama: Filter Air Ramah Lingkungan menggunakan bahan alami
+   • Anggota tim:
+     - Gita Nirmala (Ahli Lingkungan)
+     - Hadi Santoso (Insinyur Lingkungan)
+     - Indah Pertiwi (Analis Kualitas Air)
 
-2. Tim Teknologi Pangan:
-   - Mengembangkan produk pangan inovatif dengan manfaat kesehatan.
-   - Proyek utama: Produksi Yoghurt Probiotik menggunakan bahan lokal.
-   - Anggota tim: Joko Widodo (Ahli Teknologi Pangan), Kartini Sari (Ahli Gizi), Laksono Adi (Teknisi Pengolahan Pangan).
+2. 🍲 Tim Teknologi Pangan:
+   • Fokus: Produk pangan inovatif dengan manfaat kesehatan
+   • Proyek utama: Produksi Yoghurt Probiotik menggunakan bahan lokal
+   • Anggota tim:
+     - Joko Widodo (Ahli Teknologi Pangan)
+     - Kartini Sari (Ahli Gizi)
+     - Laksono Adi (Teknisi Pengolahan Pangan)
 
-3. Tim Teknologi Informasi:
-   - Bertanggung jawab atas pengembangan website Nine Creativities.
-   - Proyek utama: Website Nine Creativities untuk memamerkan proyek inovatif.
-   - Anggota tim: Andi Pratama (Pengembang Web), Budi Santoso (Analis Sistem), Citra Dewi (Manajer Proyek IT).
+3. 💻 Tim Teknologi Informasi:
+   • Fokus: Pengembangan website Nine Creativities
+   • Proyek utama: Website untuk memamerkan proyek inovatif
+   • Anggota tim:
+     - Andi Pratama (Pengembang Web)
+     - Budi Santoso (Analis Sistem)
+     - Citra Dewi (Manajer Proyek IT)
 
-4. Tim Teknologi Komunikasi:
-   - Fokus pada penyebaran informasi dan edukasi teknologi.
-   - Proyek utama: Kampanye Edukasi Teknologi melalui berbagai media digital.
-   - Anggota tim: Dian Purnama (Spesialis Konten Digital), Eko Prasetyo (Desainer Grafis), Fira Rahmawati (Penulis Teknis).
+4. 📱 Tim Teknologi Komunikasi:
+   • Fokus: Penyebaran informasi dan edukasi teknologi
+   • Proyek utama: Kampanye Edukasi Teknologi melalui media digital
+   • Anggota tim:
+     - Dian Purnama (Spesialis Konten Digital)
+     - Eko Prasetyo (Desainer Grafis)
+     - Fira Rahmawati (Penulis Teknis)
 
 Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format Markdown jika sesuai: ${message}`
             }]
@@ -83,9 +96,9 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
 
   const generateFollowUpQuestions = (response) => {
     const questions = [
-      "Bisakah Anda menjelaskan lebih lanjut tentang proyek utama tim Teknologi Lingkungan?",
-      "Bagaimana tim Teknologi Pangan mengembangkan produk pangan inovatif?",
-      "Apa peran tim Teknologi Komunikasi dalam Nine Creativities?"
+      "🌿 Bisakah Anda menjelaskan lebih lanjut tentang proyek Filter Air Ramah Lingkungan?",
+      "🍲 Bagaimana tim Teknologi Pangan mengembangkan Yoghurt Probiotik mereka?",
+      "📱 Apa strategi utama dalam Kampanye Edukasi Teknologi?"
     ];
     setFollowUpQuestions(questions);
   };
@@ -143,34 +156,33 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
             )}
           </div>
 
-          {followUpQuestions.length > 0 && (
-            <div className="mb-4 overflow-x-auto whitespace-nowrap">
-              <h3 className="text-white mb-2 text-sm">Pertanyaan Lanjutan:</h3>
-              <div className="flex gap-2">
-                {followUpQuestions.map((question, index) => (
-                  <Button
-                    key={index}
-                    onClick={() => setMessage(question)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs whitespace-normal hover:bg-blue-600 transition-colors"
-                  >
-                    {question}
-                  </Button>
-                ))}
-              </div>
+          <div className="mb-4">
+            <h3 className="text-white mb-2 text-sm">Pertanyaan Lanjutan:</h3>
+            <div className="flex flex-wrap gap-2">
+              {followUpQuestions.map((question, index) => (
+                <Button
+                  key={index}
+                  onClick={() => setMessage(question)}
+                  className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs hover:bg-blue-600 transition-colors"
+                >
+                  {question}
+                </Button>
+              ))}
             </div>
-          )}
+          </div>
 
           <div className="flex gap-2">
-            <Input
+            <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Tanya Robot C tentang teknologi..."
-              className="flex-grow p-3 border border-blue-300 rounded-full bg-white bg-opacity-20 text-white placeholder-blue-200"
+              className="flex-grow p-3 border border-blue-300 rounded-2xl bg-white bg-opacity-20 text-white placeholder-blue-200 resize-none"
+              rows={3}
             />
             <Button
               onClick={handleSendMessage}
               disabled={isLoading || !apiKey}
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full flex items-center hover:from-blue-600 hover:to-indigo-600 transition-all duration-300"
+              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full flex items-center hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 self-end"
             >
               <Send className="mr-2" /> Kirim
             </Button>
