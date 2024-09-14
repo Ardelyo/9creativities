@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, Loader, User } from 'lucide-react';
+import { Send, Bot, Loader, User, ArrowLeft } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 
 const RobotC = () => {
   const [apiKey, setApiKey] = useState('');
@@ -20,7 +21,6 @@ const RobotC = () => {
 
   const handleSendMessage = async () => {
     if (!apiKey || !message) return;
-
     setIsLoading(true);
     setChat(prevChat => [...prevChat, { role: 'user', content: message }]);
     setMessage('');
@@ -39,10 +39,8 @@ const RobotC = () => {
       });
 
       if (!response.ok) throw new Error('Failed to get response from Gemini API');
-
       const data = await response.json();
       const aiResponse = data.candidates[0].content.parts[0].text;
-
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
       console.error('Error calling Gemini API:', error);
@@ -52,40 +50,63 @@ const RobotC = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5 } },
+  };
+
+  const messageVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  };
+
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
-      <header className="bg-white shadow-sm p-4 rounded-b-3xl">
+    <motion.div 
+      className="flex flex-col h-screen bg-gradient-to-br from-blue-100 to-purple-100"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <header className="bg-white shadow-md p-4 rounded-b-3xl">
         <div className="flex items-center justify-between max-w-4xl mx-auto">
+          <Link to="/" className="text-blue-500 hover:text-blue-700 transition-colors">
+            <ArrowLeft className="w-6 h-6" />
+          </Link>
           <div className="flex items-center">
             <Bot className="w-8 h-8 text-blue-500 mr-2" />
-            <h1 className="text-xl font-semibold">Robot C</h1>
+            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Robot C</h1>
           </div>
           <Input
             type="password"
-            placeholder="Enter your Gemini API key"
+            placeholder="Enter Gemini API key"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="max-w-xs rounded-full"
+            className="max-w-xs rounded-full text-sm"
           />
         </div>
       </header>
 
       <main className="flex-grow overflow-hidden flex flex-col p-4 max-w-4xl mx-auto w-full">
-        <div ref={chatContainerRef} className="flex-grow overflow-y-auto space-y-4 mb-4">
+        <motion.div 
+          ref={chatContainerRef} 
+          className="flex-grow overflow-y-auto space-y-4 mb-4 p-4 bg-white bg-opacity-50 rounded-3xl shadow-inner"
+          variants={containerVariants}
+        >
           <AnimatePresence>
             {chat.map((msg, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                variants={messageVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div className={`max-w-[70%] p-3 ${
                   msg.role === 'user' 
                     ? 'bg-blue-500 text-white rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl' 
                     : 'bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
-                } shadow-md`}>
+                } shadow-md transition-all duration-300 hover:shadow-lg`}>
                   {msg.role === 'user' ? (
                     <User className="w-5 h-5 inline mr-2" />
                   ) : (
@@ -97,28 +118,42 @@ const RobotC = () => {
             ))}
           </AnimatePresence>
           {isLoading && (
-            <div className="flex justify-center">
+            <motion.div 
+              className="flex justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
               <Loader className="animate-spin text-blue-500" />
-            </div>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
 
-        <div className="mt-auto">
+        <motion.div 
+          className="mt-auto bg-white p-4 rounded-3xl shadow-md"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           <div className="flex items-center space-x-2">
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type a message..."
-              className="flex-grow rounded-full"
+              className="flex-grow rounded-full text-sm"
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             />
-            <Button onClick={handleSendMessage} disabled={isLoading || !apiKey} className="rounded-full">
+            <Button 
+              onClick={handleSendMessage} 
+              disabled={isLoading || !apiKey} 
+              className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+            >
               <Send className="w-5 h-5" />
             </Button>
           </div>
-        </div>
+        </motion.div>
       </main>
-    </div>
+    </motion.div>
   );
 };
 
