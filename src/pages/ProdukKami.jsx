@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Tool, Calculator } from 'lucide-react';
+import { ArrowLeft, Wrench, Calculator } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
 import CarbonCalculator from '../components/CarbonCalculator';
