@@ -13,7 +13,6 @@ const RobotC = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [followUpQuestions, setFollowUpQuestions] = useState([]);
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -85,22 +84,12 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
       const aiResponse = data.candidates[0].content.parts[0].text;
 
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
-      generateFollowUpQuestions(aiResponse);
     } catch (error) {
       console.error('Error memanggil API Gemini:', error);
       setChat(prevChat => [...prevChat, { role: 'assistant', content: 'Maaf, saya mengalami kesulitan memproses permintaan Anda saat ini. Bisakah Anda mencoba lagi dalam beberapa saat?' }]);
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const generateFollowUpQuestions = (response) => {
-    const questions = [
-      "🌿 Bisakah Anda menjelaskan lebih lanjut tentang proyek Filter Air Ramah Lingkungan?",
-      "🍲 Bagaimana tim Teknologi Pangan mengembangkan Yoghurt Probiotik mereka?",
-      "📱 Apa strategi utama dalam Kampanye Edukasi Teknologi?"
-    ];
-    setFollowUpQuestions(questions);
   };
 
   return (
@@ -154,21 +143,6 @@ Tanggapi pesan berikut dengan cara yang membantu dan berempati, gunakan format M
                 Robot C sedang berpikir...
               </div>
             )}
-          </div>
-
-          <div className="mb-4">
-            <h3 className="text-white mb-2 text-sm">Pertanyaan Lanjutan:</h3>
-            <div className="flex flex-wrap gap-2">
-              {followUpQuestions.map((question, index) => (
-                <Button
-                  key={index}
-                  onClick={() => setMessage(question)}
-                  className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs hover:bg-blue-600 transition-colors"
-                >
-                  {question}
-                </Button>
-              ))}
-            </div>
           </div>
 
           <div className="flex gap-2">
