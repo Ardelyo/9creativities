@@ -9,7 +9,9 @@ import { Link } from 'react-router-dom';
 const RobotC = () => {
   const [apiKey, setApiKey] = useState('');
   const [message, setMessage] = useState('');
-  const [chat, setChat] = useState([]);
+  const [chat, setChat] = useState([
+    { role: 'assistant', content: "👋 Halo! Saya Robot C, asisten AI untuk Nine Creativities. Apa yang ingin Anda ketahui tentang proyek-proyek kami? 🚀" }
+  ]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef(null);
 
@@ -32,19 +34,19 @@ const RobotC = () => {
         body: JSON.stringify({
           contents: [{
             parts: [{
-              text: `You are Robot C, an AI assistant for Nine Creativities. Respond to: ${message}`
+              text: `Kamu adalah Robot C, asisten AI untuk Nine Creativities. Gunakan Bahasa Indonesia dalam merespons. Berikan jawaban dengan gaya yang terstruktur, sederhana, dan gunakan emoji yang sesuai. Beri jarak antar paragraf untuk kemudahan membaca. Respons untuk: ${message}`
             }]
           }]
         })
       });
 
-      if (!response.ok) throw new Error('Failed to get response from Gemini API');
+      if (!response.ok) throw new Error('Gagal mendapatkan respons dari API Gemini');
       const data = await response.json();
       const aiResponse = data.candidates[0].content.parts[0].text;
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
-      setChat(prevChat => [...prevChat, { role: 'assistant', content: "Sorry, I'm having trouble processing your request right now. Could you try again in a moment?" }]);
+      console.error('Error memanggil API Gemini:', error);
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: "Maaf, saya mengalami kesulitan saat ini. Bisakah Anda mencoba lagi nanti? 🙏" }]);
     } finally {
       setIsLoading(false);
     }
@@ -78,7 +80,7 @@ const RobotC = () => {
           </div>
           <Input
             type="password"
-            placeholder="Enter Gemini API key"
+            placeholder="Masukkan kunci API Gemini"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
             className="max-w-xs rounded-full text-sm"
@@ -139,7 +141,7 @@ const RobotC = () => {
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type a message..."
+              placeholder="Ketik pesan Anda..."
               className="flex-grow rounded-full text-sm"
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             />
