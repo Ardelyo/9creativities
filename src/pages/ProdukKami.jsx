@@ -47,7 +47,7 @@ const ProdukKami = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-400 to-pink-500">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-white">
               Produk Nine Creativities
             </h1>
             <p className="text-xl text-gray-300">
