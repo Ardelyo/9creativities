@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
+import BackgroundArt from '../components/BackgroundArt';
 
 const RobotC = () => {
   const [apiKey, setApiKey] = useState('');
@@ -64,97 +65,109 @@ const RobotC = () => {
 
   return (
     <motion.div 
-      className="flex flex-col h-screen bg-gradient-to-br from-blue-100 to-purple-100"
+      className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <header className="bg-white shadow-md p-4 rounded-b-3xl">
-        <div className="flex items-center justify-between max-w-4xl mx-auto">
-          <Link to="/" className="text-blue-500 hover:text-blue-700 transition-colors">
-            <ArrowLeft className="w-6 h-6" />
-          </Link>
-          <div className="flex items-center">
-            <Bot className="w-8 h-8 text-blue-500 mr-2" />
-            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Robot C</h1>
-          </div>
-          <Input
-            type="password"
-            placeholder="Masukkan kunci API Gemini"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-            className="max-w-xs rounded-full text-sm"
-          />
-        </div>
-      </header>
-
-      <main className="flex-grow overflow-hidden flex flex-col p-4 max-w-4xl mx-auto w-full">
-        <motion.div 
-          ref={chatContainerRef} 
-          className="flex-grow overflow-y-auto space-y-4 mb-4 p-4 bg-white bg-opacity-50 rounded-3xl shadow-inner"
-          variants={containerVariants}
+      <BackgroundArt />
+      <div className="max-w-4xl mx-auto relative z-10">
+        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
+          <ArrowLeft className="mr-2 inline" /> Kembali
+        </Link>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
         >
-          <AnimatePresence>
-            {chat.map((msg, index) => (
-              <motion.div
-                key={index}
-                variants={messageVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
+            Chat dengan <span className="text-blue-600">Robot C</span>
+          </h1>
+          <p className="text-xl text-gray-600">
+            Tanyakan apa saja tentang Nine Creativities!
+          </p>
+        </motion.div>
+
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div className="p-4 sm:p-6 bg-blue-600">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Bot className="w-8 h-8 text-white mr-2" />
+                <h2 className="text-2xl font-bold text-white">Robot C</h2>
+              </div>
+              <Input
+                type="password"
+                placeholder="Masukkan kunci API Gemini"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                className="max-w-xs rounded-full text-sm bg-white bg-opacity-20 border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70"
+              />
+            </div>
+          </div>
+
+          <motion.div 
+            ref={chatContainerRef} 
+            className="h-[60vh] overflow-y-auto space-y-4 p-4 sm:p-6"
+            variants={containerVariants}
+          >
+            <AnimatePresence>
+              {chat.map((msg, index) => (
+                <motion.div
+                  key={index}
+                  variants={messageVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`max-w-[70%] p-3 rounded-2xl ${
+                    msg.role === 'user' 
+                      ? 'bg-blue-500 text-white' 
+                      : 'bg-gray-100 text-gray-800'
+                  } shadow-md transition-all duration-300 hover:shadow-lg`}>
+                    {msg.role === 'user' ? (
+                      <User className="w-5 h-5 inline mr-2" />
+                    ) : (
+                      <Bot className="w-5 h-5 inline mr-2" />
+                    )}
+                    <ReactMarkdown className="inline">{msg.content}</ReactMarkdown>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            {isLoading && (
+              <motion.div 
+                className="flex justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
-                <div className={`max-w-[70%] p-3 ${
-                  msg.role === 'user' 
-                    ? 'bg-blue-500 text-white rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl' 
-                    : 'bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
-                } shadow-md transition-all duration-300 hover:shadow-lg`}>
-                  {msg.role === 'user' ? (
-                    <User className="w-5 h-5 inline mr-2" />
-                  ) : (
-                    <Bot className="w-5 h-5 inline mr-2" />
-                  )}
-                  <ReactMarkdown className="inline">{msg.content}</ReactMarkdown>
-                </div>
+                <Loader className="animate-spin text-blue-500" />
               </motion.div>
-            ))}
-          </AnimatePresence>
-          {isLoading && (
-            <motion.div 
-              className="flex justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <Loader className="animate-spin text-blue-500" />
-            </motion.div>
-          )}
-        </motion.div>
+            )}
+          </motion.div>
 
-        <motion.div 
-          className="mt-auto bg-white p-4 rounded-3xl shadow-md"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="flex items-center space-x-2">
-            <Input
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ketik pesan Anda..."
-              className="flex-grow rounded-full text-sm"
-              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            />
-            <Button 
-              onClick={handleSendMessage} 
-              disabled={isLoading || !apiKey} 
-              className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
-            >
-              <Send className="w-5 h-5" />
-            </Button>
+          <div className="p-4 sm:p-6 bg-gray-50 border-t border-gray-200">
+            <div className="flex items-center space-x-2">
+              <Input
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Ketik pesan Anda..."
+                className="flex-grow rounded-full text-sm"
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              />
+              <Button 
+                onClick={handleSendMessage} 
+                disabled={isLoading || !apiKey} 
+                className="rounded-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
+              >
+                <Send className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
-        </motion.div>
-      </main>
+        </div>
+      </div>
     </motion.div>
   );
 };

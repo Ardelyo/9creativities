@@ -20,7 +20,7 @@ const CommunicationTechnology = () => {
       description: "Seri konten digital untuk mengedukasi tentang teknologi informasi, komunikasi, pangan, dan lingkungan.",
       image: "/placeholder.svg",
       type: "digital",
-      details: "Proyek Kampanye Edukasi Teknologi bertujuan untuk menciptakan serangkaian konten digital yang informatif dan menarik tentang berbagai aspek teknologi. Konten ini mencakup topik-topik seputar teknologi informasi, komunikasi, p angan, dan lingkungan, disajikan dalam format yang mudah dipahami oleh berbagai kalangan.",
+      details: "Proyek Kampanye Edukasi Teknologi bertujuan untuk menciptakan serangkaian konten digital yang informatif dan menarik tentang berbagai aspek teknologi. Konten ini mencakup topik-topik seputar teknologi informasi, komunikasi, pangan, dan lingkungan, disajikan dalam format yang mudah dipahami oleh berbagai kalangan.",
       howItWorks: [
         "Riset mendalam tentang topik-topik teknologi terkini",
         "Pembuatan konten dalam berbagai format (artikel, infografis, video pendek)",
@@ -35,10 +35,10 @@ const CommunicationTechnology = () => {
 
   return (
     <DropletAnimation>
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 to-pink-700 p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
         <BackgroundArt />
         <div className="max-w-6xl mx-auto relative z-10">
-          <Link to="/" className="text-purple-300 hover:text-purple-100 transition-colors mb-8 inline-block">
+          <Link to="/" className="text-purple-600 hover:text-purple-800 transition-colors mb-8 inline-block">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
           <motion.div
@@ -47,14 +47,14 @@ const CommunicationTechnology = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-pink-400 to-red-500">
-              Tim Teknologi Komunikasi
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
+              Tim <span className="text-purple-600">Teknologi Komunikasi</span>
             </h1>
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-purple-300 via-pink-400 to-red-500 mx-auto mb-4"
+              className="h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto mb-4"
             />
           </motion.div>
           
@@ -62,13 +62,13 @@ const CommunicationTechnology = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 md:p-8 shadow-lg"
+            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-purple-200">Pengenalan Teknologi Komunikasi</h2>
-            <p className="text-purple-100 mb-4 text-base md:text-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">Pengenalan Teknologi Komunikasi</h2>
+            <p className="text-gray-600 mb-4 text-base sm:text-lg">
               Teknologi Komunikasi adalah perangkat dan sistem yang memungkinkan pertukaran informasi antara individu atau kelompok. Ini mencakup berbagai media dan alat, mulai dari telepon seluler hingga internet dan media sosial, yang memfasilitasi komunikasi jarak jauh dan penyebaran informasi secara luas.
             </p>
-            <p className="text-purple-100 mb-4 text-base md:text-lg">
+            <p className="text-gray-600 mb-4 text-base sm:text-lg">
               Dalam konteks Nine Creativities, tim Teknologi Komunikasi berperan penting dalam menciptakan dan menyebarkan konten edukatif tentang berbagai aspek teknologi. Mereka bertanggung jawab untuk mengkomunikasikan ide-ide kompleks tentang teknologi informasi, komunikasi, pangan, dan lingkungan dalam format yang menarik dan mudah dipahami oleh berbagai kalangan.
             </p>
           </motion.div>
@@ -77,23 +77,23 @@ const CommunicationTechnology = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 md:p-8 shadow-lg"
+            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-purple-200 flex items-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-purple-800 bg-opacity-50 p-6 rounded-lg text-center"
+                  className="bg-purple-50 p-6 rounded-2xl text-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <img src={member.image} alt={member.name} className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 object-cover" />
-                  <h3 className="text-lg md:text-xl font-semibold text-purple-200">{member.name}</h3>
-                  <p className="text-purple-300 mb-2">{member.role}</p>
-                  <p className="text-purple-400">
+                  <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
+                  <p className="text-purple-600 mb-2">{member.role}</p>
+                  <p className="text-gray-600">
                     <span className="font-medium">Minat:</span> {member.interest}
                   </p>
                 </motion.div>
@@ -101,7 +101,7 @@ const CommunicationTechnology = () => {
             </div>
           </motion.div>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-purple-100 flex items-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-gray-800 flex items-center">
             <Wifi className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
@@ -111,29 +111,29 @@ const CommunicationTechnology = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg overflow-hidden shadow-lg"
+                className="bg-white rounded-3xl overflow-hidden shadow-xl"
               >
                 <SliderDocumentationCard project={project} />
-                <div className="p-6">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-purple-200 flex items-center">
+                <div className="p-6 sm:p-8">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 flex items-center">
                     <Camera className="mr-2" /> Foto Proyek
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                     {project.photos.map((photo, index) => (
                       <motion.img 
                         key={index} 
                         src={photo} 
                         alt={`${project.title} foto ${index + 1}`} 
-                        className="rounded-lg shadow-md w-full h-48 md:h-64 object-cover"
+                        className="rounded-lg shadow-md w-full h-48 sm:h-64 object-cover"
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     ))}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-purple-200 flex items-center">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 flex items-center">
                     <FileText className="mr-2" /> Dokumentasi
                   </h3>
-                  <p className="text-purple-100 text-base md:text-lg">{project.documentation}</p>
+                  <p className="text-gray-600 text-base sm:text-lg">{project.documentation}</p>
                 </div>
               </motion.div>
             ))}
