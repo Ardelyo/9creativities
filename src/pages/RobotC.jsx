@@ -1,18 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, Loader, User, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Send, Bot, Loader, ArrowLeft } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
-import BackgroundArt from '../components/BackgroundArt';
+import { Card, CardContent } from "@/components/ui/card";
+import ChatMessage from '../components/ChatMessage';
+import SuggestionCard from '../components/SuggestionCard';
 
 const RobotC = () => {
   const [apiKey, setApiKey] = useState('');
   const [message, setMessage] = useState('');
-  const [chat, setChat] = useState([
-    { role: 'assistant', content: "👋 Halo! Saya Robot C, asisten AI untuk Nine Creativities. Apa yang ingin Anda ketahui tentang proyek-proyek kami? 🚀" }
-  ]);
+  const [chat, setChat] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef(null);
 
@@ -53,122 +52,64 @@ const RobotC = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5 } },
-  };
-
-  const messageVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
+  const suggestions = [
+    { title: "Bantu saya menulis HTML, CSS, dan JS", content: "Contoh kode HTML..." },
+    { title: "Role-play sebagai karakter dari novel", content: "Deskripsi karakter..." },
+    { title: "Inspirasi dari gambar", content: "Deskripsi gambar..." },
+    { title: "Bantu saya memahami Shakespeare", content: "Kutipan Shakespeare..." },
+  ];
 
   return (
-    <motion.div 
-      className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <BackgroundArt />
-      <div className="max-w-4xl mx-auto relative z-10">
-        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
+    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-8">
+      <div className="max-w-4xl mx-auto">
+        <Link to="/" className="text-blue-400 hover:text-blue-300 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
         </Link>
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
-            Chat dengan <span className="text-blue-600">Robot C</span>
-          </h1>
-          <p className="text-xl text-gray-600">
-            Tanyakan apa saja tentang Nine Creativities!
-          </p>
-        </motion.div>
+        
+        <Card className="bg-gray-800 border-gray-700">
+          <CardContent className="p-6">
+            <h1 className="text-4xl font-bold mb-2">
+              Hello, <span className="text-blue-400">Pengguna</span>.
+            </h1>
+            <h2 className="text-2xl text-gray-400 mb-8">Bagaimana saya bisa membantu Anda hari ini?</h2>
 
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-          <div className="p-4 sm:p-6 bg-blue-600">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Bot className="w-8 h-8 text-white mr-2" />
-                <h2 className="text-2xl font-bold text-white">Robot C</h2>
-              </div>
-              <Input
-                type="password"
-                placeholder="Masukkan kunci API Gemini"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                className="max-w-xs rounded-full text-sm bg-white bg-opacity-20 border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70"
-              />
-            </div>
-          </div>
-
-          <motion.div 
-            ref={chatContainerRef} 
-            className="h-[60vh] overflow-y-auto space-y-4 p-4 sm:p-6"
-            variants={containerVariants}
-          >
-            <AnimatePresence>
-              {chat.map((msg, index) => (
-                <motion.div
-                  key={index}
-                  variants={messageVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
-                  <div className={`max-w-[70%] p-3 rounded-2xl ${
-                    msg.role === 'user' 
-                      ? 'bg-blue-500 text-white' 
-                      : 'bg-gray-100 text-gray-800'
-                  } shadow-md transition-all duration-300 hover:shadow-lg`}>
-                    {msg.role === 'user' ? (
-                      <User className="w-5 h-5 inline mr-2" />
-                    ) : (
-                      <Bot className="w-5 h-5 inline mr-2" />
-                    )}
-                    <ReactMarkdown className="inline">{msg.content}</ReactMarkdown>
-                  </div>
-                </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              {suggestions.map((suggestion, index) => (
+                <SuggestionCard key={index} {...suggestion} />
               ))}
-            </AnimatePresence>
-            {isLoading && (
-              <motion.div 
-                className="flex justify-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                <Loader className="animate-spin text-blue-500" />
-              </motion.div>
-            )}
-          </motion.div>
+            </div>
 
-          <div className="p-4 sm:p-6 bg-gray-50 border-t border-gray-200">
+            <div ref={chatContainerRef} className="h-[50vh] overflow-y-auto space-y-4 mb-6">
+              {chat.map((msg, index) => (
+                <ChatMessage key={index} message={msg} />
+              ))}
+              {isLoading && (
+                <div className="flex justify-center">
+                  <Loader className="animate-spin text-blue-400" />
+                </div>
+              )}
+            </div>
+
             <div className="flex items-center space-x-2">
               <Input
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Ketik pesan Anda..."
-                className="flex-grow rounded-full text-sm"
+                className="flex-grow bg-gray-700 border-gray-600 text-white"
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
               />
               <Button 
                 onClick={handleSendMessage} 
                 disabled={isLoading || !apiKey} 
-                className="rounded-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
+                className="bg-blue-600 hover:bg-blue-700"
               >
                 <Send className="w-5 h-5" />
               </Button>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
