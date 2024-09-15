@@ -8,132 +8,132 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Dian Purnama", role: "Digital Content Specialist", interest: "Social Media", image: "/placeholder.svg" },
-    { name: "Eko Prasetyo", role: "Graphic Designer", interest: "Infographics", image: "/placeholder.svg" },
-    { name: "Fira Rahmawati", role: "Technical Writer", interest: "Digital Storytelling", image: "/placeholder.svg" },
+    { name: "Dian Purnama", role: "Spesialis Konten Digital", interest: "Media Sosial", image: "/placeholder.svg" },
+    { name: "Eko Prasetyo", role: "Desainer Grafis", interest: "Infografis", image: "/placeholder.svg" },
+    { name: "Fira Rahmawati", role: "Penulis Teknis", interest: "Storytelling Digital", image: "/placeholder.svg" },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Technology Education Campaign",
-      description: "Series of digital content to educate about information, communication, food, and environmental technologies.",
+      title: "Kampanye Edukasi Teknologi",
+      description: "Seri konten digital untuk mengedukasi tentang teknologi informasi, komunikasi, pangan, dan lingkungan.",
       image: "/placeholder.svg",
       type: "digital",
-      details: "The Technology Education Campaign project aims to create a series of informative and engaging digital content about various aspects of technology. This content covers topics related to information technology, communication, food, and environmental technologies, presented in a format that is easily understood by various audiences.",
+      details: "Proyek Kampanye Edukasi Teknologi bertujuan untuk menciptakan serangkaian konten digital yang informatif dan menarik tentang berbagai aspek teknologi. Konten ini mencakup topik-topik seputar teknologi informasi, komunikasi, p angan, dan lingkungan, disajikan dalam format yang mudah dipahami oleh berbagai kalangan.",
       howItWorks: [
-        "In-depth research on current technology topics",
-        "Content creation in various formats (articles, infographics, short videos)",
-        "Distribution of content through Nine Creativities' social media platforms and website",
-        "Measurement of impact and engagement for continuous content improvement"
+        "Riset mendalam tentang topik-topik teknologi terkini",
+        "Pembuatan konten dalam berbagai format (artikel, infografis, video pendek)",
+        "Distribusi konten melalui platform media sosial dan website Nine Creativities",
+        "Pengukuran dampak dan engagement untuk perbaikan konten berkelanjutan"
       ],
-      impact: "This campaign increases public awareness and understanding of current technological developments, encourages interest in science and technology among students, and promotes technological innovations developed at our school.",
+      impact: "Kampanye ini meningkatkan kesadaran dan pemahaman masyarakat tentang perkembangan teknologi terkini, mendorong minat dalam sains dan teknologi di kalangan pelajar, serta mempromosikan inovasi teknologi yang dikembangkan di sekolah kami.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Project documentation includes content strategy, style guide, and engagement metric analysis."
+      documentation: "Dokumentasi proyek meliputi strategi konten, panduan gaya, dan analisis metrik engagement."
     },
   ];
 
   return (
     <DropletAnimation>
-      <div className="min-h-screen bg-gray-900 p-8 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 to-pink-700 p-4 relative overflow-hidden">
         <BackgroundArt />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <Link to="/" className="text-blue-400 hover:text-blue-300 transition-colors mb-8 inline-block">
-            <ArrowLeft className="mr-2 inline" /> Back
+        <div className="max-w-6xl mx-auto relative z-10">
+          <Link to="/" className="text-purple-300 hover:text-purple-100 transition-colors mb-8 inline-block">
+            <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
           >
-            <h1 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-              Communication Technology Team
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-pink-400 to-red-500">
+              Tim Teknologi Komunikasi
             </h1>
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mb-8"
+              className="h-1 bg-gradient-to-r from-purple-300 via-pink-400 to-red-500 mx-auto mb-4"
             />
           </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-16 bg-gray-800 rounded-3xl p-8 shadow-xl"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 md:p-8 shadow-lg"
           >
-            <h2 className="text-3xl font-bold mb-6 text-blue-400">Introduction to Communication Technology</h2>
-            <p className="text-gray-300 mb-6 text-lg">
-              Communication Technology refers to the tools and systems that enable the exchange of information between individuals or groups. This includes various media and tools, from mobile phones to the internet and social media, which facilitate long-distance communication and wide dissemination of information.
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-purple-200">Pengenalan Teknologi Komunikasi</h2>
+            <p className="text-purple-100 mb-4 text-base md:text-lg">
+              Teknologi Komunikasi adalah perangkat dan sistem yang memungkinkan pertukaran informasi antara individu atau kelompok. Ini mencakup berbagai media dan alat, mulai dari telepon seluler hingga internet dan media sosial, yang memfasilitasi komunikasi jarak jauh dan penyebaran informasi secara luas.
             </p>
-            <p className="text-gray-300 mb-6 text-lg">
-              In the context of Nine Creativities, the Communication Technology team plays a crucial role in creating and disseminating educational content about various aspects of technology. They are responsible for communicating complex ideas about information technology, communication, food, and environmental technologies in engaging and easily understood formats for various audiences.
+            <p className="text-purple-100 mb-4 text-base md:text-lg">
+              Dalam konteks Nine Creativities, tim Teknologi Komunikasi berperan penting dalam menciptakan dan menyebarkan konten edukatif tentang berbagai aspek teknologi. Mereka bertanggung jawab untuk mengkomunikasikan ide-ide kompleks tentang teknologi informasi, komunikasi, pangan, dan lingkungan dalam format yang menarik dan mudah dipahami oleh berbagai kalangan.
             </p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-16 bg-gray-800 rounded-3xl p-8 shadow-xl"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mb-12 bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 md:p-8 shadow-lg"
           >
-            <h2 className="text-3xl font-bold mb-8 text-blue-400 flex items-center">
-              <Users className="mr-3" /> Meet Our Team
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-purple-200 flex items-center">
+              <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-700 p-6 rounded-2xl text-center"
+                  className="bg-purple-800 bg-opacity-50 p-6 rounded-lg text-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <img src={member.image} alt={member.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-                  <h3 className="text-xl font-semibold text-blue-400">{member.name}</h3>
-                  <p className="text-gray-300 mb-2">{member.role}</p>
-                  <p className="text-blue-300">
-                    <span className="font-medium">Interest:</span> {member.interest}
+                  <img src={member.image} alt={member.name} className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 object-cover" />
+                  <h3 className="text-lg md:text-xl font-semibold text-purple-200">{member.name}</h3>
+                  <p className="text-purple-300 mb-2">{member.role}</p>
+                  <p className="text-purple-400">
+                    <span className="font-medium">Minat:</span> {member.interest}
                   </p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          <h2 className="text-4xl font-bold mb-8 text-blue-400 flex items-center">
-            <Wifi className="mr-3" /> Our Projects
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-purple-100 flex items-center">
+            <Wifi className="mr-2" /> Proyek Kami
           </h2>
-          <div className="grid grid-cols-1 gap-16">
+          <div className="grid grid-cols-1 gap-12">
             {projects.map((project) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="bg-gray-800 rounded-3xl overflow-hidden shadow-xl"
+                transition={{ duration: 0.5 }}
+                className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg overflow-hidden shadow-lg"
               >
                 <SliderDocumentationCard project={project} />
-                <div className="p-8">
-                  <h3 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
-                    <Camera className="mr-3" /> Project Photos
+                <div className="p-6">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-purple-200 flex items-center">
+                    <Camera className="mr-2" /> Foto Proyek
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     {project.photos.map((photo, index) => (
                       <motion.img 
                         key={index} 
                         src={photo} 
-                        alt={`${project.title} photo ${index + 1}`} 
-                        className="rounded-2xl shadow-md w-full h-64 object-cover"
+                        alt={`${project.title} foto ${index + 1}`} 
+                        className="rounded-lg shadow-md w-full h-48 md:h-64 object-cover"
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     ))}
                   </div>
-                  <h3 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
-                    <FileText className="mr-3" /> Documentation
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-purple-200 flex items-center">
+                    <FileText className="mr-2" /> Dokumentasi
                   </h3>
-                  <p className="text-gray-300 text-lg">{project.documentation}</p>
+                  <p className="text-purple-100 text-base md:text-lg">{project.documentation}</p>
                 </div>
               </motion.div>
             ))}

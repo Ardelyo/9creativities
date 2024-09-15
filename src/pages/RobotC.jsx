@@ -5,13 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
-import BackgroundArt from '../components/BackgroundArt';
 
 const RobotC = () => {
   const [apiKey, setApiKey] = useState('');
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([
-    { role: 'assistant', content: "👋 Hello! I'm Robot C, the AI assistant for Nine Creativities. What would you like to know about our projects? 🚀" }
+    { role: 'assistant', content: "👋 Halo! Saya Robot C, asisten AI untuk Nine Creativities. Apa yang ingin Anda ketahui tentang proyek-proyek kami? 🚀" }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef(null);
@@ -35,19 +34,19 @@ const RobotC = () => {
         body: JSON.stringify({
           contents: [{
             parts: [{
-              text: `You are Robot C, the AI assistant for Nine Creativities. Respond in English. Provide answers in a structured, simple style, and use appropriate emojis. Add spacing between paragraphs for readability. Response for: ${message}`
+              text: `Kamu adalah Robot C, asisten AI untuk Nine Creativities. Gunakan Bahasa Indonesia dalam merespons. Berikan jawaban dengan gaya yang terstruktur, sederhana, dan gunakan emoji yang sesuai. Beri jarak antar paragraf untuk kemudahan membaca. Respons untuk: ${message}`
             }]
           }]
         })
       });
 
-      if (!response.ok) throw new Error('Failed to get response from Gemini API');
+      if (!response.ok) throw new Error('Gagal mendapatkan respons dari API Gemini');
       const data = await response.json();
       const aiResponse = data.candidates[0].content.parts[0].text;
       setChat(prevChat => [...prevChat, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
-      setChat(prevChat => [...prevChat, { role: 'assistant', content: "I'm sorry, I'm having trouble at the moment. Could you try again later? 🙏" }]);
+      console.error('Error memanggil API Gemini:', error);
+      setChat(prevChat => [...prevChat, { role: 'assistant', content: "Maaf, saya mengalami kesulitan saat ini. Bisakah Anda mencoba lagi nanti? 🙏" }]);
     } finally {
       setIsLoading(false);
     }
@@ -65,35 +64,34 @@ const RobotC = () => {
 
   return (
     <motion.div 
-      className="flex flex-col min-h-screen bg-gray-900"
+      className="flex flex-col h-screen bg-gradient-to-br from-blue-100 to-purple-100"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <BackgroundArt />
-      <header className="bg-gray-800 shadow-md p-4 relative z-10">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <Link to="/" className="text-blue-400 hover:text-blue-300 transition-colors">
+      <header className="bg-white shadow-md p-4 rounded-b-3xl">
+        <div className="flex items-center justify-between max-w-4xl mx-auto">
+          <Link to="/" className="text-blue-500 hover:text-blue-700 transition-colors">
             <ArrowLeft className="w-6 h-6" />
           </Link>
           <div className="flex items-center">
-            <Bot className="w-8 h-8 text-blue-400 mr-2" />
-            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Robot C</h1>
+            <Bot className="w-8 h-8 text-blue-500 mr-2" />
+            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Robot C</h1>
           </div>
           <Input
             type="password"
-            placeholder="Enter Gemini API key"
+            placeholder="Masukkan kunci API Gemini"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="max-w-xs rounded-full text-sm bg-gray-700 border-gray-600 text-white"
+            className="max-w-xs rounded-full text-sm"
           />
         </div>
       </header>
 
-      <main className="flex-grow overflow-hidden flex flex-col p-4 max-w-7xl mx-auto w-full relative z-10">
+      <main className="flex-grow overflow-hidden flex flex-col p-4 max-w-4xl mx-auto w-full">
         <motion.div 
           ref={chatContainerRef} 
-          className="flex-grow overflow-y-auto space-y-4 mb-4 p-4 bg-gray-800 bg-opacity-50 rounded-3xl shadow-inner"
+          className="flex-grow overflow-y-auto space-y-4 mb-4 p-4 bg-white bg-opacity-50 rounded-3xl shadow-inner"
           variants={containerVariants}
         >
           <AnimatePresence>
@@ -106,10 +104,10 @@ const RobotC = () => {
                 exit="hidden"
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`max-w-[70%] p-4 ${
+                <div className={`max-w-[70%] p-3 ${
                   msg.role === 'user' 
                     ? 'bg-blue-500 text-white rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl' 
-                    : 'bg-gray-700 text-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
+                    : 'bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
                 } shadow-md transition-all duration-300 hover:shadow-lg`}>
                   {msg.role === 'user' ? (
                     <User className="w-5 h-5 inline mr-2" />
@@ -128,13 +126,13 @@ const RobotC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <Loader className="animate-spin text-blue-400" />
+              <Loader className="animate-spin text-blue-500" />
             </motion.div>
           )}
         </motion.div>
 
         <motion.div 
-          className="mt-auto bg-gray-800 p-4 rounded-3xl shadow-md"
+          className="mt-auto bg-white p-4 rounded-3xl shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -143,14 +141,14 @@ const RobotC = () => {
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-grow rounded-full text-sm bg-gray-700 border-gray-600 text-white"
+              placeholder="Ketik pesan Anda..."
+              className="flex-grow rounded-full text-sm"
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             />
             <Button 
               onClick={handleSendMessage} 
               disabled={isLoading || !apiKey} 
-              className="rounded-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
+              className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
             >
               <Send className="w-5 h-5" />
             </Button>
