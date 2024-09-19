@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
+import CihuyQuiz from '../components/CihuyQuiz';
 
 const ProdukKami = () => {
   const products = [
@@ -31,6 +32,14 @@ const ProdukKami = () => {
       tag: "Environment",
       link: "/carbon-calculator"
     },
+    {
+      id: 4,
+      name: "Cihuy Quiz",
+      description: "Kuis interaktif tentang lingkungan dengan 10 pertanyaan acak.",
+      icon: "🎮",
+      tag: "Education",
+      link: "#quiz"
+    },
   ];
 
   return (
@@ -55,7 +64,7 @@ const ProdukKami = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {products.map((product) => (
               <motion.div
                 key={product.id}
@@ -67,8 +76,8 @@ const ProdukKami = () => {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-4xl">{product.icon}</span>
-                    {product.id === 2 && (
-                      <span className="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
+                    {product.id === 4 && (
+                      <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
                         New
                       </span>
                     )}
@@ -77,16 +86,30 @@ const ProdukKami = () => {
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-blue-600">{product.tag}</span>
-                    <Link
-                      to={product.link}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
-                    >
-                      Try it →
-                    </Link>
+                    {product.id !== 4 ? (
+                      <Link
+                        to={product.link}
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+                      >
+                        Try it →
+                      </Link>
+                    ) : (
+                      <a
+                        href={product.link}
+                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+                      >
+                        Play Now →
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          <div id="quiz" className="mt-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Cihuy Quiz</h2>
+            <CihuyQuiz />
           </div>
         </div>
       </div>
