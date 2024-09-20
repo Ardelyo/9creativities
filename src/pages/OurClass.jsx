@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, Book, Star } from 'lucide-react';
+import { ArrowLeft, Users, Book, Star, UserCircle2 } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 
 const OurClass = () => {
@@ -20,6 +20,18 @@ const OurClass = () => {
       "Kelompok Studi Lingkungan",
       "Tim Pengembang Aplikasi Sekolah",
       "Komunitas Penulis Teknologi",
+    ],
+    organization: [
+      { role: "Wali Kelas", name: "Bu Eka Supriati" },
+      { role: "Ketua Murid", name: "Julia Putri A.N.A" },
+      { role: "Wakil Ketua Murid", name: "Andika Aswaddika" },
+      { role: "Bendahara", name: "Rizka dan Cinta" },
+      { role: "Seksi Absensi", name: "Asyifa R" },
+      { role: "Seksi Keamanan", name: "Ritme D" },
+      { role: "Seksi Kerohanian", name: "Satria Gian A" },
+      { role: "Seksi Upacara", name: "Keanu" },
+      { role: "Seksi Kebersihan", name: "Ardellio S.A" },
+      { role: "Seksi Olahraga", name: "Novaldo D.M" },
     ],
   };
 
@@ -68,6 +80,25 @@ const OurClass = () => {
           className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
+            <UserCircle2 className="mr-2 text-blue-600" /> Struktur Organisasi Kelas
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {classInfo.organization.map((member, index) => (
+              <div key={index} className="bg-gray-100 rounded-lg p-4">
+                <h3 className="font-semibold text-blue-600">{member.role}</h3>
+                <p>{member.name}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
             <Star className="mr-2 text-yellow-500" /> Prestasi Kami
           </h2>
           <ul className="list-disc list-inside text-gray-600">
@@ -80,7 +111,7 @@ const OurClass = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
