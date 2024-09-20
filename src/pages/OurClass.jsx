@@ -7,6 +7,7 @@ import BackgroundArt from '../components/BackgroundArt';
 const OurClass = () => {
   const classInfo = {
     name: "Kelas 9C",
+    slogan: "Cerdas, Cermat, Ceria",
     motto: "Bersatu dalam Kreativitas, Berinovasi untuk Masa Depan",
     description: "Kelas 9C adalah kumpulan siswa-siswi berbakat yang bersemangat dalam mengeksplorasi teknologi dan inovasi. Kami percaya bahwa melalui kolaborasi dan kreativitas, kami dapat menciptakan solusi-solusi yang berdampak positif bagi masyarakat dan lingkungan.",
     achievements: [
@@ -38,6 +39,9 @@ const OurClass = () => {
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
             Tentang <span className="text-blue-600">{classInfo.name}</span>
           </h1>
+          <p className="text-2xl text-blue-600 font-semibold mb-2">
+            {classInfo.slogan}
+          </p>
           <p className="text-xl text-gray-600 italic">
             "{classInfo.motto}"
           </p>
