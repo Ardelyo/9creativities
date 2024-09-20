@@ -8,9 +8,14 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const InformationTechnology = () => {
   const teamMembers = [
-    { name: "Andi Pratama", role: "Pengembang Web", interest: "Desain UI/UX", image: "/placeholder.svg" },
-    { name: "Budi Santoso", role: "Analis Sistem", interest: "Keamanan Informasi", image: "/placeholder.svg" },
-    { name: "Citra Dewi", role: "Manajer Proyek IT", interest: "Agile Development", image: "/placeholder.svg" },
+    { name: "Lio", role: "Pengembang Web", interest: "Frontend Development", image: "/placeholder.svg" },
+    { name: "Cinta", role: "Dokumentasi", interest: "Technical Writing", image: "/placeholder.svg" },
+    { name: "Satria", role: "Tim Kreatif", interest: "UI/UX Design", image: "/placeholder.svg" },
+    { name: "Geo", role: "Pengumpul Informasi", interest: "Data Analysis", image: "/placeholder.svg" },
+    { name: "Dimas", role: "Pengumpul Informasi", interest: "Research", image: "/placeholder.svg" },
+    { name: "Alea", role: "Dokumentasi", interest: "Content Creation", image: "/placeholder.svg" },
+    { name: "Agnia", role: "Dokumentasi", interest: "Project Management", image: "/placeholder.svg" },
+    { name: "Ritme", role: "Tim Kreatif", interest: "Graphic Design", image: "/placeholder.svg" },
   ];
 
   const projects = [
@@ -24,12 +29,14 @@ const InformationTechnology = () => {
       howItWorks: [
         "Pengembangan menggunakan React dan Tailwind CSS",
         "Implementasi animasi dengan Framer Motion",
-        "Integrasi dengan API Gemini untuk fitur chatbot Cica",
-        "Penggunaan komponen yang dapat digunakan kembali untuk konsistensi desain"
+        "Integrasi dengan API Gemini untuk fitur chatbot Robot C",
+        "Penggunaan komponen yang dapat digunakan kembali untuk konsistensi desain",
+        "Implementasi routing dengan React Router untuk navigasi halaman",
+        "Optimisasi performa dengan lazy loading dan code splitting"
       ],
       impact: "Website ini memungkinkan pengunjung untuk menjelajahi dan mempelajari tentang berbagai proyek teknologi yang dikembangkan oleh siswa, meningkatkan visibilitas dan apresiasi terhadap inovasi teknologi di sekolah.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi lengkap meliputi panduan pengembangan, struktur proyek, dan petunjuk deployment."
+      documentation: "Dokumentasi lengkap meliputi panduan pengembangan, struktur proyek, dan petunjuk deployment. Termasuk juga dokumentasi API dan panduan kontribusi untuk pengembang masa depan."
     },
   ];
 

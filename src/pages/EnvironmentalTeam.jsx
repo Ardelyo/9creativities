@@ -8,9 +8,13 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
-    { name: "Gita Nirmala", role: "Ahli Lingkungan", interest: "Konservasi Air", image: "/placeholder.svg" },
-    { name: "Hadi Santoso", role: "Insinyur Lingkungan", interest: "Pengolahan Air Limbah", image: "/placeholder.svg" },
-    { name: "Indah Pertiwi", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/placeholder.svg" },
+    { name: "Asyifa R", role: "Ahli Lingkungan", interest: "Konservasi Air", image: "/placeholder.svg" },
+    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "/placeholder.svg" },
+    { name: "Noval", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/placeholder.svg" },
+    { name: "Indina", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "/placeholder.svg" },
+    { name: "Ashyffa K", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/placeholder.svg" },
+    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/placeholder.svg" },
+    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/placeholder.svg" },
   ];
 
   const projects = [
@@ -26,11 +30,12 @@ const EnvironmentalTeam = () => {
         "Penyusunan lapisan filter dalam wadah berkelanjutan",
         "Proses filtrasi air melalui lapisan-lapisan bahan alami",
         "Pengujian kualitas air hasil filtrasi",
-        "Perawatan dan regenerasi bahan filter secara berkala"
+        "Perawatan dan regenerasi bahan filter secara berkala",
+        "Edukasi masyarakat tentang penggunaan dan manfaat filter air"
       ],
       impact: "Proyek ini dapat menyediakan akses air bersih yang terjangkau bagi masyarakat, mengurangi risiko penyakit yang ditularkan melalui air, dan meningkatkan kesadaran tentang pentingnya konservasi air.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi lengkap meliputi desain sistem, hasil uji laboratorium, dan panduan pemeliharaan."
+      documentation: "Dokumentasi lengkap meliputi desain sistem, hasil uji laboratorium, panduan pemeliharaan, dan laporan dampak lingkungan."
     },
   ];
 

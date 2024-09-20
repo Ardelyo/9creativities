@@ -8,9 +8,15 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Dian Purnama", role: "Spesialis Konten Digital", interest: "Media Sosial", image: "/placeholder.svg" },
-    { name: "Eko Prasetyo", role: "Desainer Grafis", interest: "Infografis", image: "/placeholder.svg" },
-    { name: "Fira Rahmawati", role: "Penulis Teknis", interest: "Storytelling Digital", image: "/placeholder.svg" },
+    { name: "Zaki", role: "Spesialis Media Sosial", interest: "Digital Marketing", image: "/placeholder.svg" },
+    { name: "Pandu", role: "Content Creator", interest: "Video Production", image: "/placeholder.svg" },
+    { name: "Ilham", role: "Graphic Designer", interest: "Visual Communication", image: "/placeholder.svg" },
+    { name: "Rahmat", role: "Copywriter", interest: "Storytelling", image: "/placeholder.svg" },
+    { name: "Salwa", role: "Community Manager", interest: "Social Media Engagement", image: "/placeholder.svg" },
+    { name: "Keyla", role: "Data Analyst", interest: "Analytics and Reporting", image: "/placeholder.svg" },
+    { name: "Julia", role: "PR Specialist", interest: "Media Relations", image: "/placeholder.svg" },
+    { name: "Andika", role: "SEO Specialist", interest: "Search Engine Optimization", image: "/placeholder.svg" },
+    { name: "Aulia", role: "Event Coordinator", interest: "Virtual Events", image: "/placeholder.svg" },
   ];
 
   const projects = [
@@ -24,12 +30,14 @@ const CommunicationTechnology = () => {
       howItWorks: [
         "Riset mendalam tentang topik-topik teknologi terkini",
         "Pembuatan konten dalam berbagai format (artikel, infografis, video pendek)",
+        "Optimisasi konten untuk SEO dan aksesibilitas",
         "Distribusi konten melalui platform media sosial dan website Nine Creativities",
+        "Engagement dengan audiens melalui komentar dan diskusi online",
         "Pengukuran dampak dan engagement untuk perbaikan konten berkelanjutan"
       ],
       impact: "Kampanye ini meningkatkan kesadaran dan pemahaman masyarakat tentang perkembangan teknologi terkini, mendorong minat dalam sains dan teknologi di kalangan pelajar, serta mempromosikan inovasi teknologi yang dikembangkan di sekolah kami.",
       photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi proyek meliputi strategi konten, panduan gaya, dan analisis metrik engagement."
+      documentation: "Dokumentasi proyek meliputi strategi konten, panduan gaya, analisis metrik engagement, dan laporan dampak kampanye."
     },
   ];
 

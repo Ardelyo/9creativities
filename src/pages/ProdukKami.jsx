@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
-import CihuyQuiz from '../components/CihuyQuiz';
 
 const ProdukKami = () => {
   const products = [
@@ -38,7 +37,39 @@ const ProdukKami = () => {
       description: "Kuis interaktif tentang lingkungan dengan 10 pertanyaan acak.",
       icon: "🎮",
       tag: "Education",
-      link: "#quiz"
+      link: "/cihuy-quiz"
+    },
+    {
+      id: 5,
+      name: "Tempe",
+      description: "Produk fermentasi kedelai kaya nutrisi dan probiotik.",
+      icon: "🫘",
+      tag: "Food Technology",
+      link: "/food-team"
+    },
+    {
+      id: 6,
+      name: "Yoghurt",
+      description: "Yoghurt probiotik dengan bahan baku lokal.",
+      icon: "🥛",
+      tag: "Food Technology",
+      link: "/food-team"
+    },
+    {
+      id: 7,
+      name: "Tape",
+      description: "Makanan fermentasi tradisional dengan inovasi modern.",
+      icon: "🍚",
+      tag: "Food Technology",
+      link: "/food-team"
+    },
+    {
+      id: 8,
+      name: "Filter Air",
+      description: "Sistem pemurnian air ramah lingkungan menggunakan bahan alami.",
+      icon: "💧",
+      tag: "Environmental Technology",
+      link: "/environmental-team"
     },
   ];
 
@@ -86,30 +117,16 @@ const ProdukKami = () => {
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-blue-600">{product.tag}</span>
-                    {product.id !== 4 ? (
-                      <Link
-                        to={product.link}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
-                      >
-                        Try it →
-                      </Link>
-                    ) : (
-                      <a
-                        href={product.link}
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
-                      >
-                        Play Now →
-                      </a>
-                    )}
+                    <Link
+                      to={product.link}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+                    >
+                      Learn More →
+                    </Link>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          <div id="quiz" className="mt-16">
-            <h2 className="text-3xl font-bold text-center mb-8">Cihuy Quiz</h2>
-            <CihuyQuiz />
           </div>
         </div>
       </div>
