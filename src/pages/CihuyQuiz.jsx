@@ -5,7 +5,7 @@ import { ArrowLeft, Shuffle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundArt from '../components/BackgroundArt';
 
-const questions = [
+const allQuestions = [
   {
     question: "Apa gas rumah kaca utama yang berkontribusi pada perubahan iklim?",
     options: ["Karbon Dioksida", "Oksigen", "Nitrogen", "Helium"],
@@ -69,6 +69,7 @@ const questions = [
 ];
 
 const CihuyQuiz = () => {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
@@ -76,6 +77,20 @@ const CihuyQuiz = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
+
+  useEffect(() => {
+    startNewQuiz();
+  }, []);
+
+  const startNewQuiz = () => {
+    const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+    setQuestions(shuffled.slice(0, 10));
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+    setScore(0);
+    setShowExplanation(false);
+    setQuizCompleted(false);
+  };
 
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer);
@@ -101,12 +116,8 @@ const CihuyQuiz = () => {
     }
   };
 
-  const restartQuiz = () => {
-    setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
-    setScore(0);
-    setShowExplanation(false);
-    setQuizCompleted(false);
+  const shuffleOptions = (options) => {
+    return [...options].sort(() => Math.random() - 0.5);
   };
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -123,61 +134,63 @@ const CihuyQuiz = () => {
           <div className="bg-green-100 p-8 rounded-lg shadow-lg text-center">
             <h2 className="text-3xl font-bold mb-4 text-black">Quiz Selesai!</h2>
             <p className="text-xl mb-4 text-black">Skor Anda: {score} dari {questions.length}</p>
-            <Button onClick={restartQuiz} className="bg-green-500 hover:bg-green-600 text-white">
+            <Button onClick={startNewQuiz} className="bg-green-500 hover:bg-green-600 text-white">
               Main Lagi
             </Button>
           </div>
         ) : (
-          <div className="bg-green-100 p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-black">Pertanyaan {currentQuestionIndex + 1} dari {questions.length}</h2>
-            <p className="text-lg mb-4 text-black">{currentQuestion.question}</p>
-            <div className="space-y-2">
-              {currentQuestion.options.map((option, index) => (
-                <Button
-                  key={index}
-                  onClick={() => handleAnswerClick(option)}
-                  disabled={selectedAnswer !== null}
-                  className={`w-full text-left justify-start ${
-                    selectedAnswer === option
-                      ? option === currentQuestion.correctAnswer
-                        ? 'bg-green-500 text-white'
-                        : 'bg-red-500 text-white'
-                      : 'bg-white hover:bg-gray-100 text-black'
+          currentQuestion && (
+            <div className="bg-green-100 p-8 rounded-lg shadow-lg">
+              <h2 className="text-2xl font-bold mb-4 text-black">Pertanyaan {currentQuestionIndex + 1} dari {questions.length}</h2>
+              <p className="text-lg mb-4 text-black">{currentQuestion.question}</p>
+              <div className="space-y-2">
+                {shuffleOptions(currentQuestion.options).map((option, index) => (
+                  <Button
+                    key={index}
+                    onClick={() => handleAnswerClick(option)}
+                    disabled={selectedAnswer !== null}
+                    className={`w-full text-left justify-start ${
+                      selectedAnswer === option
+                        ? option === currentQuestion.correctAnswer
+                          ? 'bg-green-500 text-white'
+                          : 'bg-red-500 text-white'
+                        : 'bg-white hover:bg-gray-100 text-black'
+                    }`}
+                  >
+                    {option}
+                  </Button>
+                ))}
+              </div>
+              {showExplanation && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mt-4 p-4 bg-blue-100 rounded-lg"
+                >
+                  <p className="font-semibold text-black">Penjelasan:</p>
+                  <p className="text-black">{currentQuestion.explanation}</p>
+                </motion.div>
+              )}
+              {selectedAnswer && (
+                <Button onClick={handleNextQuestion} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white">
+                  {currentQuestionIndex < questions.length - 1 ? 'Pertanyaan Berikutnya' : 'Selesai'}
+                </Button>
+              )}
+              {showPopup && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg text-white text-2xl font-bold ${
+                    popupMessage === "CIHUYYYYY" ? "bg-green-500" : "bg-red-500"
                   }`}
                 >
-                  {option}
-                </Button>
-              ))}
+                  {popupMessage}
+                </motion.div>
+              )}
             </div>
-            {showExplanation && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="mt-4 p-4 bg-blue-100 rounded-lg"
-              >
-                <p className="font-semibold text-black">Penjelasan:</p>
-                <p className="text-black">{currentQuestion.explanation}</p>
-              </motion.div>
-            )}
-            {selectedAnswer && (
-              <Button onClick={handleNextQuestion} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white">
-                {currentQuestionIndex < questions.length - 1 ? 'Pertanyaan Berikutnya' : 'Selesai'}
-              </Button>
-            )}
-            {showPopup && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg text-white text-2xl font-bold ${
-                  popupMessage === "CIHUYYYYY" ? "bg-green-500" : "bg-red-500"
-                }`}
-              >
-                {popupMessage}
-              </motion.div>
-            )}
-          </div>
+          )
         )}
       </div>
     </div>

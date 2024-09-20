@@ -22,18 +22,35 @@ const OurClass = () => {
       "Komunitas Penulis Teknologi",
     ],
     organization: [
-      { role: "Wali Kelas", name: "Bu Eka Supriati" },
-      { role: "Ketua Murid", name: "Julia Putri A.N.A" },
-      { role: "Wakil Ketua Murid", name: "Andika Aswaddika" },
-      { role: "Bendahara", name: "Rizka dan Cinta" },
-      { role: "Seksi Absensi", name: "Asyifa R" },
-      { role: "Seksi Keamanan", name: "Ritme D" },
-      { role: "Seksi Kerohanian", name: "Satria Gian A" },
-      { role: "Seksi Upacara", name: "Keanu" },
-      { role: "Seksi Kebersihan", name: "Ardellio S.A" },
-      { role: "Seksi Olahraga", name: "Novaldo D.M" },
+      { role: "Wali Kelas", name: "Bu Eka Supriati", children: [] },
+      { role: "Ketua Murid", name: "Julia Putri A.N.A", children: [
+        { role: "Wakil Ketua Murid", name: "Andika Aswaddika", children: [] },
+        { role: "Bendahara", name: "Rizka dan Cinta", children: [] },
+        { role: "Seksi Absensi", name: "Asyifa R", children: [] },
+        { role: "Seksi Keamanan", name: "Ritme D", children: [] },
+        { role: "Seksi Kerohanian", name: "Satria Gian A", children: [] },
+        { role: "Seksi Upacara", name: "Keanu", children: [] },
+        { role: "Seksi Kebersihan", name: "Ardellio S.A", children: [] },
+        { role: "Seksi Olahraga", name: "Novaldo D.M", children: [] },
+      ]},
     ],
   };
+
+  const TreeNode = ({ node }) => (
+    <div className="flex flex-col items-center">
+      <div className="bg-blue-100 p-2 rounded-lg text-center mb-2">
+        <div className="font-semibold">{node.role}</div>
+        <div className="text-sm">{node.name}</div>
+      </div>
+      {node.children.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-4 mt-2">
+          {node.children.map((child, index) => (
+            <TreeNode key={index} node={child} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
@@ -77,17 +94,14 @@ const OurClass = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl overflow-x-auto"
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
             <UserCircle2 className="mr-2 text-blue-600" /> Struktur Organisasi Kelas
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {classInfo.organization.map((member, index) => (
-              <div key={index} className="bg-gray-100 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-600">{member.role}</h3>
-                <p>{member.name}</p>
-              </div>
+          <div className="min-w-max">
+            {classInfo.organization.map((root, index) => (
+              <TreeNode key={index} node={root} />
             ))}
           </div>
         </motion.div>

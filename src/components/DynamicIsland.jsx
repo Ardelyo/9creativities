@@ -10,7 +10,7 @@ const DynamicIsland = () => {
 
   const navItems = [
     { title: "Beranda", icon: <Home className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/" },
-    { title: "Tentang", icon: <Info className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/about" },
+    { title: "Tentang Kelas Kami", icon: <Info className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/our-class" },
     { title: "Robot C", icon: <Bot className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/robot-c" },
     { title: "Produk Kami", icon: <Package className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/produk-kami" },
   ];
