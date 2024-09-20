@@ -9,13 +9,13 @@ import DropletAnimation from '../components/DropletAnimation';
 const InformationTechnology = () => {
   const teamMembers = [
     { name: "Lio", role: "Pengembang Web", interest: "Frontend Development", image: "/placeholder.svg" },
-    { name: "Cinta", role: "Dokumentasi", interest: "Technical Writing", image: "/placeholder.svg" },
-    { name: "Satria", role: "Tim Kreatif", interest: "UI/UX Design", image: "/placeholder.svg" },
-    { name: "Geo", role: "Pengumpul Informasi", interest: "Data Analysis", image: "/placeholder.svg" },
-    { name: "Dimas", role: "Pengumpul Informasi", interest: "Research", image: "/placeholder.svg" },
-    { name: "Alea", role: "Dokumentasi", interest: "Content Creation", image: "/placeholder.svg" },
-    { name: "Agnia", role: "Dokumentasi", interest: "Project Management", image: "/placeholder.svg" },
-    { name: "Ritme", role: "Tim Kreatif", interest: "Graphic Design", image: "/placeholder.svg" },
+    { name: "Cinta", role: "Dokumentasi", interest: "Technical Writing", image: "/cinta.jpg" },
+    { name: "Satria", role: "Tim Kreatif", interest: "UI/UX Design", image: "/Satria.jpg" },
+    { name: "Dimas", role: "Pengumpul Informasi", interest: "Research", image: "/dimas.jpg" },
+    { name: "Alea", role: "Dokumentasi", interest: "Content Creation", image: "/Alea.jpg" },
+    { name: "Agnia", role: "Dokumentasi", interest: "Project Management", image: "/Agnia.jpg" },
+    { name: "Ritme", role: "Tim Kreatif", interest: "Graphic Design", image: "/IMG_20240920_161517.png" },
+    { name: "Ardellio", role: "Pengembang Web", interest: "Backend Development", image: "/ardellio.jpg" },
   ];
 
   const projects = [
@@ -89,7 +89,7 @@ const InformationTechnology = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
               <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
