@@ -45,7 +45,7 @@ const ProdukKami = () => {
       description: "Produk fermentasi kedelai kaya nutrisi dan probiotik.",
       icon: "🫘",
       tag: "Food Technology",
-      link: "/food-team"
+      link: "/tempe"
     },
     {
       id: 6,
@@ -53,7 +53,7 @@ const ProdukKami = () => {
       description: "Yoghurt probiotik dengan bahan baku lokal.",
       icon: "🥛",
       tag: "Food Technology",
-      link: "/food-team"
+      link: "/yoghurt"
     },
     {
       id: 7,
@@ -61,7 +61,7 @@ const ProdukKami = () => {
       description: "Makanan fermentasi tradisional dengan inovasi modern.",
       icon: "🍚",
       tag: "Food Technology",
-      link: "/food-team"
+      link: "/tape"
     },
     {
       id: 8,
@@ -69,7 +69,7 @@ const ProdukKami = () => {
       description: "Sistem pemurnian air ramah lingkungan menggunakan bahan alami.",
       icon: "💧",
       tag: "Environmental Technology",
-      link: "/environmental-team"
+      link: "/filter-air"
     },
   ];
 
