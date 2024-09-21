@@ -25,9 +25,22 @@ const CihuyQuiz = () => {
     startNewQuiz();
   }, []);
 
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const startNewQuiz = () => {
-    const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
-    setQuestions(shuffled.slice(0, 10));
+    const shuffledQuestions = shuffleArray(allQuestions).slice(0, 10);
+    const questionsWithRandomizedOptions = shuffledQuestions.map(question => ({
+      ...question,
+      options: shuffleArray(question.options)
+    }));
+    setQuestions(questionsWithRandomizedOptions);
     setCurrentQuestionIndex(0);
     setScore(0);
     setQuizCompleted(false);
@@ -35,8 +48,11 @@ const CihuyQuiz = () => {
     setSelectedAnswer(null);
   };
 
-  const handleAnswer = (isCorrect) => {
-    setSelectedAnswer(isCorrect);
+  const handleAnswer = (answer) => {
+    const currentQuestion = questions[currentQuestionIndex];
+    const isCorrect = answer === currentQuestion.correctAnswer;
+    setSelectedAnswer(answer);
+
     if (isCorrect) {
       setScore(score + 1);
       correctAudio.play();
@@ -60,7 +76,7 @@ const CihuyQuiz = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-100 p-4 sm:p-8 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto relative z-10">
         <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">

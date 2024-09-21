@@ -3,12 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 
 const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, selectedAnswer }) => {
-  const handleAnswerClick = (answer) => {
-    if (selectedAnswer === null) {
-      onAnswer(answer === question.correctAnswer);
-    }
-  };
-
   return (
     <motion.div
       key={questionNumber}
@@ -23,7 +17,7 @@ const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, sele
         {question.options.map((option, index) => (
           <Button
             key={index}
-            onClick={() => handleAnswerClick(option)}
+            onClick={() => onAnswer(option)}
             disabled={selectedAnswer !== null}
             className={`w-full justify-start text-left py-3 px-4 ${
               selectedAnswer !== null
