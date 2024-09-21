@@ -63,10 +63,10 @@ const CihuyQuiz = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 p-4 sm:p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto relative z-10">
-        <Link to="/" className="text-white hover:text-blue-200 transition-colors mb-8 inline-block">
+        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali ke Beranda
         </Link>
         <motion.div
@@ -75,8 +75,8 @@ const CihuyQuiz = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h1 className="text-5xl sm:text-7xl font-bold mb-4 text-white">Cihuy Quiz</h1>
-          <p className="text-xl text-blue-100">Uji pengetahuanmu tentang lingkungan!</p>
+          <h1 className="text-5xl sm:text-7xl font-bold mb-4 text-blue-600">Cihuy Quiz</h1>
+          <p className="text-xl text-gray-600">Uji pengetahuanmu tentang lingkungan!</p>
         </motion.div>
         
         {quizCompleted ? (
