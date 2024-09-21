@@ -8,14 +8,14 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const InformationTechnology = () => {
   const teamMembers = [
-    { name: "Lio", role: "Pengembang Web", interest: "Frontend Development", image: "/placeholder.svg" },
+    { name: "Ardellio", role: "Pengembang Web", interest: "Frontend Development", image: "/ardellio.jpg" },
     { name: "Cinta", role: "Dokumentasi", interest: "Technical Writing", image: "/cinta.jpg" },
     { name: "Satria", role: "Tim Kreatif", interest: "UI/UX Design", image: "/Satria.jpg" },
     { name: "Dimas", role: "Pengumpul Informasi", interest: "Research", image: "/dimas.jpg" },
     { name: "Alea", role: "Dokumentasi", interest: "Content Creation", image: "/Alea.jpg" },
     { name: "Agnia", role: "Dokumentasi", interest: "Project Management", image: "/Agnia.jpg" },
     { name: "Ritme", role: "Tim Kreatif", interest: "Graphic Design", image: "/IMG_20240920_161517.png" },
-    { name: "Ardellio", role: "Pengembang Web", interest: "Backend Development", image: "/ardellio.jpg" },
+    { name: "Geovart", role: "Pengembang Web", interest: "Backend Development", image: "/geo.png" },
   ];
 
   const projects = [
