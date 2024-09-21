@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Shuffle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundArt from '../components/BackgroundArt';
 import { allQuestions } from '../data/quizQuestions';
@@ -14,6 +14,7 @@ const CihuyQuiz = () => {
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState(4);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const correctAudio = new Audio('/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3');
   const incorrectAudio = new Audio('/y2mate.com - meme ketawa prindapan.mp3');
@@ -31,21 +32,26 @@ const CihuyQuiz = () => {
     setScore(0);
     setQuizCompleted(false);
     setAttemptsLeft(prev => prev - 1);
+    setSelectedAnswer(null);
   };
 
   const handleAnswer = (isCorrect) => {
+    setSelectedAnswer(isCorrect);
     if (isCorrect) {
       setScore(score + 1);
       correctAudio.play();
     } else {
       incorrectAudio.play();
     }
+  };
 
+  const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswer(null);
     } else {
       setQuizCompleted(true);
-      if (score + (isCorrect ? 1 : 0) > 6) {
+      if (score > 6) {
         highScoreAudio.play();
       } else {
         lowScoreAudio.play();
@@ -78,12 +84,24 @@ const CihuyQuiz = () => {
             onRestart={startNewQuiz}
           />
         ) : questions[currentQuestionIndex] ? (
-          <QuizQuestion
-            question={questions[currentQuestionIndex]}
-            onAnswer={handleAnswer}
-            questionNumber={currentQuestionIndex + 1}
-            totalQuestions={questions.length}
-          />
+          <>
+            <QuizQuestion
+              question={questions[currentQuestionIndex]}
+              onAnswer={handleAnswer}
+              questionNumber={currentQuestionIndex + 1}
+              totalQuestions={questions.length}
+              selectedAnswer={selectedAnswer}
+            />
+            <div className="mt-6 flex justify-end">
+              <Button 
+                onClick={handleNextQuestion} 
+                disabled={selectedAnswer === null}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                {currentQuestionIndex === questions.length - 1 ? "Selesai" : "Selanjutnya"}
+              </Button>
+            </div>
+          </>
         ) : null}
       </div>
     </div>
