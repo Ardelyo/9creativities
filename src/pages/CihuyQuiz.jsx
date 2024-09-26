@@ -16,10 +16,10 @@ const CihuyQuiz = () => {
   const [attemptsLeft, setAttemptsLeft] = useState(4);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const correctAudio = new Audio('/public/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3');
-  const incorrectAudio = new Audio('/public/y2mate.com - meme ketawa prindapan.mp3');
-  const highScoreAudio = new Audio('/public/y2mate.com - YAY Kids Celebration Sound Effect Free Download.mp3');
-  const lowScoreAudio = new Audio('/public/y2mate.com - Ini Parah Nih Haha  Sound Effect Indonesia.mp3');
+  const correctAudio = new Audio('public/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3');
+  const incorrectAudio = new Audio('public/y2mate.com - meme ketawa prindapan.mp3');
+  const highScoreAudio = new Audio('public/y2mate.com - YAY Kids Celebration Sound Effect Free Download.mp3');
+  const lowScoreAudio = new Audio('public/y2mate.com - Ini Parah Nih Haha  Sound Effect Indonesia.mp3');
 
   useEffect(() => {
     startNewQuiz();
