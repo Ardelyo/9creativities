@@ -12,25 +12,25 @@ const CihuyQuiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [quizStarted, setQuizStarted] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState(4);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const correctAudio = new Audio('/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3');
   const incorrectAudio = new Audio('/y2mate.com - meme ketawa prindapan.mp3');
   const highScoreAudio = new Audio('/y2mate.com - YAY Kids Celebration Sound Effect Free Download.mp3');
   const lowScoreAudio = new Audio('/y2mate.com - Ini Parah Nih Haha  Sound Effect Indonesia.mp3');
 
-  useEffect(() => {
-    startNewQuiz();
-  }, []);
-
   const startNewQuiz = () => {
     const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
     setQuestions(shuffled.slice(0, 10));
     setCurrentQuestionIndex(0);
     setScore(0);
+    setQuizStarted(true);
     setQuizCompleted(false);
     setAttemptsLeft(prev => prev - 1);
+    setSelectedAnswer(null);
   };
 
   const handleAnswer = (isCorrect) => {
@@ -40,12 +40,16 @@ const CihuyQuiz = () => {
     } else {
       incorrectAudio.play();
     }
+    setSelectedAnswer(isCorrect ? 'correct' : 'incorrect');
+  };
 
+  const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswer(null);
     } else {
       setQuizCompleted(true);
-      if (score + (isCorrect ? 1 : 0) > 6) {
+      if (score > 6) {
         highScoreAudio.play();
       } else {
         lowScoreAudio.play();
@@ -70,21 +74,37 @@ const CihuyQuiz = () => {
           <p className="text-xl text-gray-600">Uji pengetahuanmu tentang lingkungan!</p>
         </motion.div>
         
-        {quizCompleted ? (
+        {!quizStarted && !quizCompleted && (
+          <Button onClick={startNewQuiz} className="w-full mb-4">
+            Mulai Quiz
+          </Button>
+        )}
+
+        {quizStarted && !quizCompleted && questions[currentQuestionIndex] && (
+          <>
+            <QuizQuestion
+              question={questions[currentQuestionIndex]}
+              onAnswer={handleAnswer}
+              questionNumber={currentQuestionIndex + 1}
+              totalQuestions={questions.length}
+              selectedAnswer={selectedAnswer}
+            />
+            {selectedAnswer && (
+              <Button onClick={handleNextQuestion} className="w-full mt-4">
+                {currentQuestionIndex === questions.length - 1 ? 'Selesai' : 'Selanjutnya'}
+              </Button>
+            )}
+          </>
+        )}
+
+        {quizCompleted && (
           <QuizResult 
             score={score} 
             totalQuestions={questions.length} 
             attemptsLeft={attemptsLeft}
             onRestart={startNewQuiz}
           />
-        ) : questions[currentQuestionIndex] ? (
-          <QuizQuestion
-            question={questions[currentQuestionIndex]}
-            onAnswer={handleAnswer}
-            questionNumber={currentQuestionIndex + 1}
-            totalQuestions={questions.length}
-          />
-        ) : null}
+        )}
       </div>
     </div>
   );
