@@ -14,7 +14,6 @@ const CihuyQuiz = () => {
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState(4);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const correctAudio = new Audio('/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3');
   const incorrectAudio = new Audio('/y2mate.com - meme ketawa prindapan.mp3');
@@ -25,49 +24,28 @@ const CihuyQuiz = () => {
     startNewQuiz();
   }, []);
 
-  const shuffleArray = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-
   const startNewQuiz = () => {
-    const shuffledQuestions = shuffleArray(allQuestions).slice(0, 10);
-    const questionsWithRandomizedOptions = shuffledQuestions.map(question => ({
-      ...question,
-      options: shuffleArray(question.options)
-    }));
-    setQuestions(questionsWithRandomizedOptions);
+    const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+    setQuestions(shuffled.slice(0, 10));
     setCurrentQuestionIndex(0);
     setScore(0);
     setQuizCompleted(false);
     setAttemptsLeft(prev => prev - 1);
-    setSelectedAnswer(null);
   };
 
-  const handleAnswer = (answer) => {
-    const currentQuestion = questions[currentQuestionIndex];
-    const isCorrect = answer === currentQuestion.correctAnswer;
-    setSelectedAnswer(answer);
-
+  const handleAnswer = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
       correctAudio.play();
     } else {
       incorrectAudio.play();
     }
-  };
 
-  const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswer(null);
     } else {
       setQuizCompleted(true);
-      if (score > 6) {
+      if (score + (isCorrect ? 1 : 0) > 6) {
         highScoreAudio.play();
       } else {
         lowScoreAudio.play();
@@ -76,7 +54,7 @@ const CihuyQuiz = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-100 p-4 sm:p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-4xl mx-auto relative z-10">
         <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
@@ -100,24 +78,12 @@ const CihuyQuiz = () => {
             onRestart={startNewQuiz}
           />
         ) : questions[currentQuestionIndex] ? (
-          <>
-            <QuizQuestion
-              question={questions[currentQuestionIndex]}
-              onAnswer={handleAnswer}
-              questionNumber={currentQuestionIndex + 1}
-              totalQuestions={questions.length}
-              selectedAnswer={selectedAnswer}
-            />
-            <div className="mt-6 flex justify-end">
-              <Button 
-                onClick={handleNextQuestion} 
-                disabled={selectedAnswer === null}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                {currentQuestionIndex === questions.length - 1 ? "Selesai" : "Selanjutnya"}
-              </Button>
-            </div>
-          </>
+          <QuizQuestion
+            question={questions[currentQuestionIndex]}
+            onAnswer={handleAnswer}
+            questionNumber={currentQuestionIndex + 1}
+            totalQuestions={questions.length}
+          />
         ) : null}
       </div>
     </div>
