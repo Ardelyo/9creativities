@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, Book, Star, UserCircle2 } from 'lucide-react';
+import { ArrowLeft, Users, UserCircle2 } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 
 const OurClass = () => {
@@ -10,17 +10,6 @@ const OurClass = () => {
     slogan: "Cerdas, Cermat, Ceria",
     motto: "Bersatu dalam Kreativitas, Berinovasi untuk Masa Depan",
     description: "Kelas 9C adalah kumpulan siswa-siswi berbakat yang bersemangat dalam mengeksplorasi teknologi dan inovasi. Kami percaya bahwa melalui kolaborasi dan kreativitas, kami dapat menciptakan solusi-solusi yang berdampak positif bagi masyarakat dan lingkungan.",
-    achievements: [
-      "Juara 1 Lomba Karya Ilmiah Remaja Tingkat Kota",
-      "Finalis Olimpiade Sains Nasional Bidang Teknologi",
-      "Penghargaan Inovasi Terbaik dalam Pameran Sains Sekolah",
-    ],
-    activities: [
-      "Klub Robotika",
-      "Kelompok Studi Lingkungan",
-      "Tim Pengembang Aplikasi Sekolah",
-      "Komunitas Penulis Teknologi",
-    ],
     organization: [
       { role: "Wali Kelas", name: "Bu Eka Supriati", children: [] },
       { role: "Ketua Murid", name: "Julia Putri A.N.A", children: [
@@ -104,38 +93,6 @@ const OurClass = () => {
               <TreeNode key={index} node={root} />
             ))}
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
-            <Star className="mr-2 text-yellow-500" /> Prestasi Kami
-          </h2>
-          <ul className="list-disc list-inside text-gray-600">
-            {classInfo.achievements.map((achievement, index) => (
-              <li key={index} className="mb-2">{achievement}</li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
-            <Book className="mr-2 text-green-500" /> Kegiatan Ekstrakurikuler
-          </h2>
-          <ul className="list-disc list-inside text-gray-600">
-            {classInfo.activities.map((activity, index) => (
-              <li key={index} className="mb-2">{activity}</li>
-            ))}
-          </ul>
         </motion.div>
       </div>
     </div>
