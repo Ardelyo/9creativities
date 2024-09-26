@@ -121,7 +121,7 @@ const FoodTeam = () => {
 
   return (
     <DropletAnimation>
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 p-4 sm:p-8 relative overflow-hidden">
+      <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
         <BackgroundArt />
         <div className="max-w-6xl mx-auto relative z-10">
           <Link to="/" className="text-orange-600 hover:text-orange-800 transition-colors mb-8 inline-block">
