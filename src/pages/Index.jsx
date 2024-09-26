@@ -5,12 +5,12 @@ import { Droplet, Utensils, Cpu, Wifi, Bot, Package, Users } from 'lucide-react'
 
 const Index = () => {
   const teams = [
-    { title: "Teknologi Lingkungan", icon: Droplet, color: "from-blue-300 to-blue-500", to: "/environmental-team" },
-    { title: "Teknologi Pangan", icon: Utensils, color: "from-blue-200 to-blue-400", to: "/food-team" },
-    { title: "Teknologi Informasi", icon: Cpu, color: "from-blue-400 to-blue-600", to: "/information-technology" },
-    { title: "Teknologi Komunikasi", icon: Wifi, color: "from-blue-300 to-blue-500", to: "/communication-technology" },
-    { title: "Produk Kami", icon: Package, color: "from-blue-200 to-blue-400", to: "/produk-kami" },
-    { title: "Tentang Kelas Kami", icon: Users, color: "from-blue-100 to-blue-300", to: "/our-class" },
+    { title: "Teknologi Lingkungan", icon: Droplet, color: "from-green-300 to-green-500", to: "/environmental-team" },
+    { title: "Teknologi Pangan", icon: Utensils, color: "from-orange-300 to-orange-500", to: "/food-team" },
+    { title: "Teknologi Informasi", icon: Cpu, color: "from-blue-300 to-blue-500", to: "/information-technology" },
+    { title: "Teknologi Komunikasi", icon: Wifi, color: "from-purple-300 to-purple-500", to: "/communication-technology" },
+    { title: "Produk Kami", icon: Package, color: "from-indigo-300 to-indigo-500", to: "/produk-kami" },
+    { title: "Tentang Kelas Kami", icon: Users, color: "from-pink-300 to-pink-500", to: "/our-class" },
   ];
 
   return (
@@ -45,7 +45,7 @@ const Index = () => {
                 <div className={`bg-gradient-to-br ${team.color} p-4 sm:p-6 rounded-full shadow-lg`}>
                   <team.icon className="w-12 h-12 sm:w-16 sm:h-16 text-white" />
                 </div>
-                <span className="text-xl sm:text-2xl font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">{team.title}</span>
+                <span className="text-xl sm:text-2xl font-semibold text-center text-blue-800">{team.title}</span>
               </Link>
             </motion.div>
           ))}

@@ -76,7 +76,7 @@ const EnvironmentalTeam = () => {
 
   return (
     <DropletAnimation>
-      <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 p-4 sm:p-8 relative overflow-hidden">
         <BackgroundArt />
         <div className="max-w-7xl mx-auto relative z-10">
           <Link to="/" className="text-green-600 hover:text-green-800 transition-colors mb-8 inline-block text-xl">
