@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Home, Info, Bot, Package } from 'lucide-react';
+import SoundEffect from './SoundEffect';
 
 const DynamicIsland = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -38,7 +39,7 @@ const DynamicIsland = () => {
       transition={{ duration: 0.5, type: 'spring', stiffness: 300, damping: 30 }}
     >
       <motion.div
-        className="w-full h-full bg-black bg-opacity-80 backdrop-blur-md rounded-full flex items-center justify-center cursor-pointer overflow-hidden shadow-lg"
+        className="w-full h-full glassmorphism flex items-center justify-center cursor-pointer overflow-hidden"
         onClick={toggleExpand}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -55,20 +56,22 @@ const DynamicIsland = () => {
             >
               {navItems.map((item, index) => (
                 <motion.div key={item.path} custom={index} variants={itemVariants} className="w-full">
-                  <Link
-                    to={item.path}
-                    className="flex items-center justify-center text-white p-3 hover:bg-white hover:bg-opacity-20 w-full transition-colors duration-200"
-                    onClick={() => setIsExpanded(false)}
-                  >
-                    <motion.div
-                      className="flex items-center space-x-2"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
+                  <SoundEffect soundUrl="/hover.mp3">
+                    <Link
+                      to={item.path}
+                      className="flex items-center justify-center text-white p-3 hover:bg-white hover:bg-opacity-20 w-full transition-colors duration-200"
+                      onClick={() => setIsExpanded(false)}
                     >
-                      {item.icon}
-                      <span className="text-sm font-medium">{item.title}</span>
-                    </motion.div>
-                  </Link>
+                      <motion.div
+                        className="flex items-center space-x-2"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        {item.icon}
+                        <span className="text-sm font-medium">{item.title}</span>
+                      </motion.div>
+                    </Link>
+                  </SoundEffect>
                 </motion.div>
               ))}
             </motion.nav>
