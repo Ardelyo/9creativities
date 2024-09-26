@@ -65,7 +65,7 @@ const RobotC = () => {
 
   return (
     <motion.div 
-      className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-300 p-4 sm:p-8 relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -81,15 +81,15 @@ const RobotC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
-            Chat dengan <span className="text-blue-600">Robot C</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">
+            Chat dengan Robot C
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-blue-700">
             Tanyakan apa saja tentang Nine Creativities!
           </p>
         </motion.div>
 
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+        <div className="bg-blue-50 bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-3xl shadow-xl overflow-hidden">
           <div className="p-4 sm:p-6 bg-blue-600">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -124,7 +124,7 @@ const RobotC = () => {
                   <div className={`max-w-[70%] p-3 rounded-2xl ${
                     msg.role === 'user' 
                       ? 'bg-blue-500 text-white' 
-                      : 'bg-gray-100 text-gray-800'
+                      : 'bg-blue-100 text-blue-800'
                   } shadow-md transition-all duration-300 hover:shadow-lg`}>
                     {msg.role === 'user' ? (
                       <User className="w-5 h-5 inline mr-2" />
@@ -148,7 +148,7 @@ const RobotC = () => {
             )}
           </motion.div>
 
-          <div className="p-4 sm:p-6 bg-gray-50 border-t border-gray-200">
+          <div className="p-4 sm:p-6 bg-blue-50 border-t border-blue-200">
             <div className="flex items-center space-x-2">
               <Input
                 value={message}
