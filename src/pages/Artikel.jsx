@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronDown, ChevronUp, Lightbulb, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Lightbulb, ExternalLink, BookOpen, Clock, Tag } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from 'react-markdown';
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,8 @@ const Artikel = () => {
     {
       title: "APA ITU TEKNOLOGI?",
       author: "Alea",
+      readTime: "5 menit",
+      tags: ["Teknologi", "Inovasi"],
       content: `
 # Teknologi: Mengubah Dunia Kita
 
@@ -29,9 +31,7 @@ Teknologi telah mengubah cara kita hidup, bekerja, dan berinteraksi. Beberapa co
 3. **Transportasi modern**: Mobil, pesawat, dan kereta yang memudahkan perjalanan.
 4. **Peralatan rumah tangga**: Kulkas, mesin cuci, dan microwave yang membantu pekerjaan rumah.
 
-<fun-fact>
-Tahukah kamu? Komputer pertama seberat 27 ton dan membutuhkan ruangan sebesar lapangan tenis untuk menempatkannya!
-</fun-fact>
+🌟 **Fun Fact**: Tahukah kamu? Komputer pertama seberat 27 ton dan membutuhkan ruangan sebesar lapangan tenis untuk menempatkannya!
 
 ## Perkembangan Teknologi Terkini
 
@@ -43,9 +43,7 @@ Perkembangan teknologi terus berlanjut, membawa kita ke era digital yang semakin
 - Blockchain
 - Quantum Computing
 
-<fun-fact>
-90% dari data dunia saat ini diciptakan hanya dalam dua tahun terakhir. Bayangkan betapa cepatnya perkembangan teknologi!
-</fun-fact>
+🌟 **Fun Fact**: 90% dari data dunia saat ini diciptakan hanya dalam dua tahun terakhir. Bayangkan betapa cepatnya perkembangan teknologi!
 
 ## Tantangan dan Peluang
 
@@ -57,9 +55,7 @@ Meskipun teknologi membawa banyak manfaat, kita juga harus waspada terhadap tant
 
 Namun, dengan penggunaan yang bijak, teknologi dapat menjadi alat yang luar biasa untuk memecahkan masalah global dan meningkatkan kualitas hidup manusia.
 
-<fun-fact>
-Ada lebih banyak perangkat yang terhubung ke internet daripada jumlah manusia di Bumi! Ini menunjukkan betapa terkoneksinya dunia kita saat ini.
-</fun-fact>
+🌟 **Fun Fact**: Ada lebih banyak perangkat yang terhubung ke internet daripada jumlah manusia di Bumi! Ini menunjukkan betapa terkoneksinya dunia kita saat ini.
 
 ## Kesimpulan
 
@@ -109,7 +105,20 @@ Teknologi akan terus berevolusi dan mempengaruhi kehidupan kita. Penting bagi ki
               <img src={article.image} alt={article.title} className="w-full h-64 object-cover" />
               <div className="p-6">
                 <h2 className="text-3xl font-bold mb-2 text-gray-800">{article.title}</h2>
-                <p className="text-sm text-gray-600 mb-4">oleh: {article.author}</p>
+                <div className="flex items-center text-sm text-gray-600 mb-4">
+                  <BookOpen className="w-4 h-4 mr-1" />
+                  <span className="mr-4">oleh: {article.author}</span>
+                  <Clock className="w-4 h-4 mr-1" />
+                  <span>{article.readTime}</span>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {article.tags.map((tag, tagIndex) => (
+                    <span key={tagIndex} className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded flex items-center">
+                      <Tag className="w-3 h-3 mr-1" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <AnimatePresence>
                   {expandedArticle === index ? (
                     <motion.div
@@ -137,7 +146,12 @@ Teknologi akan terus berevolusi dan mempengaruhi kehidupan kita. Penting bagi ki
                               <ExternalLink className="ml-1 w-4 h-4" />
                             </a>
                           ),
-                          'fun-fact': FunFact,
+                          p: ({ node, children, ...props }) => {
+                            if (children && typeof children === 'string' && children.startsWith('🌟 **Fun Fact**:')) {
+                              return <FunFact>{children.replace('🌟 **Fun Fact**:', '')}</FunFact>;
+                            }
+                            return <p className="mb-4" {...props}>{children}</p>;
+                          },
                         }}
                       >
                         {article.content}
