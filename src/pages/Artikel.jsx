@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
-import BackgroundArt from '../components/BackgroundArt';
+import { ArrowLeft, ChevronDown, ChevronUp, Lightbulb } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
-const articles = [
-  {
-    title: "APA ITU TEKNOLOGI?",
-    author: "Alea",
-    content: `Apakah kamu tau apa itu teknologi?
+const Artikel = () => {
+  const [expandedArticle, setExpandedArticle] = useState(null);
+
+  const articles = [
+    {
+      title: "APA ITU TEKNOLOGI?",
+      author: "Alea",
+      content: `Apakah kamu tau apa itu teknologi?
 
 Teknologi adalah keseluruhan sarana untuk menyediakan barang-barang yang diperlukan bagi kelangsungan dan kenyamanan hidup manusia. Penggunaan teknologi oleh manusia dimulai dengan pengubahan sumber daya alam menjadi alat-alat sederhana.
 
@@ -23,16 +26,18 @@ Beberapa contoh teknologi yang mungkin kamu gunakan sehari-hari:
 4. Peralatan rumah tangga: Kulkas, mesin cuci, dan microwave yang membantu pekerjaan rumah.
 
 Perkembangan teknologi terus berlanjut, membawa kita ke era digital yang semakin canggih. Namun, penting untuk menggunakan teknologi secara bijak dan bertanggung jawab.`
-  },
-  // Add more articles here in the future
-];
+    },
+    // Add more articles here in the future
+  ];
 
-const Artikel = () => {
-  const [expandedArticle, setExpandedArticle] = useState(null);
+  const funFacts = [
+    "Tahukah kamu? Komputer pertama seberat 27 ton dan membutuhkan ruangan sebesar lapangan tenis untuk menempatkannya!",
+    "Fakta menarik: 90% dari data dunia saat ini diciptakan hanya dalam dua tahun terakhir.",
+    "Pernahkah kamu berpikir? Ada lebih banyak perangkat yang terhubung ke internet daripada jumlah manusia di Bumi!"
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-100 p-4 sm:p-8">
-      <BackgroundArt />
+    <div className="min-h-screen bg-white p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
@@ -90,6 +95,31 @@ const Artikel = () => {
             </motion.article>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-12 bg-gray-100 rounded-3xl p-6"
+        >
+          <h3 className="text-2xl font-bold mb-4 flex items-center">
+            <Lightbulb className="mr-2 text-yellow-500" />
+            Fun Facts Teknologi
+          </h3>
+          <ul className="space-y-4">
+            {funFacts.map((fact, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="flex items-start"
+              >
+                <span className="text-blue-500 font-bold mr-2">•</span>
+                {fact}
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
       </div>
     </div>
   );
