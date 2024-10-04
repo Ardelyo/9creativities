@@ -19,6 +19,7 @@ import Yoghurt from "./pages/Yoghurt";
 import Tape from "./pages/Tape";
 import FilterAir from "./pages/FilterAir";
 import Artikel from "./pages/Artikel";
+import ProjectPresentation from "./pages/ProjectPresentation";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
                 <Route path="/tape" element={<Tape />} />
                 <Route path="/filter-air" element={<FilterAir />} />
                 <Route path="/artikel" element={<Artikel />} />
+                <Route path="/project-presentation" element={<ProjectPresentation />} />
               </Routes>
             </AnimatePresence>
           </div>
