@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
 
 const slides = [
   {
@@ -56,56 +54,27 @@ const slides = [
 ];
 
 const ProjectPresentation = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
   return (
-    <div className="w-screen h-screen overflow-hidden bg-gradient-to-br from-purple-600 to-pink-500">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.2 }}
-          transition={{ duration: 0.5 }}
-          className="w-full h-full flex items-center justify-center p-8"
-        >
-          <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-8 max-w-4xl w-full h-full flex flex-col justify-between">
+    <div className="w-full bg-gradient-to-br from-purple-600 to-pink-500">
+      {slides.map((slide, index) => (
+        <div key={index} className="min-h-screen flex items-center justify-center p-8">
+          <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-8 max-w-4xl w-full">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              {slides[currentSlide].title}
+              {slide.title}
             </h2>
-            <div className="flex-grow flex items-center justify-center">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <p className="text-xl md:text-2xl text-white mb-4 md:mb-0 md:mr-4 flex-1">
+                {slide.content}
+              </p>
               <img
-                src={slides[currentSlide].image}
-                alt={slides[currentSlide].title}
-                className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+                src={slide.image}
+                alt={slide.title}
+                className="w-full md:w-1/2 h-64 object-cover rounded-2xl shadow-2xl"
               />
             </div>
-            <p className="text-xl md:text-2xl text-white mt-4">
-              {slides[currentSlide].content}
-            </p>
           </div>
-        </motion.div>
-      </AnimatePresence>
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-2 focus:outline-none"
-      >
-        <ChevronLeft className="w-8 h-8 text-white" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-2 focus:outline-none"
-      >
-        <ChevronRight className="w-8 h-8 text-white" />
-      </button>
+        </div>
+      ))}
     </div>
   );
 };
