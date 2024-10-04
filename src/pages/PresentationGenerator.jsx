@@ -14,7 +14,7 @@ const PresentationGenerator = () => {
     { title: "Tim Pengembang", content: "Anggota tim dan peran masing-masing" },
     { title: "Perencanaan Proyek", content: "Timeline dan milestone utama" },
     { title: "Desain Website", content: "Proses pembuatan desain di Canva" },
-    { title: "Implementasi dengan Google Sites", content: "Langkah-langkah pembuatan situs" },
+    { title: "Implementasi dengan React", content: "Langkah-langkah pembuatan situs" },
     { title: "Konten Website", content: "Pengembangan dan kurasi konten" },
     { title: "Fitur Interaktif", content: "Penambahan elemen interaktif" },
     { title: "Optimisasi dan Pengujian", content: "Proses QA dan penyempurnaan" },
@@ -27,7 +27,7 @@ const PresentationGenerator = () => {
     // Simulasi proses pembuatan presentasi
     await new Promise(resolve => setTimeout(resolve, 3000));
     // Dalam implementasi nyata, di sini Anda akan memanggil API untuk membuat presentasi
-    setPresentationUrl('https://example.com/nine-creativities-presentation.pptx');
+    setPresentationUrl('https://example.com/nine-creativities-presentation.pdf');
     setIsGenerating(false);
   };
 
@@ -45,7 +45,7 @@ const PresentationGenerator = () => {
           className="text-center mb-8"
         >
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 text-blue-600">Generator Presentasi</h1>
-          <p className="text-xl text-gray-600">Buat laporan kegiatan pembuatan website Nine Creativities dalam format PPT</p>
+          <p className="text-xl text-gray-600">Buat laporan kegiatan pembuatan website Nine Creativities dalam format PDF</p>
         </motion.div>
 
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
