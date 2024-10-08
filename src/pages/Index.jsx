@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Droplet, Utensils, Cpu, Wifi, Bot, Package, Users } from 'lucide-react';
-import { useProgress } from '../contexts/ProgressContext';
 
 const Index = () => {
-  const { updateProgress } = useProgress();
-
-  useEffect(() => {
-    updateProgress('home');
-  }, [updateProgress]);
-
   const teams = [
     { title: "Teknologi Lingkungan", icon: Droplet, color: "bg-green-500", to: "/environmental-team" },
     { title: "Teknologi Pangan", icon: Utensils, color: "bg-orange-500", to: "/food-team" },
