@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Droplet, Utensils, Cpu, Wifi, Bot, Package, Users } from 'lucide-react';
@@ -7,10 +7,8 @@ import { useProgress } from '../contexts/ProgressContext';
 const Index = () => {
   const { updateProgress } = useProgress();
 
-  React.useEffect(() => {
-    if (updateProgress) {
-      updateProgress('home');
-    }
+  useEffect(() => {
+    updateProgress('home');
   }, [updateProgress]);
 
   const teams = [
