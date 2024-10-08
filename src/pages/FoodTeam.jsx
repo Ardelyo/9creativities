@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
+import FoodSafetyQuiz from '../components/FoodSafetyQuiz';
 
 const FoodTeam = () => {
   const teamMembers = [
@@ -127,6 +128,7 @@ const FoodTeam = () => {
           <Link to="/" className="text-orange-600 hover:text-orange-800 transition-colors mb-8 inline-block">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
+          
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,7 +189,9 @@ const FoodTeam = () => {
             </div>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-gray-800 flex items-center">
+          <FoodSafetyQuiz />
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-gray-800 flex items-center mt-12">
             <Utensils className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
