@@ -8,9 +8,18 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
-import EnvironmentalTeamMembers from '../components/EnvironmentalTeamMembers';
 
 const EnvironmentalTeam = () => {
+  const teamMembers = [
+    { name: "Asyifa R", role: "Ahli Lingkungan", interest: "Konservasi Air", image: "/placeholder.svg" },
+    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "/placeholder.svg" },
+    { name: "Noval", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/placeholder.svg" },
+    { name: "Indina", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "/placeholder.svg" },
+    { name: "Ashyffa K", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/placeholder.svg" },
+    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/placeholder.svg" },
+    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/placeholder.svg" },
+  ];
+
   const projects = [
     {
       id: 1,
@@ -125,7 +134,23 @@ const EnvironmentalTeam = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-gray-800 flex items-center">
               <Users className="mr-3 text-green-600" /> Kenalan dengan Tim Kami
             </h2>
-            <EnvironmentalTeamMembers />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-green-50 p-6 rounded-2xl text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">{member.name}</h3>
+                  <p className="text-green-600 mb-2 text-base sm:text-lg">{member.role}</p>
+                  <p className="text-gray-600 text-sm sm:text-base">
+                    <span className="font-medium">Minat:</span> {member.interest}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-gray-800 flex items-center">
