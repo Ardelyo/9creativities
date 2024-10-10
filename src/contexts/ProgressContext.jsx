@@ -2,7 +2,13 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const ProgressContext = createContext();
 
-export const useProgress = () => useContext(ProgressContext);
+export const useProgress = () => {
+  const context = useContext(ProgressContext);
+  if (context === undefined) {
+    throw new Error('useProgress must be used within a ProgressProvider');
+  }
+  return context;
+};
 
 export const ProgressProvider = ({ children }) => {
   const [progress, setProgress] = useState(() => {
