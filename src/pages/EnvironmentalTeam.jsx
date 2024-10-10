@@ -11,13 +11,14 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
-    { name: "Asyifa R", role: "Ahli Lingkungan", interest: "Konservasi Air", image: "/placeholder.svg" },
-    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "/placeholder.svg" },
-    { name: "Noval", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/placeholder.svg" },
-    { name: "Indina", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "/placeholder.svg" },
-    { name: "Ashyffa K", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/placeholder.svg" },
-    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/placeholder.svg" },
-    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/placeholder.svg" },
+    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "/8_20241010_163755_0006.png" },
+    { name: "Bayu", role: "Analis Lingkungan", interest: "Pemantauan Kualitas Udara", image: "/7_20241010_163755_0005.png" },
+    { name: "Asyifa R", role: "Ahli Konservasi", interest: "Konservasi Air", image: "/6_20241010_163755_0004.png" },
+    { name: "Asyifa K", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "/5_20241010_163755_0003.png" },
+    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/4_20241010_163755_0002.png" },
+    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/3_20241010_163755_0001.png" },
+    { name: "Indina", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/2_20241010_163755_0000.png" },
+    { name: "Novaldo", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/9_20241010_163756_0007.png" },
   ];
 
   const projects = [
@@ -142,7 +143,16 @@ const EnvironmentalTeam = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/placeholder.svg';
+                      console.error(`Failed to load image for ${member.name}: ${member.image}`);
+                    }}
+                  />
                   <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">{member.name}</h3>
                   <p className="text-green-600 mb-2 text-base sm:text-lg">{member.role}</p>
                   <p className="text-gray-600 text-sm sm:text-base">
