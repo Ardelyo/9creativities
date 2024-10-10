@@ -23,7 +23,16 @@ const FoodTeamMembers = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
+          <img 
+            src={member.image} 
+            alt={member.name} 
+            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = '/placeholder.svg';
+              console.error(`Failed to load image for ${member.name}: ${member.image}`);
+            }}
+          />
           <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
           <p className="text-orange-600 mb-2">{member.role}</p>
           <p className="text-gray-600">
