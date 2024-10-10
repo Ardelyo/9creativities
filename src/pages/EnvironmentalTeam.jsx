@@ -12,38 +12,38 @@ import EnvironmentalProjects from '../components/EnvironmentalProjects';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
-    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "/8_20241010_163755_0006.png" },
-    { name: "Bayu", role: "Analis Lingkungan", interest: "Pemantauan Kualitas Udara", image: "/7_20241010_163755_0005.png" },
-    { name: "Asyifa R", role: "Ahli Konservasi", interest: "Konservasi Air", image: "/6_20241010_163755_0004.png" },
-    { name: "Asyifa K", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "/5_20241010_163755_0003.png" },
-    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/4_20241010_163755_0002.png" },
-    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/3_20241010_163755_0001.png" },
-    { name: "Indina", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/2_20241010_163755_0000.png" },
-    { name: "Novaldo", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/9_20241010_163756_0007.png" },
+    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "https://i.ibb.co/3yXt8ft/8-20241010-163755-0006.png" },
+    { name: "Bayu", role: "Analis Lingkungan", interest: "Pemantauan Kualitas Udara", image: "https://i.ibb.co/9Nf2TQz/7-20241010-163755-0005.png" },
+    { name: "Asyifa R", role: "Ahli Konservasi", interest: "Konservasi Air", image: "https://i.ibb.co/GxzYn3t/6-20241010-163755-0004.png" },
+    { name: "Asyifa K", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "https://i.ibb.co/xShgDzS/5-20241010-163755-0003.png" },
+    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "https://i.ibb.co/9bZJnQV/4-20241010-163755-0002.png" },
+    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "https://i.ibb.co/NTTdGTy/3-20241010-163755-0001.png" },
+    { name: "Indina", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "https://i.ibb.co/YBvSTQT/2-20241010-163755-0000.png" },
+    { name: "Novaldo", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "https://i.ibb.co/3YWdbfT/9-20241010-163756-0007.png" },
   ];
 
   return (
     <DropletAnimation>
       <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
         <BackgroundArt />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <Link to="/" className="text-green-600 hover:text-green-800 transition-colors mb-8 inline-block text-xl">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <Link to="/" className="text-green-600 hover:text-green-800 transition-colors mb-8 inline-block">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
               Tim <span className="text-green-600">Teknologi Lingkungan</span>
             </h1>
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto mb-6"
+              className="h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto mb-4"
             />
           </motion.div>
           
@@ -51,13 +51,13 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-16 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800">Pengenalan Teknologi Lingkungan</h2>
-            <p className="text-gray-600 mb-6 text-base sm:text-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">Pengenalan Teknologi Lingkungan</h2>
+            <p className="text-gray-600 mb-4 text-base sm:text-lg">
               Teknologi Lingkungan adalah penerapan prinsip-prinsip ilmiah dan teknik untuk melindungi lingkungan alam dan sumber daya alam, serta mengurangi dampak negatif aktivitas manusia terhadap ekosistem. Fokus utamanya adalah pada pengelolaan air, udara, dan tanah, serta pengembangan solusi berkelanjutan untuk masalah lingkungan.
             </p>
-            <p className="text-gray-600 mb-6 text-base sm:text-lg">
+            <p className="text-gray-600 mb-4 text-base sm:text-lg">
               Tim kami berkomitmen untuk mengembangkan solusi inovatif yang membantu melestarikan lingkungan dan meningkatkan kualitas hidup masyarakat, dengan fokus khusus pada pengelolaan dan konservasi air.
             </p>
             <motion.h3 
@@ -77,40 +77,36 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-16 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-gray-800 flex items-center">
               <Users className="mr-3 text-green-600" /> Kenalan dengan Tim Kami
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {teamMembers.map((member, index) => {
-                const imagePath = `${window.location.origin}${member.image}`;
-                console.log(`Attempting to load image for ${member.name}: ${imagePath}`);
-                return (
-                  <motion.div
-                    key={index}
-                    className="bg-green-50 p-6 rounded-2xl text-center"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <img 
-                      src={imagePath} 
-                      alt={member.name} 
-                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover"
-                      onError={(e) => {
-                        console.error(`Failed to load image for ${member.name}: ${imagePath}`);
-                        e.target.onerror = null;
-                        e.target.src = `${window.location.origin}/placeholder.svg`;
-                      }}
-                    />
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
-                    <p className="text-green-600 mb-2">{member.role}</p>
-                    <p className="text-gray-600">
-                      <span className="font-medium">Minat:</span> {member.interest}
-                    </p>
-                  </motion.div>
-                );
-              })}
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-green-50 p-6 rounded-2xl text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover"
+                    onError={(e) => {
+                      console.error(`Failed to load image for ${member.name}: ${member.image}`);
+                      e.target.onerror = null;
+                      e.target.src = `${window.location.origin}/placeholder.svg`;
+                    }}
+                  />
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
+                  <p className="text-green-600 mb-2">{member.role}</p>
+                  <p className="text-gray-600">
+                    <span className="font-medium">Minat:</span> {member.interest}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
