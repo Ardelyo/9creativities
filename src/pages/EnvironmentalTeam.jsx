@@ -8,73 +8,10 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
+import EnvironmentalTeamMembers from '../components/EnvironmentalTeamMembers';
+import EnvironmentalProjects from '../components/EnvironmentalProjects';
 
 const EnvironmentalTeam = () => {
-  const teamMembers = [
-    { name: "Anandita", role: "Insinyur Lingkungan", interest: "Teknologi Ramah Lingkungan", image: "/8_20241010_163755_0006.png" },
-    { name: "Bayu", role: "Analis Lingkungan", interest: "Pemantauan Kualitas Udara", image: "/7_20241010_163755_0005.png" },
-    { name: "Asyifa R", role: "Ahli Konservasi", interest: "Konservasi Air", image: "/6_20241010_163755_0004.png" },
-    { name: "Asyifa K", role: "Spesialis Keberlanjutan", interest: "Manajemen Limbah", image: "/5_20241010_163755_0003.png" },
-    { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/4_20241010_163755_0002.png" },
-    { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/3_20241010_163755_0001.png" },
-    { name: "Indina", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/2_20241010_163755_0000.png" },
-    { name: "Novaldo", role: "Analis Kualitas Air", interest: "Pemantauan Ekosistem Air", image: "/9_20241010_163756_0007.png" },
-  ];
-
-  const projects = [
-    {
-      id: 1,
-      title: "Filter Air Ramah Lingkungan",
-      description: "Sistem pemurnian air menggunakan bahan alami dan berkelanjutan.",
-      image: "/placeholder.svg",
-      type: "water",
-      details: "Proyek Filter Air Ramah Lingkungan kami menggunakan kombinasi bahan alami seperti pasir, kerikil, arang aktif, dan tanaman air untuk menciptakan sistem pemurnian air yang efektif dan ramah lingkungan. Sistem ini dirancang untuk menghilangkan kontaminan dan menyediakan air bersih untuk komunitas lokal.",
-      howItWorks: [
-        "Pengumpulan dan persiapan bahan filter alami",
-        "Penyusunan lapisan filter dalam wadah berkelanjutan",
-        "Proses filtrasi air melalui lapisan-lapisan bahan alami",
-        "Pengujian kualitas air hasil filtrasi",
-        "Perawatan dan regenerasi bahan filter secara berkala",
-        "Edukasi masyarakat tentang penggunaan dan manfaat filter air"
-      ],
-      impact: "Proyek ini dapat menyediakan akses air bersih yang terjangkau bagi masyarakat, mengurangi risiko penyakit yang ditularkan melalui air, dan meningkatkan kesadaran tentang pentingnya konservasi air.",
-      photos: [
-        "/IMG-20240920-WA0078.jpg", "/IMG-20240920-WA0076.jpg", "/IMG-20240920-WA0081.jpg",
-        "/IMG-20240920-WA0072.jpg", "/IMG-20240920-WA0065.jpg", "/IMG-20240920-WA0066.jpg",
-        "/IMG-20240920-WA0062.jpg", "/IMG-20240920-WA0061.jpg", "/IMG-20240920-WA0063.jpg",
-        "/IMG-20240920-WA0060.jpg", "/IMG-20240920-WA0059.jpg", "/IMG-20240920-WA0058.jpg",
-        "/IMG-20240920-WA0070.jpg", "/IMG-20240920-WA0069.jpg", "/IMG-20240920-WA0031.jpg",
-        "/IMG-20240920-WA0030.jpg", "/IMG-20240920-WA0029.jpg", "/IMG-20240920-WA0027.jpg",
-        "/IMG-20240920-WA0026.jpg"
-      ],
-      documentation: "Dokumentasi lengkap meliputi desain sistem, hasil uji laboratorium, panduan pemeliharaan, dan laporan dampak lingkungan."
-    },
-  ];
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
   return (
     <DropletAnimation>
       <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
@@ -135,70 +72,10 @@ const EnvironmentalTeam = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-gray-800 flex items-center">
               <Users className="mr-3 text-green-600" /> Kenalan dengan Tim Kami
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-green-50 p-6 rounded-2xl text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/placeholder.svg';
-                      console.error(`Failed to load image for ${member.name}: ${member.image}`);
-                    }}
-                  />
-                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">{member.name}</h3>
-                  <p className="text-green-600 mb-2 text-base sm:text-lg">{member.role}</p>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    <span className="font-medium">Minat:</span> {member.interest}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+            <EnvironmentalTeamMembers />
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-gray-800 flex items-center">
-            <Droplet className="mr-3 text-green-600" /> Proyek Kami
-          </h2>
-          <div className="grid grid-cols-1 gap-16">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-xl"
-              >
-                <SliderDocumentationCard project={project} />
-                <div className="p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
-                    <Camera className="mr-3 text-green-600" /> Dokumentasi Proyek
-                  </h3>
-                  <Slider {...sliderSettings}>
-                    {project.photos.map((photo, index) => (
-                      <div key={index} className="px-2">
-                        <img 
-                          src={photo} 
-                          alt={`${project.title} foto ${index + 1}`} 
-                          className="rounded-lg shadow-md w-full h-64 object-cover"
-                        />
-                      </div>
-                    ))}
-                  </Slider>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-800 flex items-center">
-                    <FileText className="mr-3 text-green-600" /> Dokumentasi
-                  </h3>
-                  <p className="text-gray-600 text-base sm:text-lg">{project.documentation}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <EnvironmentalProjects />
         </div>
       </div>
     </DropletAnimation>
