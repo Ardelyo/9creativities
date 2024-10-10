@@ -13,8 +13,7 @@ const ProdukKami = () => {
       description: "Platform untuk memamerkan proyek inovatif dari berbagai tim teknologi.",
       icon: "🌐",
       tag: "Web Development",
-      link: "/",
-      category: "Teknologi Informasi"
+      link: "/"
     },
     {
       id: 2,
@@ -22,8 +21,7 @@ const ProdukKami = () => {
       description: "Asisten AI interaktif untuk menjawab pertanyaan tentang Nine Creativities.",
       icon: "🤖",
       tag: "AI",
-      link: "/robot-c",
-      category: "Teknologi Informasi"
+      link: "/robot-c"
     },
     {
       id: 3,
@@ -31,8 +29,7 @@ const ProdukKami = () => {
       description: "Alat untuk menghitung dan memvisualisasikan jejak karbon.",
       icon: "🌿",
       tag: "Environment",
-      link: "/carbon-calculator",
-      category: "Teknologi Lingkungan"
+      link: "/carbon-calculator"
     },
     {
       id: 4,
@@ -40,8 +37,7 @@ const ProdukKami = () => {
       description: "Kuis interaktif tentang lingkungan dengan 10 pertanyaan acak.",
       icon: "🎮",
       tag: "Education",
-      link: "/cihuy-quiz",
-      category: "Teknologi Komunikasi"
+      link: "/cihuy-quiz"
     },
     {
       id: 5,
@@ -49,8 +45,7 @@ const ProdukKami = () => {
       description: "Produk fermentasi kedelai kaya nutrisi dan probiotik.",
       icon: "🫘",
       tag: "Food Technology",
-      link: "/tempe",
-      category: "Teknologi Pangan"
+      link: "/tempe"
     },
     {
       id: 6,
@@ -58,8 +53,7 @@ const ProdukKami = () => {
       description: "Yoghurt probiotik dengan bahan baku lokal.",
       icon: "🥛",
       tag: "Food Technology",
-      link: "/yoghurt",
-      category: "Teknologi Pangan"
+      link: "/yoghurt"
     },
     {
       id: 7,
@@ -67,8 +61,7 @@ const ProdukKami = () => {
       description: "Makanan fermentasi tradisional dengan inovasi modern.",
       icon: "🍚",
       tag: "Food Technology",
-      link: "/tape",
-      category: "Teknologi Pangan"
+      link: "/tape"
     },
     {
       id: 8,
@@ -76,18 +69,9 @@ const ProdukKami = () => {
       description: "Sistem pemurnian air ramah lingkungan menggunakan bahan alami.",
       icon: "💧",
       tag: "Environmental Technology",
-      link: "/filter-air",
-      category: "Teknologi Lingkungan"
+      link: "/filter-air"
     },
   ];
-
-  const groupedProducts = products.reduce((acc, product) => {
-    if (!acc[product.category]) {
-      acc[product.category] = [];
-    }
-    acc[product.category].push(product);
-    return acc;
-  }, {});
 
   return (
     <DropletAnimation>
@@ -111,47 +95,39 @@ const ProdukKami = () => {
             </p>
           </motion.div>
           
-          {Object.entries(groupedProducts).map(([category, categoryProducts]) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-12"
-            >
-              <h2 className="text-2xl font-bold text-blue-600 mb-6">{category}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categoryProducts.map((product) => (
-                  <motion.div
-                    key={product.id}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200"
-                  >
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-4xl">{product.icon}</span>
-                        {product.id === 4 && (
-                          <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
-                            New
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                      <p className="text-gray-600 mb-4">{product.description}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-blue-600">{product.tag}</span>
-                        <Link
-                          to={product.link}
-                          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
-                        >
-                          Learn More →
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {products.map((product) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200"
+              >
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-4xl">{product.icon}</span>
+                    {product.id === 4 && (
+                      <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
+                        New
+                      </span>
+                    )}
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h2>
+                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-blue-600">{product.tag}</span>
+                    <Link
+                      to={product.link}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+                    >
+                      Learn More →
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </DropletAnimation>
