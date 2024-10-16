@@ -8,15 +8,15 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Julia", role: "PR Specialist", interest: "Media Relations", image: "/2_20240926_191949_0000.png" },
-    { name: "Zaki", role: "Spesialis Media Sosial", interest: "Digital Marketing", image: "/3_20240926_191950_0001.png" },
-    { name: "Pandu", role: "Content Creator", interest: "Video Production", image: "/4_20240926_191950_0002.png" },
-    { name: "Ilham", role: "Graphic Designer", interest: "Visual Communication", image: "/5_20240926_191951_0003.png" },
-    { name: "Rahmat", role: "Copywriter", interest: "Storytelling", image: "/6_20240926_191951_0004.png" },
-    { name: "Salwa", role: "Community Manager", interest: "Social Media Engagement", image: "/7_20240926_191951_0005.png" },
-    { name: "Keyla", role: "Data Analyst", interest: "Analytics and Reporting", image: "/8_20240926_191952_0006.png" },
-    { name: "Andika", role: "SEO Specialist", interest: "Search Engine Optimization", image: "/9_20240926_191952_0007.png" },
-    { name: "Aulia", role: "Event Coordinator", interest: "Virtual Events", image: "/10_20240926_191952_0008.png" },
+    { name: "Zaki", role: "Spesialis Media Sosial", interest: "Digital Marketing", image: "/placeholder.svg" },
+    { name: "Pandu", role: "Content Creator", interest: "Video Production", image: "/placeholder.svg" },
+    { name: "Ilham", role: "Graphic Designer", interest: "Visual Communication", image: "/placeholder.svg" },
+    { name: "Rahmat", role: "Copywriter", interest: "Storytelling", image: "/placeholder.svg" },
+    { name: "Salwa", role: "Community Manager", interest: "Social Media Engagement", image: "/placeholder.svg" },
+    { name: "Keyla", role: "Data Analyst", interest: "Analytics and Reporting", image: "/placeholder.svg" },
+    { name: "Julia", role: "PR Specialist", interest: "Media Relations", image: "/placeholder.svg" },
+    { name: "Andika", role: "SEO Specialist", interest: "Search Engine Optimization", image: "/placeholder.svg" },
+    { name: "Aulia", role: "Event Coordinator", interest: "Virtual Events", image: "/placeholder.svg" },
   ];
 
   const projects = [

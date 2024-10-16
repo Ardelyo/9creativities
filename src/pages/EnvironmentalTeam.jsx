@@ -2,9 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Droplet, Users, FileText, Camera } from 'lucide-react';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
@@ -37,42 +34,10 @@ const EnvironmentalTeam = () => {
         "Edukasi masyarakat tentang penggunaan dan manfaat filter air"
       ],
       impact: "Proyek ini dapat menyediakan akses air bersih yang terjangkau bagi masyarakat, mengurangi risiko penyakit yang ditularkan melalui air, dan meningkatkan kesadaran tentang pentingnya konservasi air.",
-      photos: [
-        "/IMG-20240920-WA0078.jpg", "/IMG-20240920-WA0076.jpg", "/IMG-20240920-WA0081.jpg",
-        "/IMG-20240920-WA0072.jpg", "/IMG-20240920-WA0065.jpg", "/IMG-20240920-WA0066.jpg",
-        "/IMG-20240920-WA0062.jpg", "/IMG-20240920-WA0061.jpg", "/IMG-20240920-WA0063.jpg",
-        "/IMG-20240920-WA0060.jpg", "/IMG-20240920-WA0059.jpg", "/IMG-20240920-WA0058.jpg",
-        "/IMG-20240920-WA0070.jpg", "/IMG-20240920-WA0069.jpg", "/IMG-20240920-WA0031.jpg",
-        "/IMG-20240920-WA0030.jpg", "/IMG-20240920-WA0029.jpg", "/IMG-20240920-WA0027.jpg",
-        "/IMG-20240920-WA0026.jpg"
-      ],
+      photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
       documentation: "Dokumentasi lengkap meliputi desain sistem, hasil uji laboratorium, panduan pemeliharaan, dan laporan dampak lingkungan."
     },
   ];
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
 
   return (
     <DropletAnimation>
@@ -168,20 +133,21 @@ const EnvironmentalTeam = () => {
                 <SliderDocumentationCard project={project} />
                 <div className="p-6 sm:p-8">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
-                    <Camera className="mr-3 text-green-600" /> Dokumentasi Proyek
+                    <Camera className="mr-3 text-green-600" /> Foto Proyek
                   </h3>
-                  <Slider {...sliderSettings}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
                     {project.photos.map((photo, index) => (
-                      <div key={index} className="px-2">
-                        <img 
-                          src={photo} 
-                          alt={`${project.title} foto ${index + 1}`} 
-                          className="rounded-lg shadow-md w-full h-64 object-cover"
-                        />
-                      </div>
+                      <motion.img 
+                        key={index} 
+                        src={photo} 
+                        alt={`${project.title} foto ${index + 1}`} 
+                        className="rounded-2xl shadow-md w-full h-48 sm:h-64 object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      />
                     ))}
-                  </Slider>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-800 flex items-center">
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
                     <FileText className="mr-3 text-green-600" /> Dokumentasi
                   </h3>
                   <p className="text-gray-600 text-base sm:text-lg">{project.documentation}</p>
