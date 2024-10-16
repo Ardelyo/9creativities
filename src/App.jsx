@@ -3,7 +3,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import React, { Suspense, lazy } from 'react';
 import DynamicIsland from "./components/DynamicIsland";
 import Index from "./pages/Index";
 import OurClass from "./pages/OurClass";
@@ -19,8 +18,6 @@ import Tempe from "./pages/Tempe";
 import Yoghurt from "./pages/Yoghurt";
 import Tape from "./pages/Tape";
 import FilterAir from "./pages/FilterAir";
-
-const Artikel = lazy(() => import('./pages/Artikel'));
 
 const queryClient = new QueryClient();
 
@@ -48,11 +45,6 @@ const App = () => (
                 <Route path="/yoghurt" element={<Yoghurt />} />
                 <Route path="/tape" element={<Tape />} />
                 <Route path="/filter-air" element={<FilterAir />} />
-                <Route path="/artikel" element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <Artikel />
-                  </Suspense>
-                } />
               </Routes>
             </AnimatePresence>
           </div>
