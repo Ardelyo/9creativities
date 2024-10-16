@@ -17,7 +17,7 @@ const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, sele
         {question.options.map((option, index) => (
           <Button
             key={index}
-            onClick={() => onAnswer(option === question.correctAnswer)}
+            onClick={() => onAnswer(option)}
             disabled={selectedAnswer !== null}
             className={`w-full justify-start text-left py-3 px-4 ${
               selectedAnswer !== null
