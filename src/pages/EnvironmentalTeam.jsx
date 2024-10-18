@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Droplet, Users, FileText, Camera } from 'lucide-react';
+import { ArrowLeft, Droplet, FileText, Camera } from 'lucide-react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -122,9 +122,6 @@ const EnvironmentalTeam = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mb-16 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-gray-800 flex items-center">
-              <Users className="mr-3 text-green-600" /> Kenalan dengan Tim Kami
-            </h2>
             <EnvironmentalTeamMembers />
           </motion.div>
 
