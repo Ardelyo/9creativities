@@ -5,7 +5,6 @@ import { ArrowLeft, ChevronDown, ChevronUp, Lightbulb, ExternalLink, BookOpen, C
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from 'react-markdown';
 import { Card } from "@/components/ui/card";
-import BackgroundArt from '../components/BackgroundArt';
 
 const Artikel = () => {
   const [expandedArticle, setExpandedArticle] = useState(null);
@@ -84,9 +83,8 @@ Teknologi akan terus berevolusi dan mempengaruhi kehidupan kita. Penting bagi ki
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-4 sm:p-8">
-      <BackgroundArt />
-      <div className="max-w-4xl mx-auto relative z-10">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
+      <div className="max-w-4xl mx-auto">
         <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
         </Link>
@@ -104,54 +102,30 @@ Teknologi akan terus berevolusi dan mempengaruhi kehidupan kita. Penting bagi ki
               key={index}
               className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <motion.img 
-                src={article.image} 
-                alt={article.title} 
-                className="w-full h-64 object-cover"
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              />
+              <img src={article.image} alt={article.title} className="w-full h-64 object-cover" />
               <div className="p-6">
-                <motion.h2 
-                  className="text-3xl font-bold mb-2 text-gray-800"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  {article.title}
-                </motion.h2>
-                <motion.div 
-                  className="flex items-center text-sm text-gray-600 mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                >
+                <h2 className="text-3xl font-bold mb-2 text-gray-800">{article.title}</h2>
+                <div className="flex items-center text-sm text-gray-600 mb-4">
                   <BookOpen className="w-4 h-4 mr-1" />
                   <span className="mr-4">oleh: {article.author}</span>
                   <Clock className="w-4 h-4 mr-1" />
                   <span>{article.readTime}</span>
-                </motion.div>
-                <motion.div 
-                  className="flex flex-wrap gap-2 mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                >
+                </div>
+                <div className="flex flex-wrap gap-2 mb-4">
                   {article.tags.map((tag, tagIndex) => (
                     <span key={tagIndex} className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded flex items-center">
                       <Tag className="w-3 h-3 mr-1" />
                       {tag}
                     </span>
                   ))}
-                </motion.div>
+                </div>
                 <AnimatePresence>
                   {expandedArticle === index ? (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      transition={{ duration: 0.3 }}
                       className="prose max-w-none"
                     >
                       <ReactMarkdown
