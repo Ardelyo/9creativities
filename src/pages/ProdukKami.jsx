@@ -79,6 +79,15 @@ const ProdukKami = () => {
       link: "/filter-air",
       category: "Teknologi Lingkungan"
     },
+    {
+      id: 9,
+      name: "Cocok Kaga?",
+      description: "Cek kecocokan nama pasangan secara menyenangkan!",
+      icon: "❤️",
+      tag: "Fun",
+      link: "/cocok-kaga",
+      category: "Teknologi Komunikasi"
+    },
   ];
 
   const groupedProducts = products.reduce((acc, product) => {
