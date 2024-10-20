@@ -1,10 +1,10 @@
 import { toast } from "@/components/ui/use-toast";
 
 const greetings = [
-  "Halo! 👋 Apa kabar?",
-  "Hai sobat! 😊 Semoga harimu menyenangkan!",
-  "Selamat datang di Nine Creativities! 🎉",
-  "Hei there! 🌟 Siap untuk berinovasi?",
+  "Halo! 👋 Ada yang bisa saya bantu?",
+  "Hai! 😊 Apa yang ingin kamu ketahui tentang Nine Creativities?",
+  "Selamat datang di Nine Creativities! 🎉 Apa yang membuatmu penasaran?",
+  "Hei there! 🌟 Mau tahu lebih banyak tentang proyek kami?",
 ];
 
 const emojis = ["😊", "👍", "🚀", "💡", "🌈", "🎨", "🔬", "🌱", "🤖", "📚"];
@@ -19,7 +19,7 @@ const funFacts = [
 const getRandomItem = (array) => array[Math.floor(Math.random() * array.length)];
 
 const processMessage = (message) => {
-  let response = `${getRandomItem(greetings)}\n\n`;
+  let response = "";
 
   if (message.toLowerCase().includes("nine creativities")) {
     response += "Nine Creativities adalah showcase inovasi teknologi yang keren dari siswa kelas 9C! 🎓💡 Kami fokus pada 4 bidang teknologi: Lingkungan, Pangan, Informasi, dan Komunikasi. Keren kan? 😎\n\n";
@@ -39,6 +39,10 @@ const processMessage = (message) => {
 
   if (message.toLowerCase().includes("komunikasi")) {
     response += "Tim Teknologi Komunikasi kami sedang membuat Kampanye Edukasi Teknologi yang seru abis! 📢🎨 Penasaran?\n\n";
+  }
+
+  if (response === "") {
+    response += "Terima kasih atas pertanyaanmu! Sayangnya, saya belum memiliki informasi spesifik tentang itu. Tapi, aku bisa cerita banyak tentang proyek-proyek Nine Creativities. Mau tahu yang mana? 😊\n\n";
   }
 
   response += `${getRandomItem(funFacts)}\n\n`;
@@ -66,7 +70,7 @@ export const handleSendMessage = async (apiKey, message, setChat, setIsLoading) 
             {
               parts: [
                 {
-                  text: `${processMessage(message)}`,
+                  text: `Kamu adalah Robot C, asisten AI yang cerdas dan ramah untuk Nine Creativities. Berikan respons untuk pesan berikut dengan gaya yang santai, informatif, dan menggunakan emoji yang sesuai: ${message}`,
                 },
               ],
             },
@@ -97,3 +101,9 @@ export const handleSendMessage = async (apiKey, message, setChat, setIsLoading) 
     setIsLoading(false);
   }
 };
+
+export const getPromptSuggestions = () => [
+  "Apa itu Nine Creativities?",
+  "Ceritakan tentang proyek lingkungan",
+  "Apa saja inovasi teknologi pangan?",
+];
