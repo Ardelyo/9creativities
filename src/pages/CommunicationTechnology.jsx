@@ -5,7 +5,6 @@ import { ArrowLeft, Wifi, Users, FileText, Camera } from 'lucide-react';
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
-import AISummary from '../components/AISummary';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
@@ -67,17 +66,25 @@ const CommunicationTechnology = () => {
             />
           </motion.div>
           
-          <AISummary>
-            Tim Teknologi Komunikasi Nine Creativities berfokus pada penciptaan konten edukatif tentang teknologi. 
-            Proyek utama mereka adalah Kampanye Edukasi Teknologi, yang bertujuan mengkomunikasikan ide-ide kompleks 
-            dalam format yang menarik dan mudah dipahami. Tim ini menggunakan berbagai media digital untuk menyebarkan 
-            informasi tentang teknologi informasi, komunikasi, pangan, dan lingkungan kepada berbagai kalangan.
-          </AISummary>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">Pengenalan Teknologi Komunikasi</h2>
+            <p className="text-gray-600 mb-4 text-base sm:text-lg">
+              Teknologi Komunikasi adalah perangkat dan sistem yang memungkinkan pertukaran informasi antara individu atau kelompok. Ini mencakup berbagai media dan alat, mulai dari telepon seluler hingga internet dan media sosial, yang memfasilitasi komunikasi jarak jauh dan penyebaran informasi secara luas.
+            </p>
+            <p className="text-gray-600 mb-4 text-base sm:text-lg">
+              Dalam konteks Nine Creativities, tim Teknologi Komunikasi berperan penting dalam menciptakan dan menyebarkan konten edukatif tentang berbagai aspek teknologi. Mereka bertanggung jawab untuk mengkomunikasikan ide-ide kompleks tentang teknologi informasi, komunikasi, pangan, dan lingkungan dalam format yang menarik dan mudah dipahami oleh berbagai kalangan.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">

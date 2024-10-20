@@ -9,7 +9,6 @@ import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
 import FoodSafetyQuiz from '../components/FoodSafetyQuiz';
-import AISummary from '../components/AISummary';
 
 const FoodTeam = () => {
   const teamMembers = [
@@ -147,12 +146,6 @@ const FoodTeam = () => {
             />
           </motion.div>
           
-          <AISummary>
-            Tim Teknologi Pangan Nine Creativities berfokus pada pengembangan produk pangan yang aman, bergizi, dan inovatif. 
-            Proyek utama meliputi produksi Tempe, Yoghurt Probiotik, dan Tape, menggabungkan pengetahuan tradisional dengan teknologi modern. 
-            Tim ini bertujuan menciptakan makanan sehat yang mendukung gaya hidup berkelanjutan, menggunakan bahan baku lokal berkualitas tinggi.
-          </AISummary>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

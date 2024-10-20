@@ -5,7 +5,6 @@ import { ArrowLeft, Cpu, Users, FileText, Camera } from 'lucide-react';
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
-import AISummary from '../components/AISummary';
 
 const InformationTechnology = () => {
   const teamMembers = [
@@ -66,13 +65,6 @@ const InformationTechnology = () => {
             />
           </motion.div>
           
-          <AISummary>
-            Tim Teknologi Informasi Nine Creativities bertanggung jawab atas pengembangan website Nine Creativities. 
-            Menggunakan teknologi modern seperti React dan Tailwind CSS, tim ini menciptakan platform yang memamerkan 
-            proyek-proyek inovatif dari berbagai tim teknologi. Fokus utama mereka adalah pada desain yang ramah pengguna 
-            dan aksesibilitas, memastikan pengalaman yang menarik dan responsif bagi pengunjung website.
-          </AISummary>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
