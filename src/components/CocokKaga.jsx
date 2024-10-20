@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Loader, Smile, Star, ArrowLeft } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Link } from 'react-router-dom';
-
-// Simple dataset for name compatibility
-const nameCompatibility = {
-  vowels: { a: 1, e: 2, i: 3, o: 4, u: 5 },
-  consonants: { b: 1, c: 2, d: 3, f: 4, g: 5, h: 6, j: 7, k: 8, l: 9, m: 10, n: 11, p: 12, q: 13, r: 14, s: 15, t: 16, v: 17, w: 18, x: 19, y: 20, z: 21 }
-};
 
 const CocokKaga = () => {
   const [name1, setName1] = useState('');
@@ -34,24 +28,10 @@ const CocokKaga = () => {
 
     // Simulate API call with setTimeout
     setTimeout(() => {
-      const score1 = calculateNameScore(name1.toLowerCase());
-      const score2 = calculateNameScore(name2.toLowerCase());
-      const compatibility = Math.floor((score1 + score2) / 2);
+      const compatibility = Math.floor(Math.random() * 101);
       setResult(compatibility);
       setIsLoading(false);
     }, 2000);
-  };
-
-  const calculateNameScore = (name) => {
-    let score = 0;
-    for (let char of name) {
-      if (char in nameCompatibility.vowels) {
-        score += nameCompatibility.vowels[char];
-      } else if (char in nameCompatibility.consonants) {
-        score += nameCompatibility.consonants[char];
-      }
-    }
-    return (score % 101); // Ensure score is between 0-100
   };
 
   const getResultColor = (score) => {
