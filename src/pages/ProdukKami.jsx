@@ -32,7 +32,7 @@ const ProdukKami = () => {
       icon: "🌿",
       tag: "Environment",
       link: "/carbon-calculator",
-      category: "Teknologi Lingkungan"
+      category: "Teknologi Informasi"
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ const ProdukKami = () => {
       icon: "🎮",
       tag: "Education",
       link: "/cihuy-quiz",
-      category: "Teknologi Komunikasi"
+      category: "Teknologi Informasi"
     },
     {
       id: 5,
@@ -78,6 +78,15 @@ const ProdukKami = () => {
       tag: "Environmental Technology",
       link: "/filter-air",
       category: "Teknologi Lingkungan"
+    },
+    {
+      id: 9,
+      name: "Dokumentasi Proyek",
+      description: "Kumpulan dokumentasi lengkap dari semua proyek Nine Creativities.",
+      icon: "📚",
+      tag: "Documentation",
+      link: "/dokumentasi",
+      category: "Teknologi Komunikasi"
     },
   ];
 
