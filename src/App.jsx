@@ -19,7 +19,6 @@ import Yoghurt from "./pages/Yoghurt";
 import Tape from "./pages/Tape";
 import FilterAir from "./pages/FilterAir";
 import Artikel from "./pages/Artikel";
-import CocokKaga from "./components/CocokKaga";
 
 const queryClient = new QueryClient();
 
@@ -48,7 +47,6 @@ const App = () => (
                 <Route path="/tape" element={<Tape />} />
                 <Route path="/filter-air" element={<FilterAir />} />
                 <Route path="/artikel" element={<Artikel />} />
-                <Route path="/cocok-kaga" element={<CocokKaga />} />
               </Routes>
             </AnimatePresence>
           </div>
