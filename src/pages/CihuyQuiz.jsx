@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Volume2, VolumeX } from 'lucide-react';
+import { ArrowLeft, Shuffle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import BackgroundArt from '../components/BackgroundArt';
-import { getRandomQuestions } from '../data/quizQuestions';
+import { allQuestions } from '../data/quizQuestions';
 import QuizQuestion from '../components/QuizQuestion';
 import QuizResult from '../components/QuizResult';
 
@@ -14,72 +13,66 @@ const CihuyQuiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [currentRound, setCurrentRound] = useState(1);
-  const [audioEnabled, setAudioEnabled] = useState(true);
-  const [showAudioPlayer, setShowAudioPlayer] = useState(false);
+  const [attemptsLeft, setAttemptsLeft] = useState(4);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [showExplanation, setShowExplanation] = useState(false);
 
-  const correctAudioRef = useRef(new Audio('/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3'));
-  const incorrectAudioRef = useRef(new Audio('/y2mate.com - meme ketawa prindapan.mp3'));
-  const highScoreAudioRef = useRef(new Audio('/y2mate.com - YAY Kids Celebration Sound Effect Free Download.mp3'));
-  const lowScoreAudioRef = useRef(new Audio('/y2mate.com - Ini Parah Nih Haha  Sound Effect Indonesia.mp3'));
+  const correctAudio = new Audio('public/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3');
+  const incorrectAudio = new Audio('public/y2mate.com - meme ketawa prindapan.mp3');
+  const highScoreAudio = new Audio('public/y2mate.com - YAY Kids Celebration Sound Effect Free Download.mp3');
+  const lowScoreAudio = new Audio('public/y2mate.com - Ini Parah Nih Haha  Sound Effect Indonesia.mp3');
 
   useEffect(() => {
-    startNewRound();
-  }, [currentRound]);
+    startNewQuiz();
+  }, []);
 
-  const startNewRound = () => {
-    const newQuestions = getRandomQuestions(5);
-    setQuestions(newQuestions);
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  const startNewQuiz = () => {
+    const shuffledQuestions = shuffleArray(allQuestions).slice(0, 10);
+    const questionsWithRandomizedOptions = shuffledQuestions.map(question => ({
+      ...question,
+      options: shuffleArray(question.options)
+    }));
+    setQuestions(questionsWithRandomizedOptions);
     setCurrentQuestionIndex(0);
     setScore(0);
     setQuizCompleted(false);
+    setAttemptsLeft(prev => prev - 1);
     setSelectedAnswer(null);
-    setShowExplanation(false);
   };
 
   const handleAnswer = (answer) => {
-    if (selectedAnswer !== null) return; // Prevent multiple answers
-
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = answer === currentQuestion.correctAnswer;
     setSelectedAnswer(answer);
 
     if (isCorrect) {
       setScore(score + 1);
-      if (audioEnabled) correctAudioRef.current.play().catch(error => console.error("Error playing audio:", error));
+      correctAudio.play().catch(error => console.error("Error playing audio:", error));
     } else {
-      if (audioEnabled) incorrectAudioRef.current.play().catch(error => console.error("Error playing audio:", error));
+      incorrectAudio.play().catch(error => console.error("Error playing audio:", error));
     }
-
-    setShowExplanation(true);
   };
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
-      setShowExplanation(false);
     } else {
-      if (currentRound < 4) {
-        setCurrentRound(currentRound + 1);
+      setQuizCompleted(true);
+      if (score > 6) {
+        highScoreAudio.play().catch(error => console.error("Error playing audio:", error));
       } else {
-        setQuizCompleted(true);
-        if (audioEnabled) {
-          if (score > 15) {
-            highScoreAudioRef.current.play().catch(error => console.error("Error playing audio:", error));
-          } else {
-            lowScoreAudioRef.current.play().catch(error => console.error("Error playing audio:", error));
-          }
-        }
+        lowScoreAudio.play().catch(error => console.error("Error playing audio:", error));
       }
     }
-  };
-
-  const toggleAudio = () => {
-    setAudioEnabled(!audioEnabled);
-    setShowAudioPlayer(!audioEnabled);
   };
 
   return (
@@ -96,34 +89,15 @@ const CihuyQuiz = () => {
           className="text-center mb-8"
         >
           <h1 className="text-5xl sm:text-7xl font-bold mb-4 text-blue-600">Cihuy Quiz</h1>
-          <p className="text-xl text-gray-600">Uji pengetahuanmu tentang proyek Nine Creativities!</p>
-          <p className="text-lg text-gray-600 mt-2">Round {currentRound} of 4</p>
+          <p className="text-xl text-gray-600">Uji pengetahuanmu tentang lingkungan!</p>
         </motion.div>
         
-        <div className="flex justify-end items-center mb-4">
-          <span className="mr-2">{audioEnabled ? <Volume2 /> : <VolumeX />}</span>
-          <Switch checked={audioEnabled} onCheckedChange={toggleAudio} />
-          <span className="ml-2">{audioEnabled ? "Audio Aktif" : "Audio Non-aktif"}</span>
-        </div>
-
-        {showAudioPlayer && (
-          <div className="mb-4 p-4 bg-white rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold mb-2">Audio Player</h3>
-            <audio controls className="w-full">
-              <source src="/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        )}
-
         {quizCompleted ? (
           <QuizResult 
             score={score} 
-            totalQuestions={questions.length * 4}
-            onRestart={() => {
-              setCurrentRound(1);
-              startNewRound();
-            }}
+            totalQuestions={questions.length} 
+            attemptsLeft={attemptsLeft}
+            onRestart={startNewQuiz}
           />
         ) : questions[currentQuestionIndex] ? (
           <>
@@ -133,18 +107,16 @@ const CihuyQuiz = () => {
               questionNumber={currentQuestionIndex + 1}
               totalQuestions={questions.length}
               selectedAnswer={selectedAnswer}
-              showExplanation={showExplanation}
             />
-            {selectedAnswer !== null && (
-              <div className="mt-6 flex justify-end">
-                <Button 
-                  onClick={handleNextQuestion} 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  {currentQuestionIndex === questions.length - 1 ? "Selesai" : "Selanjutnya"}
-                </Button>
-              </div>
-            )}
+            <div className="mt-6 flex justify-end">
+              <Button 
+                onClick={handleNextQuestion} 
+                disabled={selectedAnswer === null}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                {currentQuestionIndex === questions.length - 1 ? "Selesai" : "Selanjutnya"}
+              </Button>
+            </div>
           </>
         ) : null}
       </div>

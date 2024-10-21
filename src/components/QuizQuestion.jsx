@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 
-const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, selectedAnswer, showExplanation }) => {
+const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, selectedAnswer }) => {
   return (
     <motion.div
       key={questionNumber}
@@ -18,8 +18,9 @@ const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, sele
           <Button
             key={index}
             onClick={() => onAnswer(option)}
+            disabled={selectedAnswer !== null}
             className={`w-full justify-start text-left py-3 px-4 ${
-              selectedAnswer
+              selectedAnswer !== null
                 ? option === question.correctAnswer
                   ? 'bg-green-500 hover:bg-green-600 text-white'
                   : option === selectedAnswer
@@ -27,14 +28,13 @@ const QuizQuestion = ({ question, onAnswer, questionNumber, totalQuestions, sele
                   : 'bg-gray-200 text-gray-800'
                 : 'bg-blue-100 hover:bg-blue-200 text-blue-800'
             }`}
-            disabled={selectedAnswer !== null}
           >
             {option}
           </Button>
         ))}
       </div>
       <AnimatePresence>
-        {showExplanation && (
+        {selectedAnswer !== null && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
