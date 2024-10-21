@@ -17,6 +17,8 @@ const CihuyQuiz = () => {
   const [currentRound, setCurrentRound] = useState(1);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [showAudioPlayer, setShowAudioPlayer] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [showExplanation, setShowExplanation] = useState(false);
 
   const correctAudioRef = useRef(new Audio('/y2mate.com - BACKSOUND CIHUY backsound meme mentahan soundefek.mp3'));
   const incorrectAudioRef = useRef(new Audio('/y2mate.com - meme ketawa prindapan.mp3'));
@@ -33,11 +35,16 @@ const CihuyQuiz = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
     setQuizCompleted(false);
+    setSelectedAnswer(null);
+    setShowExplanation(false);
   };
 
   const handleAnswer = (answer) => {
+    if (selectedAnswer !== null) return; // Prevent multiple answers
+
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = answer === currentQuestion.correctAnswer;
+    setSelectedAnswer(answer);
 
     if (isCorrect) {
       setScore(score + 1);
@@ -46,8 +53,14 @@ const CihuyQuiz = () => {
       if (audioEnabled) incorrectAudioRef.current.play().catch(error => console.error("Error playing audio:", error));
     }
 
+    setShowExplanation(true);
+  };
+
+  const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswer(null);
+      setShowExplanation(false);
     } else {
       if (currentRound < 4) {
         setCurrentRound(currentRound + 1);
@@ -113,12 +126,26 @@ const CihuyQuiz = () => {
             }}
           />
         ) : questions[currentQuestionIndex] ? (
-          <QuizQuestion
-            question={questions[currentQuestionIndex]}
-            onAnswer={handleAnswer}
-            questionNumber={currentQuestionIndex + 1}
-            totalQuestions={questions.length}
-          />
+          <>
+            <QuizQuestion
+              question={questions[currentQuestionIndex]}
+              onAnswer={handleAnswer}
+              questionNumber={currentQuestionIndex + 1}
+              totalQuestions={questions.length}
+              selectedAnswer={selectedAnswer}
+              showExplanation={showExplanation}
+            />
+            {selectedAnswer !== null && (
+              <div className="mt-6 flex justify-end">
+                <Button 
+                  onClick={handleNextQuestion} 
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  {currentQuestionIndex === questions.length - 1 ? "Selesai" : "Selanjutnya"}
+                </Button>
+              </div>
+            )}
+          </>
         ) : null}
       </div>
     </div>
