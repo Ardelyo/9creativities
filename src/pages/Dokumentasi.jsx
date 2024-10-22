@@ -4,7 +4,41 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, FileText } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 
+const YouTubeEmbed = ({ embedId, title }) => (
+  <div className="video-responsive mb-8">
+    <h3 className="text-xl font-semibold mb-2">{title}</h3>
+    <iframe
+      width="100%"
+      height="315"
+      src={`https://www.youtube.com/embed/${embedId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title={title}
+    />
+  </div>
+);
+
 const Dokumentasi = () => {
+  const videos = [
+    {
+      embedId: "k2fI36laE2s",
+      title: "TUGAS P5 KELOMPOK TEKNOLOGI PANGAN: TEMPE, TAPE, YOGHURT HOME MADE. SIMPEL DAN ENAK."
+    },
+    {
+      embedId: "x6grfML5RMA",
+      title: "TUGAS P5 KELOMPOK TEKNOLOGI LINGKUNGAN: MEMBUAT FILTER AIR DENGAN CARA DAN BAHAN YANG ADA, MUDAH"
+    },
+    {
+      embedId: "ZxnHeyrPLug",
+      title: "TUGAS P5 KELOMPOK TEKNOLOGI KOMUNIKASI: KEGIATAN SOSIALISASI DI SEKOLAH MENGENAI TΕΚΡΑΝ, ΤΕΚNOLOGI KOMUNIKASI"
+    },
+    {
+      embedId: "8c5T2Ktc7lw",
+      title: "TUGAS P5 KELOMPOK TEKNOLOGI KOMUNIKASI: KUNJUNGAN KE PDAM TIRTA WENING SERU DAN MENYENANGKAN!!"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
       <BackgroundArt />
@@ -28,15 +62,11 @@ const Dokumentasi = () => {
         
         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
           <h2 className="text-2xl font-bold mb-4 flex items-center">
-            <FileText className="mr-2" /> Daftar Dokumentasi
+            <FileText className="mr-2" /> Video Dokumentasi Proyek
           </h2>
-          <p className="text-gray-600 mb-4">
-            Halaman ini akan berisi tautan ke dokumentasi lengkap untuk setiap proyek Nine Creativities.
-            Saat ini, kami sedang dalam proses mengumpulkan dan menyusun semua dokumentasi.
-          </p>
-          <p className="text-gray-600">
-            Silakan kembali lagi nanti untuk melihat update terbaru mengenai dokumentasi proyek kami.
-          </p>
+          {videos.map((video, index) => (
+            <YouTubeEmbed key={index} embedId={video.embedId} title={video.title} />
+          ))}
         </div>
       </div>
     </div>
