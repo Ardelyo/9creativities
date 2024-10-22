@@ -18,6 +18,7 @@ const EnvironmentalTeam = () => {
     { name: "Ashyffa K", role: "Edukator Lingkungan", interest: "Kesadaran Lingkungan", image: "/placeholder.svg" },
     { name: "Aldy", role: "Teknisi Lingkungan", interest: "Pengolahan Air Limbah", image: "/placeholder.svg" },
     { name: "Aira", role: "Peneliti Ekologi", interest: "Restorasi Ekosistem", image: "/placeholder.svg" },
+    { name: "Bayu P", role: "Penyiap Bahan", interest: "Mengurangi Polusi Karbon", image: "/placeholder.svg" },
   ];
 
   const projects = [
@@ -111,17 +112,6 @@ const EnvironmentalTeam = () => {
             </p>
             <p className="text-gray-600 mb-6 text-base sm:text-lg">
               Tim kami berkomitmen untuk mengembangkan solusi inovatif yang membantu melestarikan lingkungan dan meningkatkan kualitas hidup masyarakat, dengan fokus khusus pada pengelolaan dan konservasi air.
-            </p>
-            <motion.h3 
-              className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-green-600"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              Kunjungan ke PDAM Tirtawening
-            </motion.h3>
-            <p className="text-gray-600 text-base sm:text-lg">
-              Sebagai bagian dari proyek kami, tim Teknologi Lingkungan berkesempatan mengunjungi PDAM Tirtawening. Kunjungan ini memberikan wawasan berharga tentang proses pengolahan air bersih skala besar dan praktik manajemen air yang efisien. Pengalaman ini memperkaya pemahaman kami tentang teknologi pengolahan air dan menginspirasi pengembangan proyek Filter Air Ramah Lingkungan kami.
             </p>
           </motion.div>
 
