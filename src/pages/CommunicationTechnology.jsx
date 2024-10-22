@@ -8,37 +8,15 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Julia", role: "PR Specialist", interest: "Media Relations", image: "/2_20240926_191949_0000.png" },
-    { name: "Zaki", role: "Spesialis Media Sosial", interest: "Digital Marketing", image: "/3_20240926_191950_0001.png" },
-    { name: "Pandu", role: "Content Creator", interest: "Video Production", image: "/4_20240926_191950_0002.png" },
-    { name: "Ilham", role: "Graphic Designer", interest: "Visual Communication", image: "/5_20240926_191951_0003.png" },
-    { name: "Rahmat", role: "Copywriter", interest: "Storytelling", image: "/6_20240926_191951_0004.png" },
-    { name: "Salwa", role: "Community Manager", interest: "Social Media Engagement", image: "/7_20240926_191951_0005.png" },
-    { name: "Keyla", role: "Data Analyst", interest: "Analytics and Reporting", image: "/8_20240926_191952_0006.png" },
-    { name: "Andika", role: "SEO Specialist", interest: "Search Engine Optimization", image: "/9_20240926_191952_0007.png" },
-    { name: "Aulia", role: "Event Coordinator", interest: "Virtual Events", image: "/10_20240926_191952_0008.png" },
-  ];
-
-  const projects = [
-    {
-      id: 1,
-      title: "Kampanye Edukasi Teknologi",
-      description: "Seri konten digital untuk mengedukasi tentang teknologi informasi, komunikasi, pangan, dan lingkungan.",
-      image: "/placeholder.svg",
-      type: "digital",
-      details: "Proyek Kampanye Edukasi Teknologi bertujuan untuk menciptakan serangkaian konten digital yang informatif dan menarik tentang berbagai aspek teknologi. Konten ini mencakup topik-topik seputar teknologi informasi, komunikasi, pangan, dan lingkungan, disajikan dalam format yang mudah dipahami oleh berbagai kalangan.",
-      howItWorks: [
-        "Riset mendalam tentang topik-topik teknologi terkini",
-        "Pembuatan konten dalam berbagai format (artikel, infografis, video pendek)",
-        "Optimisasi konten untuk SEO dan aksesibilitas",
-        "Distribusi konten melalui platform media sosial dan website Nine Creativities",
-        "Engagement dengan audiens melalui komentar dan diskusi online",
-        "Pengukuran dampak dan engagement untuk perbaikan konten berkelanjutan"
-      ],
-      impact: "Kampanye ini meningkatkan kesadaran dan pemahaman masyarakat tentang perkembangan teknologi terkini, mendorong minat dalam sains dan teknologi di kalangan pelajar, serta mempromosikan inovasi teknologi yang dikembangkan di sekolah kami.",
-      photos: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-      documentation: "Dokumentasi proyek meliputi strategi konten, panduan gaya, analisis metrik engagement, dan laporan dampak kampanye."
-    },
+    { name: "Julia", role: "Ketua Tim", interest: "Media Relations", image: "/2_20240926_191949_0000.png" },
+    { name: "Zaki", role: "Anggota Tim", interest: "Anggota Tim", image: "/3_20240926_191950_0001.png" },
+    { name: "Pandu", role: "Anggota Tim", interest: "Anggota Tim", image: "/4_20240926_191950_0002.png" },
+    { name: "Ilham", role: "Anggota Tim", interest: "Anggota Tim", image: "/5_20240926_191951_0003.png" },
+    { name: "Rahmat", role: "Anggota Tim", interest: "Anggota Tim", image: "/6_20240926_191951_0004.png" },
+    { name: "Salwa", role: "Anggota Tim", interest: "Anggota Tim", image: "/7_20240926_191951_0005.png" },
+    { name: "Keyla", role: "Anggota Tim", interest: "Anggota Tim", image: "/8_20240926_191952_0006.png" },
+    { name: "Andika", role: "Anggota Tim", interest: "Anggota Tim", image: "/9_20240926_191952_0007.png" },
+    { name: "Aulia", role: "Anggota Tim", interest: "Anggota Tim", image: "/10_20240926_191952_0008.png" },
   ];
 
   return (
@@ -101,9 +79,11 @@ const CommunicationTechnology = () => {
                   <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
                   <p className="text-purple-600 mb-2">{member.role}</p>
-                  <p className="text-gray-600">
-                    <span className="font-medium">Minat:</span> {member.interest}
-                  </p>
+                  {member.role === "Ketua Tim" && (
+                    <p className="text-gray-600">
+                      <span className="font-medium">Minat:</span> {member.interest}
+                    </p>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -113,38 +93,7 @@ const CommunicationTechnology = () => {
             <Wifi className="mr-2" /> Proyek Kami
           </h2>
           <div className="grid grid-cols-1 gap-12">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-xl"
-              >
-                <SliderDocumentationCard project={project} />
-                <div className="p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 flex items-center">
-                    <Camera className="mr-2" /> Foto Proyek
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                    {project.photos.map((photo, index) => (
-                      <motion.img 
-                        key={index} 
-                        src={photo} 
-                        alt={`${project.title} foto ${index + 1}`} 
-                        className="rounded-lg shadow-md w-full h-48 sm:h-64 object-cover"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      />
-                    ))}
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 flex items-center">
-                    <FileText className="mr-2" /> Dokumentasi
-                  </h3>
-                  <p className="text-gray-600 text-base sm:text-lg">{project.documentation}</p>
-                </div>
-              </motion.div>
-            ))}
+            {/* Add your project components here */}
           </div>
         </div>
       </div>
