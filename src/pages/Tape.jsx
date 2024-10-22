@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
+import VideoLink from '../components/VideoLink';
 
 const Tape = () => {
   return (
@@ -34,16 +35,15 @@ const Tape = () => {
         >
           <h2 className="text-2xl font-bold mb-4">Tentang Produk</h2>
           <p className="text-gray-700 mb-4">
-            Tape modern kami adalah hasil pengembangan dari makanan fermentasi tradisional Indonesia. 
-            Kami menggunakan bahan baku lokal berkualitas tinggi dan proses fermentasi yang dioptimalkan 
-            untuk menghasilkan tape dengan cita rasa unik dan manfaat kesehatan yang maksimal.
+            Tape, makanan fermentasi tradisional dari singkong atau beras ketan, dibuat dengan sentuhan modern untuk cita rasa yang konsisten dan inovatif.
           </p>
+          <h3 className="text-xl font-semibold mb-2">Keunggulan:</h3>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Tersedia dalam varian singkong dan ketan</li>
-            <li>Kaya akan probiotik alami</li>
-            <li>Sumber energi yang baik</li>
-            <li>Membantu meningkatkan sistem kekebalan tubuh</li>
-            <li>Dikemas dalam kemasan modern dan higienis</li>
+            <li>Rasa manis-asam yang unik</li>
+            <li>Menjadi sumber energi karena kandungan karbohidratnya</li>
+            <li>Terus berinovasi dengan varian rasa dan kemasan modern</li>
+            <li>Mengandung probiotik alami yang baik untuk pencernaan</li>
+            <li>Memiliki kandungan alkohol rendah sebagai hasil fermentasi</li>
           </ul>
         </motion.div>
 
@@ -51,17 +51,28 @@ const Tape = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white rounded-xl shadow-lg p-6 mb-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Cara Membuat</h2>
+          <ol className="list-decimal list-inside text-gray-700">
+            <li>Cuci bersih singkong, kupas kulitnya, dan potong-potong sesuai selera. Kukus hingga ¾ matang</li>
+            <li>Siapkan wadah bersih yang dialasi daun pisang. Dinginkan singkong, lalu tata di atas daun pisang</li>
+            <li>Taburkan ragi tape secara merata di atas singkong</li>
+            <li>Tutup wadah rapat-rapat dan diamkan selama 2-3 hari pada suhu ruang hingga singkong berubah menjadi tape</li>
+          </ol>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="bg-white rounded-xl shadow-lg p-6"
         >
-          <h2 className="text-2xl font-bold mb-4">Proses Produksi</h2>
-          <ol className="list-decimal list-inside text-gray-700">
-            <li>Pemilihan bahan baku berkualitas (singkong atau ketan)</li>
-            <li>Pencucian dan pengukusan bahan</li>
-            <li>Pendinginan hingga suhu optimal</li>
-            <li>Inokulasi dengan ragi tape pilihan</li>
-            <li>Fermentasi dalam kondisi terkontrol</li>
-            <li>Pengemasan dengan material food-grade</li>
-          </ol>
+          <h2 className="text-2xl font-bold mb-4">Video Tutorial</h2>
+          <VideoLink 
+            url="https://youtu.be/k2fI36laE2s?si=_DudyqaPKau3_65t" 
+            title="TEMPE, TAPE, YOGHURT HOME MADE. SIMPEL DAN ENAK."
+          />
         </motion.div>
       </div>
     </div>

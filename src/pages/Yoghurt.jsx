@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
+import VideoLink from '../components/VideoLink';
 
 const Yoghurt = () => {
   return (
@@ -34,16 +35,15 @@ const Yoghurt = () => {
         >
           <h2 className="text-2xl font-bold mb-4">Tentang Produk</h2>
           <p className="text-gray-700 mb-4">
-            Yoghurt probiotik kami adalah hasil inovasi yang menggabungkan kearifan lokal dengan teknologi modern. 
-            Kami menggunakan susu segar dari peternakan lokal dan kultur probiotik pilihan untuk menghasilkan yoghurt 
-            yang tidak hanya lezat, tetapi juga menyehatkan sistem pencernaan.
+            Yoghurt adalah produk fermentasi susu dengan bakteri asam laktat. Yoghurt kami dibuat dari susu lokal segar berkualitas tinggi.
           </p>
+          <h3 className="text-xl font-semibold mb-2">Keunggulan:</h3>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Kaya akan probiotik hidup</li>
-            <li>Sumber protein dan kalsium yang baik</li>
-            <li>Rendah laktosa</li>
-            <li>Tanpa pemanis buatan</li>
-            <li>Tersedia dalam berbagai varian rasa buah lokal</li>
+            <li>Sumber probiotik yang baik untuk kesehatan usus</li>
+            <li>Kaya kalsium untuk tulang yang kuat</li>
+            <li>Mendukung petani susu lokal</li>
+            <li>Rendah laktosa, cocok untuk yang sensitif terhadap laktosa</li>
+            <li>Sumber protein berkualitas tinggi</li>
           </ul>
         </motion.div>
 
@@ -51,17 +51,29 @@ const Yoghurt = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white rounded-xl shadow-lg p-6 mb-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Cara Membuat</h2>
+          <ol className="list-decimal list-inside text-gray-700">
+            <li>Panaskan susu full cream hingga suhu 80-90°C, lalu dinginkan hingga suhu 40-45°C</li>
+            <li>Campurkan yoghurt plain (bibit yoghurt) ke dalam susu hangat, aduk rata</li>
+            <li>Tuang campuran ke dalam botol/gelas steril dan tutup rapat</li>
+            <li>Inkubasi selama 6-8 jam pada suhu 40-45°C hingga yoghurt mengental</li>
+            <li>Dinginkan yoghurt di dalam kulkas sebelum disajikan</li>
+          </ol>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="bg-white rounded-xl shadow-lg p-6"
         >
-          <h2 className="text-2xl font-bold mb-4">Proses Produksi</h2>
-          <ol className="list-decimal list-inside text-gray-700">
-            <li>Pengumpulan susu segar dari peternakan lokal</li>
-            <li>Pasteurisasi susu untuk menjamin keamanan</li>
-            <li>Penambahan kultur probiotik pilihan</li>
-            <li>Fermentasi dalam suhu terkontrol</li>
-            <li>Penambahan buah lokal untuk varian rasa (opsional)</li>
-            <li>Pengemasan dalam kemasan ramah lingkungan</li>
-          </ol>
+          <h2 className="text-2xl font-bold mb-4">Video Tutorial</h2>
+          <VideoLink 
+            url="https://youtu.be/k2fI36laE2s?si=_DudyqaPKau3_65t" 
+            title="TEMPE, TAPE, YOGHURT HOME MADE. SIMPEL DAN ENAK."
+          />
         </motion.div>
       </div>
     </div>

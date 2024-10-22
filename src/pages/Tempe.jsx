@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
+import VideoLink from '../components/VideoLink';
 
 const Tempe = () => {
   return (
@@ -22,7 +23,7 @@ const Tempe = () => {
             Tempe <span className="text-green-600">Inovatif</span>
           </h1>
           <p className="text-xl text-gray-600">
-            Produk fermentasi kedelai kaya nutrisi dan probiotik
+            Makanan fermentasi khas Indonesia dengan nutrisi tinggi
           </p>
         </motion.div>
         
@@ -34,16 +35,15 @@ const Tempe = () => {
         >
           <h2 className="text-2xl font-bold mb-4">Tentang Produk</h2>
           <p className="text-gray-700 mb-4">
-            Tempe inovatif kami adalah hasil pengembangan dari makanan tradisional Indonesia yang kaya akan nutrisi. 
-            Kami menggunakan kedelai organik lokal dan proses fermentasi yang dioptimalkan untuk menghasilkan tempe 
-            dengan kualitas terbaik dan manfaat kesehatan yang maksimal.
+            Tempe, makanan fermentasi khas Indonesia berbahan dasar kedelai, difermentasi menggunakan ragi tempe (Rhizopus oligosporus) sehingga nutrisinya lebih mudah diserap tubuh.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
-            <li>Tinggi protein nabati</li>
-            <li>Kaya akan serat</li>
-            <li>Mengandung probiotik alami</li>
+          <h3 className="text-xl font-semibold mb-2">Keunggulan:</h3>
+          <ul className="list-disc list-inside text-gray-700 mb-4">
+            <li>Kaya protein, serat, vitamin B, mineral, dan probiotik yang baik untuk pencernaan</li>
+            <li>Proses fermentasi membuat tempe lebih mudah dicerna</li>
+            <li>Sumber protein nabati yang berkualitas tinggi</li>
             <li>Rendah lemak jenuh</li>
-            <li>Sumber vitamin B yang baik</li>
+            <li>Mengandung antioksidan alami</li>
           </ul>
         </motion.div>
 
@@ -51,17 +51,29 @@ const Tempe = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white rounded-xl shadow-lg p-6 mb-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Cara Membuat</h2>
+          <ol className="list-decimal list-inside text-gray-700">
+            <li>Cuci bersih kedelai, lalu rendam semalaman (8-12 jam)</li>
+            <li>Rebus kedelai yang sudah direndam hingga lunak, lalu kupas kulit arinya</li>
+            <li>Rendam kembali kedelai yang sudah dikupas selama beberapa jam, lalu tiriskan hingga benar-benar kering</li>
+            <li>Taburkan ragi tempe secara merata ke seluruh kedelai</li>
+            <li>Bungkus kedelai dengan daun pisang atau plastik berlubang, lalu inkubasi selama 36-48 jam pada suhu ruang</li>
+          </ol>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="bg-white rounded-xl shadow-lg p-6"
         >
-          <h2 className="text-2xl font-bold mb-4">Proses Produksi</h2>
-          <ol className="list-decimal list-inside text-gray-700">
-            <li>Pemilihan kedelai organik berkualitas tinggi</li>
-            <li>Pencucian dan perendaman kedelai</li>
-            <li>Perebusan dan pendinginan</li>
-            <li>Inokulasi dengan ragi tempe pilihan</li>
-            <li>Fermentasi dalam kondisi terkontrol</li>
-            <li>Pengemasan dengan material ramah lingkungan</li>
-          </ol>
+          <h2 className="text-2xl font-bold mb-4">Video Tutorial</h2>
+          <VideoLink 
+            url="https://youtu.be/k2fI36laE2s?si=_DudyqaPKau3_65t" 
+            title="TEMPE, TAPE, YOGHURT HOME MADE. SIMPEL DAN ENAK."
+          />
         </motion.div>
       </div>
     </div>

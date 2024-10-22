@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
+import VideoLink from '../components/VideoLink';
 
 const FilterAir = () => {
   return (
@@ -34,16 +35,15 @@ const FilterAir = () => {
         >
           <h2 className="text-2xl font-bold mb-4">Tentang Produk</h2>
           <p className="text-gray-700 mb-4">
-            Filter Air Ramah Lingkungan kami adalah solusi inovatif untuk menyediakan air bersih 
-            dengan cara yang berkelanjutan. Menggunakan kombinasi bahan alami, sistem ini efektif 
-            menghilangkan kontaminan sambil tetap ramah lingkungan.
+            Proyek Teknologi Lingkungan kami menciptakan solusi sederhana dan murah untuk air bersih: filter air ramah lingkungan dari bahan alami. Filter ini menyaring air keruh sehingga lebih layak pakai.
           </p>
+          <h3 className="text-xl font-semibold mb-2">Keunggulan:</h3>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Menggunakan bahan alami seperti pasir, kerikil, dan arang aktif</li>
-            <li>Efektif menghilangkan kotoran, bakteri, dan bau</li>
-            <li>Mudah digunakan dan dirawat</li>
-            <li>Tidak memerlukan listrik</li>
-            <li>Cocok untuk skala rumah tangga dan komunitas kecil</li>
+            <li>Menggunakan bahan alami yang mudah didapat</li>
+            <li>Biaya pembuatan yang terjangkau</li>
+            <li>Efektif dalam menyaring air keruh</li>
+            <li>Ramah lingkungan dan berkelanjutan</li>
+            <li>Cocok untuk daerah yang sulit mengakses air bersih</li>
           </ul>
         </motion.div>
 
@@ -51,17 +51,29 @@ const FilterAir = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white rounded-xl shadow-lg p-6 mb-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Proses Pembuatan</h2>
+          <ol className="list-decimal list-inside text-gray-700">
+            <li>Persiapan Alat dan Bahan: Siapkan galon 15 liter, spons 1 kotak, ijuk 1 ikat, pasir zeolit 2 kg, batu arang kecil 2 kg, air keruh untuk uji coba, keran, pipa, gunting/cutter, lem G Korea, dan korek api gas</li>
+            <li>Membuat Badan Filter: Belah galon menjadi dua bagian. Buat lubang di bagian bawah galon untuk memasang pipa dan keran. Lelehkan ujung pipa dengan korek api dan pasang keran. Rekatkan sambungan pipa dan keran dengan lem agar kedap air. Potong pipa sesuai ukuran yang diinginkan. Pasang pipa yang sudah terpasang keran ke lubang di galon dan rekatkan</li>
+            <li>Menyiapkan Lapisan Filter: Cuci ijuk hingga bersih, lalu gunting kecil-kecil agar mudah dimasukkan ke dalam galon. Bentuk spons menjadi lingkaran sesuai ukuran galon</li>
+            <li>Menyusun Lapisan Filter: Masukkan spons ke dalam galon, ikuti dengan ijuk, pasir zeolit, dan terakhir batu arang kecil. Pastikan setiap lapisan tertata rapi</li>
+            <li>Pengujian: Tuangkan air keruh ke dalam filter dan amati air yang keluar dari keran. Air yang keluar seharusnya lebih jernih</li>
+          </ol>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="bg-white rounded-xl shadow-lg p-6"
         >
-          <h2 className="text-2xl font-bold mb-4">Cara Kerja</h2>
-          <ol className="list-decimal list-inside text-gray-700">
-            <li>Air kotor dimasukkan ke dalam sistem filter</li>
-            <li>Air melewati lapisan kerikil untuk menyaring kotoran besar</li>
-            <li>Selanjutnya, air melewati lapisan pasir untuk filtrasi lebih lanjut</li>
-            <li>Lapisan arang aktif menghilangkan bau dan zat kimia</li>
-            <li>Air bersih keluar melalui saluran output</li>
-            <li>Sistem dapat dibersihkan dan digunakan kembali</li>
-          </ol>
+          <h2 className="text-2xl font-bold mb-4">Video Tutorial</h2>
+          <VideoLink 
+            url="https://youtu.be/x6grfML5RMA?si=AUcIHaR_9mDmRCPg" 
+            title="MEMBUAT FILTER AIR DENGAN CARA DAN BAHAN YANG ADA, MUDAH"
+          />
         </motion.div>
       </div>
     </div>
