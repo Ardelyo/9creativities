@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
+import VideoLink from '../components/VideoLink';
 
 const ProdukKami = () => {
   const products = [
@@ -86,7 +87,25 @@ const ProdukKami = () => {
       icon: "📚",
       tag: "Documentation",
       link: "/dokumentasi",
-      category: "Teknologi Komunikasi"
+      category: "Teknologi Komunikasi",
+      videos: [
+        {
+          url: "https://youtu.be/k2fI36laE2s?si=_DudyqaPKau3_65t",
+          title: "TEMPE, TAPE, YOGHURT HOME MADE. SIMPEL DAN ENAK."
+        },
+        {
+          url: "https://youtu.be/x6grfML5RMA?si=AUcIHaR_9mDmRCPg",
+          title: "MEMBUAT FILTER AIR DENGAN CARA DAN BAHAN YANG ADA, MUDAH"
+        },
+        {
+          url: "https://youtu.be/ZxnHeyrPLug?si=zNrPSwQPRSsLpCIu",
+          title: "KEGIATAN SOSIALISASI DI SEKOLAH MENGENAI TΕΚΡΑΝ, ΤΕΚNOLOGI KOMUNIKASI"
+        },
+        {
+          url: "https://youtu.be/8c5T2Ktc7lw?si=T6FO9jcmKTDhsKbH",
+          title: "KUNJUNGAN KE PDAM TIRTA WENING SERU DAN MENYENANGKAN!!"
+        }
+      ]
     },
   ];
 
@@ -146,6 +165,16 @@ const ProdukKami = () => {
                       </div>
                       <h3 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h3>
                       <p className="text-gray-600 mb-4">{product.description}</p>
+                      {product.videos && (
+                        <div className="mb-4">
+                          <h4 className="text-lg font-semibold mb-2">Video Dokumentasi:</h4>
+                          <div className="space-y-2">
+                            {product.videos.map((video, index) => (
+                              <VideoLink key={index} url={video.url} title={video.title} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-blue-600">{product.tag}</span>
                         <Link
