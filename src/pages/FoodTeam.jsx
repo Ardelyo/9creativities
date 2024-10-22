@@ -12,15 +12,15 @@ import FoodSafetyQuiz from '../components/FoodSafetyQuiz';
 
 const FoodTeam = () => {
   const teamMembers = [
-    { name: "Rizka", role: "Ketua Tim", interest: "Fermentasi Makanan", image: "/placeholder.svg" },
-    { name: "Fadillah", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Nabillah", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Nurul", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Fikri", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Revan", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Keanu", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Abyan", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Ridho", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Rizka", role: "Ketua Tim", image: "/placeholder.svg" },
+    { name: "Fadillah", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Nabillah", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Nurul", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Fikri", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Revan", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Keanu", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Abyan", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Ridho", role: "Anggota Tim", image: "/placeholder.svg" },
   ];
 
   const projects = [
@@ -181,11 +181,6 @@ const FoodTeam = () => {
                   <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
                   <p className="text-orange-600 mb-2">{member.role}</p>
-                  {member.role === "Ketua Tim" && (
-                    <p className="text-gray-600">
-                      <span className="font-medium">Minat:</span> {member.interest}
-                    </p>
-                  )}
                 </motion.div>
               ))}
             </div>

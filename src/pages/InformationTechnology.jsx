@@ -8,14 +8,14 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const InformationTechnology = () => {
   const teamMembers = [
-    { name: "Lio", role: "Ketua Tim", interest: "Frontend Development", image: "/ardellio.jpg" },
-    { name: "Cinta", role: "Anggota Tim", interest: "Anggota Tim", image: "/cinta.jpg" },
-    { name: "Satria", role: "Anggota Tim", interest: "Anggota Tim", image: "/Satria.jpg" },
-    { name: "Dimas", role: "Anggota Tim", interest: "Anggota Tim", image: "/dimas.jpg" },
-    { name: "Alea", role: "Anggota Tim", interest: "Anggota Tim", image: "/Alea.jpg" },
-    { name: "Agnia", role: "Anggota Tim", interest: "Anggota Tim", image: "/Agnia.jpg" },
-    { name: "Ritme", role: "Anggota Tim", interest: "Anggota Tim", image: "/IMG_20240920_161517.png" },
-    { name: "Geovart", role: "Anggota Tim", interest: "Anggota Tim", image: "/geo.png" },
+    { name: "Lio", role: "Ketua Tim", image: "/ardellio.jpg" },
+    { name: "Cinta", role: "Anggota Tim", image: "/cinta.jpg" },
+    { name: "Satria", role: "Anggota Tim", image: "/Satria.jpg" },
+    { name: "Dimas", role: "Anggota Tim", image: "/dimas.jpg" },
+    { name: "Alea", role: "Anggota Tim", image: "/Alea.jpg" },
+    { name: "Agnia", role: "Anggota Tim", image: "/Agnia.jpg" },
+    { name: "Ritme", role: "Anggota Tim", image: "/IMG_20240920_161517.png" },
+    { name: "Geovart", role: "Anggota Tim", image: "/geo.png" },
   ];
 
   return (
@@ -78,11 +78,6 @@ const InformationTechnology = () => {
                   <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
                   <p className="text-blue-600 mb-2">{member.role}</p>
-                  {member.role === "Ketua Tim" && (
-                    <p className="text-gray-600">
-                      <span className="font-medium">Minat:</span> {member.interest}
-                    </p>
-                  )}
                 </motion.div>
               ))}
             </div>

@@ -8,15 +8,15 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Julia", role: "Ketua Tim", interest: "Media Relations", image: "/2_20240926_191949_0000.png" },
-    { name: "Zaki", role: "Anggota Tim", interest: "Anggota Tim", image: "/3_20240926_191950_0001.png" },
-    { name: "Pandu", role: "Anggota Tim", interest: "Anggota Tim", image: "/4_20240926_191950_0002.png" },
-    { name: "Ilham", role: "Anggota Tim", interest: "Anggota Tim", image: "/5_20240926_191951_0003.png" },
-    { name: "Rahmat", role: "Anggota Tim", interest: "Anggota Tim", image: "/6_20240926_191951_0004.png" },
-    { name: "Salwa", role: "Anggota Tim", interest: "Anggota Tim", image: "/7_20240926_191951_0005.png" },
-    { name: "Keyla", role: "Anggota Tim", interest: "Anggota Tim", image: "/8_20240926_191952_0006.png" },
-    { name: "Andika", role: "Anggota Tim", interest: "Anggota Tim", image: "/9_20240926_191952_0007.png" },
-    { name: "Aulia", role: "Anggota Tim", interest: "Anggota Tim", image: "/10_20240926_191952_0008.png" },
+    { name: "Julia", role: "Ketua Tim", image: "/2_20240926_191949_0000.png" },
+    { name: "Zaki", role: "Anggota Tim", image: "/3_20240926_191950_0001.png" },
+    { name: "Pandu", role: "Anggota Tim", image: "/4_20240926_191950_0002.png" },
+    { name: "Ilham", role: "Anggota Tim", image: "/5_20240926_191951_0003.png" },
+    { name: "Rahmat", role: "Anggota Tim", image: "/6_20240926_191951_0004.png" },
+    { name: "Salwa", role: "Anggota Tim", image: "/7_20240926_191951_0005.png" },
+    { name: "Keyla", role: "Anggota Tim", image: "/8_20240926_191952_0006.png" },
+    { name: "Andika", role: "Anggota Tim", image: "/9_20240926_191952_0007.png" },
+    { name: "Aulia", role: "Anggota Tim", image: "/10_20240926_191952_0008.png" },
   ];
 
   return (
@@ -79,11 +79,6 @@ const CommunicationTechnology = () => {
                   <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
                   <p className="text-purple-600 mb-2">{member.role}</p>
-                  {member.role === "Ketua Tim" && (
-                    <p className="text-gray-600">
-                      <span className="font-medium">Minat:</span> {member.interest}
-                    </p>
-                  )}
                 </motion.div>
               ))}
             </div>

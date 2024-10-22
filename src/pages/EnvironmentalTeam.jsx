@@ -11,14 +11,14 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
-    { name: "Aira", role: "Ketua Tim", interest: "Restorasi Ekosistem", image: "/placeholder.svg" },
-    { name: "Asyifa R", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Anandita", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Noval", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Indina", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Ashyffa K", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Aldy", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Bayu P", role: "Anggota Tim", interest: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Aira", role: "Ketua Tim", image: "/placeholder.svg" },
+    { name: "Asyifa R", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Anandita", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Noval", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Indina", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Ashyffa K", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Aldy", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Bayu P", role: "Anggota Tim", image: "/placeholder.svg" },
   ];
 
   const projects = [
@@ -119,12 +119,12 @@ const EnvironmentalTeam = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-16 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-gray-800 flex items-center">
-              <Users className="mr-3 text-green-600" /> Kenalan dengan Tim Kami
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
+              <Users className="mr-2" /> Kenalan dengan Tim Kami
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
@@ -133,13 +133,8 @@ const EnvironmentalTeam = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
-                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">{member.name}</h3>
-                  <p className="text-green-600 mb-2 text-base sm:text-lg">{member.role}</p>
-                  {member.role === "Ketua Tim" && (
-                    <p className="text-gray-600 text-sm sm:text-base">
-                      <span className="font-medium">Minat:</span> {member.interest}
-                    </p>
-                  )}
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
+                  <p className="text-green-600 mb-2">{member.role}</p>
                 </motion.div>
               ))}
             </div>
