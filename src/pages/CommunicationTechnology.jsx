@@ -5,6 +5,7 @@ import { ArrowLeft, Wifi, Users, FileText, Camera } from 'lucide-react';
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
+import VideoLink from '../components/VideoLink';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
@@ -16,6 +17,24 @@ const CommunicationTechnology = () => {
     { name: "Ashyffa K", role: "Anggota Tim", image: "https://iili.io/2FQOkuI.md.png" },
     { name: "Aldy", role: "Anggota Tim", image: "https://iili.io/2FQObne.md.png" },
     { name: "Bayu P", role: "Anggota Tim", image: "https://iili.io/2FQNm2R.md.png" },
+  ];
+
+  const videos = [
+    {
+      title: "Dokumentasi Proyek Teknologi Pangan",
+      url: "https://youtu.be/k2fI36laE2s",
+      description: "Video dokumentasi pembuatan produk pangan fermentasi.",
+    },
+    {
+      title: "Dokumentasi Proyek Teknologi Lingkungan",
+      url: "https://youtu.be/x6grfML5RMA",
+      description: "Video dokumentasi pembuatan filter air ramah lingkungan.",
+    },
+    {
+      title: "Dokumentasi Sosialisasi Teknologi",
+      url: "https://youtu.be/ZxnHeyrPLug",
+      description: "Video dokumentasi kegiatan sosialisasi teknologi di sekolah.",
+    },
   ];
 
   return (
@@ -84,10 +103,22 @@ const CommunicationTechnology = () => {
           </motion.div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-gray-800 flex items-center">
-            <Wifi className="mr-2" /> Proyek Kami
+            <Wifi className="mr-2" /> Video Dokumentasi
           </h2>
-          <div className="grid grid-cols-1 gap-12">
-            {/* Add your project components here */}
+          <div className="grid grid-cols-1 gap-8">
+            {videos.map((video, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl shadow-lg p-6"
+              >
+                <h3 className="text-xl font-bold mb-4">{video.title}</h3>
+                <p className="text-gray-600 mb-4">{video.description}</p>
+                <VideoLink url={video.url} title={video.title} />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

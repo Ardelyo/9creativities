@@ -1,164 +1,137 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, Loader, User, ArrowLeft } from 'lucide-react';
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import ReactMarkdown from 'react-markdown';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import BackgroundArt from '../components/BackgroundArt';
-import { handleSendMessage, getPromptSuggestions } from '../utils/robotCUtils';
+import { ArrowLeft, Send, Bot, Trash2 } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useChat } from 'ai/react';
 
 const RobotC = () => {
-  const [apiKey, setApiKey] = useState('');
-  const [message, setMessage] = useState('');
-  const [chat, setChat] = useState([
-    { role: 'assistant', content: "👋 Halo! Saya Robot C, asisten AI untuk Nine Creativities. Ada yang bisa saya bantu? Silakan tanyakan apa saja tentang proyek-proyek keren kami! 🚀" }
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [promptSuggestions, setPromptSuggestions] = useState([]);
-  const chatContainerRef = useRef(null);
+  const { messages, input, handleInputChange, handleSubmit, setMessages } = useChat();
+  const messagesEndRef = useRef(null);
+  const [isTyping, setIsTyping] = useState(false);
 
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-    }
-    setPromptSuggestions(getPromptSuggestions());
-  }, [chat]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5 } },
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const messageVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    
+    setIsTyping(true);
+    await handleSubmit(e);
+    setIsTyping(false);
+  };
+
+  const clearChat = () => {
+    setMessages([]);
   };
 
   return (
-    <motion.div 
-      className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <BackgroundArt />
-      <div className="max-w-4xl mx-auto relative z-10">
+    <div className="min-h-screen bg-white p-4 sm:p-8">
+      <div className="max-w-4xl mx-auto">
         <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
         </Link>
+        
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-12"
         >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 text-blue-600">
-            Chat dengan Robot C
+          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
+            Robot <span className="text-blue-600">C</span>
           </h1>
-          <p className="text-xl text-blue-600">
-            Tanyakan apa saja tentang Nine Creativities! 🚀
+          <p className="text-xl text-gray-600">
+            Tanya Apa Saja
+          </p>
+          <p className="text-sm text-gray-500 mt-2">
+            *Robot C tidak berdasarkan website Nine Creativities
           </p>
         </motion.div>
 
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-blue-200">
-          <div className="p-4 sm:p-6 bg-blue-600">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Bot className="w-8 h-8 text-white mr-2" />
-                <h2 className="text-2xl font-bold text-white">Robot C</h2>
-              </div>
-              <Input
-                type="password"
-                placeholder="Masukkan kunci API Gemini"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                className="max-w-xs rounded-full text-sm bg-white bg-opacity-20 border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70"
-              />
-            </div>
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Topik yang Bisa Ditanyakan:</h2>
+          <ul className="list-disc list-inside space-y-2">
+            <li>Teknologi Pangan dan Inovasi Makanan</li>
+            <li>Teknologi Informasi dan Perkembangannya</li>
+            <li>Teknologi Komunikasi Modern</li>
+            <li>Teknologi Lingkungan dan Keberlanjutan</li>
+            <li>Fermentasi dan Pengolahan Makanan</li>
+            <li>Sistem Informasi dan Database</li>
+            <li>Media Komunikasi Digital</li>
+            <li>Konservasi Lingkungan</li>
+          </ul>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold">Chat dengan Robot C</h2>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={clearChat}
+              className="hover:bg-red-50"
+            >
+              <Trash2 className="h-4 w-4 text-red-500" />
+            </Button>
           </div>
 
-          <motion.div 
-            ref={chatContainerRef} 
-            className="h-[60vh] overflow-y-auto space-y-4 p-4 sm:p-6"
-            variants={containerVariants}
-          >
-            <AnimatePresence>
-              {chat.map((msg, index) => (
-                <motion.div
-                  key={index}
-                  variants={messageVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+          <ScrollArea className="h-[500px] pr-4">
+            <div className="space-y-4">
+              {messages.map((message, i) => (
+                <div
+                  key={i}
+                  className={`flex ${
+                    message.role === "user" ? "justify-end" : "justify-start"
+                  }`}
                 >
-                  <div className={`max-w-[70%] p-3 rounded-2xl ${
-                    msg.role === 'user' 
-                      ? 'bg-blue-500 text-white' 
-                      : 'bg-blue-100 text-blue-800'
-                  } shadow-md transition-all duration-300 hover:shadow-lg`}>
-                    {msg.role === 'user' ? (
-                      <User className="w-5 h-5 inline mr-2" />
-                    ) : (
-                      <Bot className="w-5 h-5 inline mr-2" />
-                    )}
-                    <ReactMarkdown className="inline">{msg.content}</ReactMarkdown>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            {isLoading && (
-              <motion.div 
-                className="flex justify-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                <Loader className="animate-spin text-blue-500" />
-              </motion.div>
-            )}
-          </motion.div>
-
-          {chat.length === 1 && (
-            <div className="p-4 bg-blue-50">
-              <p className="text-blue-600 mb-2">Beberapa saran pertanyaan:</p>
-              <div className="flex flex-wrap gap-2">
-                {promptSuggestions.map((suggestion, index) => (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    className="text-blue-600 border-blue-300 hover:bg-blue-100"
-                    onClick={() => setMessage(suggestion)}
+                  <div
+                    className={`max-w-[80%] rounded-lg p-4 ${
+                      message.role === "user"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
                   >
-                    {suggestion}
-                  </Button>
-                ))}
-              </div>
+                    {message.role === "assistant" && (
+                      <Bot className="h-4 w-4 mb-2" />
+                    )}
+                    <p className="whitespace-pre-wrap">{message.content}</p>
+                  </div>
+                </div>
+              ))}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-gray-100 rounded-lg p-4">
+                    <p>Robot C sedang mengetik...</p>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
             </div>
-          )}
+          </ScrollArea>
 
-          <div className="p-4 sm:p-6 bg-blue-50 border-t border-blue-200">
-            <div className="flex items-center space-x-2">
-              <Input
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Ketik pesan Anda..."
-                className="flex-grow rounded-full text-sm border-blue-300 focus:border-blue-500 focus:ring-blue-500"
-                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(apiKey, message, setChat, setIsLoading)}
-              />
-              <Button 
-                onClick={() => handleSendMessage(apiKey, message, setChat, setIsLoading)} 
-                disabled={isLoading || !apiKey} 
-                className="rounded-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
-              >
-                <Send className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
+          <form onSubmit={handleFormSubmit} className="mt-4 flex gap-2">
+            <Input
+              value={input}
+              onChange={handleInputChange}
+              placeholder="Tanyakan sesuatu..."
+              className="flex-1"
+            />
+            <Button type="submit" className="shrink-0">
+              <Send className="h-4 w-4" />
+            </Button>
+          </form>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
