@@ -8,15 +8,14 @@ import DropletAnimation from '../components/DropletAnimation';
 
 const CommunicationTechnology = () => {
   const teamMembers = [
-    { name: "Julia", role: "Ketua Tim", image: "/2_20240926_191949_0000.png" },
-    { name: "Zaki", role: "Anggota Tim", image: "/3_20240926_191950_0001.png" },
-    { name: "Pandu", role: "Anggota Tim", image: "/4_20240926_191950_0002.png" },
-    { name: "Ilham", role: "Anggota Tim", image: "/5_20240926_191951_0003.png" },
-    { name: "Rahmat", role: "Anggota Tim", image: "/6_20240926_191951_0004.png" },
-    { name: "Salwa", role: "Anggota Tim", image: "/7_20240926_191951_0005.png" },
-    { name: "Keyla", role: "Anggota Tim", image: "/8_20240926_191952_0006.png" },
-    { name: "Andika", role: "Anggota Tim", image: "/9_20240926_191952_0007.png" },
-    { name: "Aulia", role: "Anggota Tim", image: "/10_20240926_191952_0008.png" },
+    { name: "Aira", role: "Ketua Tim", image: "https://iili.io/2FQOQuS.md.png" },
+    { name: "Asyifa R", role: "Anggota Tim", image: "https://iili.io/2FQNp7p.md.png" },
+    { name: "Anandita", role: "Anggota Tim", image: "https://iili.io/2FQNheS.md.png" },
+    { name: "Noval", role: "Anggota Tim", image: "https://iili.io/2FQOGZF.md.png" },
+    { name: "Indina", role: "Anggota Tim", image: "https://iili.io/2FQeFwP.md.png" },
+    { name: "Ashyffa K", role: "Anggota Tim", image: "https://iili.io/2FQOkuI.md.png" },
+    { name: "Aldy", role: "Anggota Tim", image: "https://iili.io/2FQObne.md.png" },
+    { name: "Bayu P", role: "Anggota Tim", image: "https://iili.io/2FQNm2R.md.png" },
   ];
 
   return (
