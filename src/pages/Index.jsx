@@ -5,12 +5,12 @@ import { Droplet, Utensils, Cpu, Wifi, Bot, Package, Users } from 'lucide-react'
 
 const Index = () => {
   const teams = [
+    { title: "Tentang Kelas Kami", icon: Users, color: "bg-yellow-500", to: "/our-class" },
     { title: "Teknologi Lingkungan", icon: Droplet, color: "bg-green-500", to: "/environmental-team" },
     { title: "Teknologi Pangan", icon: Utensils, color: "bg-orange-500", to: "/food-team" },
     { title: "Teknologi Informasi", icon: Cpu, color: "bg-blue-500", to: "/information-technology" },
     { title: "Teknologi Komunikasi", icon: Wifi, color: "bg-purple-500", to: "/communication-technology" },
     { title: "Produk Kami", icon: Package, color: "bg-pink-500", to: "/produk-kami" },
-    { title: "Tentang Kelas Kami", icon: Users, color: "bg-yellow-500", to: "/our-class" },
   ];
 
   return (
