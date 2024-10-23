@@ -12,15 +12,15 @@ import FoodSafetyQuiz from '../components/FoodSafetyQuiz';
 
 const FoodTeam = () => {
   const teamMembers = [
-    { name: "Rizka", role: "Ketua Tim", image: "/placeholder.svg" },
-    { name: "Fadillah", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Nabillah", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Nurul", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Fikri", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Revan", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Keanu", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Abyan", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Ridho", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Rizka", role: "Ketua Tim", image: "https://iili.io/2FQkugj.md.png" },
+    { name: "Fadillah", role: "Anggota Tim", image: "https://iili.io/2FQk20G.md.png" },
+    { name: "Nabillah", role: "Anggota Tim", image: "https://iili.io/2FQkIqu.md.png" },
+    { name: "Nurul", role: "Anggota Tim", image: "https://iili.io/2FQkf5l.md.png" },
+    { name: "Fikri", role: "Anggota Tim", image: "https://iili.io/2FQkqe2.md.png" },
+    { name: "Revan", role: "Anggota Tim", image: "https://iili.io/2FQe6WF.md.png" },
+    { name: "Keanu", role: "Anggota Tim", image: "https://iili.io/2FQegDP.md.png" },
+    { name: "Abyan", role: "Anggota Tim", image: "https://iili.io/2FQeQUv.md.png" },
+    { name: "Ridho", role: "Anggota Tim", image: "https://iili.io/2FQekUx.md.png" },
   ];
 
   const projects = [
