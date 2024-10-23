@@ -140,7 +140,7 @@ const ProdukKami = () => {
             </p>
           </motion.div>
 
-          {/* New Presentation Section */}
+          {/* Presentation Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ const ProdukKami = () => {
             <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
               <iframe 
                 className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-                src="https://www.canva.com/design/DAGUS9bGZGg/vTNk3LP4NxDETG25VHqeNQ/view?embed" 
+                src="https://drive.google.com/file/d/1n9i9IsWHIaFH5gG44bYtIDgl_Sfwppz-/preview" 
                 allowFullScreen
                 loading="lazy"
                 title="P5 Presentation"
@@ -159,12 +159,12 @@ const ProdukKami = () => {
             </div>
             <div className="mt-4 text-center">
               <a 
-                href="https://www.canva.com/design/DAGUS9bGZGg/vTNk3LP4NxDETG25VHqeNQ/view?utm_content=DAGUS9bGZGg&utm_campaign=designshare&utm_medium=embeds&utm_source=link" 
+                href="https://drive.google.com/file/d/1n9i9IsWHIaFH5gG44bYtIDgl_Sfwppz-/view?usp=drivesdk" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 transition-colors"
               >
-                P5 KELOMPOK TEKNOLOGI INFORMASI DAN KOMUNIKASI (Presentation) by ARDELLIO SATRIA ANINDITO
+                P5 KELOMPOK TEKNOLOGI INFORMASI DAN KOMUNIKASI
               </a>
             </div>
           </motion.div>
