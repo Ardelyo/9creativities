@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Cpu, Users } from 'lucide-react';
+import { ArrowLeft, Cpu, Users, FileText, Camera } from 'lucide-react';
+import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
 
@@ -15,25 +16,6 @@ const InformationTechnology = () => {
     { name: "Agnia", role: "Anggota Tim", image: "/Agnia.jpg" },
     { name: "Ritme", role: "Anggota Tim", image: "/IMG_20240920_161517.png" },
     { name: "Geovart", role: "Anggota Tim", image: "/geo.png" },
-  ];
-
-  const products = [
-    {
-      title: "Website Nine Creativities",
-      description: "Platform digital untuk memperkenalkan dan mendokumentasikan seluruh proyek tim.",
-    },
-    {
-      title: "Cihuy Quiz",
-      description: "Aplikasi kuis interaktif untuk pembelajaran.",
-    },
-    {
-      title: "Robot C",
-      description: "Asisten virtual cerdas untuk menjawab pertanyaan.",
-    },
-    {
-      title: "Carbon Calculator",
-      description: "Alat untuk menghitung dan memantau jejak karbon.",
-    },
   ];
 
   return (
@@ -102,21 +84,10 @@ const InformationTechnology = () => {
           </motion.div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-gray-800 flex items-center">
-            <Cpu className="mr-2" /> Produk Kami
+            <Cpu className="mr-2" /> Proyek Kami
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {products.map((product, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl shadow-lg p-6"
-              >
-                <h3 className="text-xl font-bold mb-2">{product.title}</h3>
-                <p className="text-gray-600">{product.description}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 gap-12">
+            {/* Projects mapping will go here */}
           </div>
         </div>
       </div>
