@@ -5,10 +5,10 @@ import { ArrowLeft, Send, Bot, Trash2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useChat } from 'ai/react';
 
 const RobotC = () => {
-  const { messages, input, handleInputChange, handleSubmit, setMessages } = useChat();
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
 
@@ -20,13 +20,28 @@ const RobotC = () => {
     scrollToBottom();
   }, [messages]);
 
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
     
     setIsTyping(true);
-    await handleSubmit(e);
-    setIsTyping(false);
+    // Add user message
+    setMessages(prev => [...prev, { role: 'user', content: input }]);
+    
+    // Simulate AI response
+    setTimeout(() => {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: `Maaf, saat ini saya sedang dalam mode pengembangan. Silakan coba lagi nanti! 🤖` 
+      }]);
+      setIsTyping(false);
+    }, 1000);
+    
+    setInput('');
   };
 
   const clearChat = () => {
