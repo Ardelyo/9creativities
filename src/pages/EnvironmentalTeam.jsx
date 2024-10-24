@@ -1,24 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Droplet, Users, FileText, Camera } from 'lucide-react';
+import { ArrowLeft, Droplet, FileText, Camera } from 'lucide-react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SliderDocumentationCard from '../components/SliderDocumentationCard';
 import BackgroundArt from '../components/BackgroundArt';
 import DropletAnimation from '../components/DropletAnimation';
+import TeamMembersGrid from '../components/TeamMembersGrid';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
-    { name: "Aira", role: "Ketua Tim", image: "/placeholder.svg" },
-    { name: "Asyifa R", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Anandita", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Noval", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Indina", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Ashyffa K", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Aldy", role: "Anggota Tim", image: "/placeholder.svg" },
-    { name: "Bayu P", role: "Anggota Tim", image: "/placeholder.svg" },
+    { name: "Aira", role: "Ketua Tim", image: "https://iili.io/2FQOQuS.md.png" },
+    { name: "Asyifa R", role: "Anggota Tim", image: "https://iili.io/2FQNp7p.md.png" },
+    { name: "Anandita", role: "Anggota Tim", image: "https://iili.io/2FQNheS.md.png" },
+    { name: "Noval", role: "Anggota Tim", image: "https://iili.io/2FQOGZF.md.png" },
+    { name: "Indina", role: "Anggota Tim", image: "https://iili.io/2FQeFwP.md.png" },
+    { name: "Ashyffa K", role: "Anggota Tim", image: "https://iili.io/2FQOkuI.md.png" },
+    { name: "Aldy", role: "Anggota Tim", image: "https://iili.io/2FQObne.md.png" },
+    { name: "Bayu P", role: "Anggota Tim", image: "https://iili.io/2FQNm2R.md.png" },
   ];
 
   const projects = [
@@ -83,6 +84,7 @@ const EnvironmentalTeam = () => {
           <Link to="/" className="text-green-600 hover:text-green-800 transition-colors mb-8 inline-block text-xl">
             <ArrowLeft className="mr-2 inline" /> Kembali
           </Link>
+          
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,30 +117,7 @@ const EnvironmentalTeam = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
-              <Users className="mr-2" /> Kenalan dengan Tim Kami
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-green-50 p-6 rounded-2xl text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img src={member.image} alt={member.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover" />
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{member.name}</h3>
-                  <p className="text-green-600 mb-2">{member.role}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          <TeamMembersGrid teamMembers={teamMembers} />
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-gray-800 flex items-center">
             <Droplet className="mr-3 text-green-600" /> Proyek Kami
