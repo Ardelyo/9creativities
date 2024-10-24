@@ -1,14 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Droplet, FileText, Camera } from 'lucide-react';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import SliderDocumentationCard from '../components/SliderDocumentationCard';
-import BackgroundArt from '../components/BackgroundArt';
-import DropletAnimation from '../components/DropletAnimation';
+import { Droplet } from 'lucide-react';
+import TeamPageLayout from '../components/TeamPageLayout';
 import TeamMembersGrid from '../components/TeamMembersGrid';
+import ProjectShowcase from '../components/ProjectShowcase';
 
 const EnvironmentalTeam = () => {
   const teamMembers = [
@@ -29,7 +23,7 @@ const EnvironmentalTeam = () => {
       description: "Sistem pemurnian air menggunakan bahan alami dan berkelanjutan.",
       image: "/placeholder.svg",
       type: "water",
-      details: "Proyek Filter Air Ramah Lingkungan kami menggunakan kombinasi bahan alami seperti pasir, kerikil, arang aktif, dan tanaman air untuk menciptakan sistem pemurnian air yang efektif dan ramah lingkungan. Sistem ini dirancang untuk menghilangkan kontaminan dan menyediakan air bersih untuk komunitas lokal.",
+      details: "Proyek Filter Air Ramah Lingkungan kami menggunakan kombinasi bahan alami seperti pasir, kerikil, arang aktif, dan tanaman air untuk menciptakan sistem pemurnian air yang efektif dan ramah lingkungan.",
       howItWorks: [
         "Pengumpulan dan persiapan bahan filter alami",
         "Penyusunan lapisan filter dalam wadah berkelanjutan",
@@ -43,121 +37,37 @@ const EnvironmentalTeam = () => {
         "/IMG-20240920-WA0078.jpg", "/IMG-20240920-WA0076.jpg", "/IMG-20240920-WA0081.jpg",
         "/IMG-20240920-WA0072.jpg", "/IMG-20240920-WA0065.jpg", "/IMG-20240920-WA0066.jpg",
         "/IMG-20240920-WA0062.jpg", "/IMG-20240920-WA0061.jpg", "/IMG-20240920-WA0063.jpg",
-        "/IMG-20240920-WA0060.jpg", "/IMG-20240920-WA0059.jpg", "/IMG-20240920-WA0058.jpg",
-        "/IMG-20240920-WA0070.jpg", "/IMG-20240920-WA0069.jpg", "/IMG-20240920-WA0031.jpg",
-        "/IMG-20240920-WA0030.jpg", "/IMG-20240920-WA0029.jpg", "/IMG-20240920-WA0027.jpg",
-        "/IMG-20240920-WA0026.jpg"
-      ],
-      documentation: "Dokumentasi lengkap meliputi desain sistem, hasil uji laboratorium, panduan pemeliharaan, dan laporan dampak lingkungan."
-    },
+        "/IMG-20240920-WA0060.jpg", "/IMG-20240920-WA0059.jpg", "/IMG-20240920-WA0058.jpg"
+      ]
+    }
   ];
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
+  const backgroundPattern = `
+    <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25 5 L45 15 L45 35 L25 45 L5 35 L5 15 Z" stroke="currentColor" fill="none"/>
+    </svg>
+  `;
 
   return (
-    <DropletAnimation>
-      <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
-        <BackgroundArt />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <Link to="/" className="text-green-600 hover:text-green-800 transition-colors mb-8 inline-block text-xl">
-            <ArrowLeft className="mr-2 inline" /> Kembali
-          </Link>
-          
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6">
-              Tim <span className="text-green-600">Teknologi Lingkungan</span>
-            </h1>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto mb-6"
-            />
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-16 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800">Pengenalan Teknologi Lingkungan</h2>
-            <p className="text-gray-600 mb-6 text-base sm:text-lg">
-              Teknologi Lingkungan adalah penerapan prinsip-prinsip ilmiah dan teknik untuk melindungi lingkungan alam dan sumber daya alam, serta mengurangi dampak negatif aktivitas manusia terhadap ekosistem. Fokus utamanya adalah pada pengelolaan air, udara, dan tanah, serta pengembangan solusi berkelanjutan untuk masalah lingkungan.
-            </p>
-            <p className="text-gray-600 mb-6 text-base sm:text-lg">
-              Tim kami berkomitmen untuk mengembangkan solusi inovatif yang membantu melestarikan lingkungan dan meningkatkan kualitas hidup masyarakat, dengan fokus khusus pada pengelolaan dan konservasi air.
-            </p>
-          </motion.div>
-
-          <TeamMembersGrid teamMembers={teamMembers} />
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-gray-800 flex items-center">
-            <Droplet className="mr-3 text-green-600" /> Proyek Kami
-          </h2>
-          <div className="grid grid-cols-1 gap-16">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-xl"
-              >
-                <SliderDocumentationCard project={project} />
-                <div className="p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800 flex items-center">
-                    <Camera className="mr-3 text-green-600" /> Dokumentasi Proyek
-                  </h3>
-                  <Slider {...sliderSettings}>
-                    {project.photos.map((photo, index) => (
-                      <div key={index} className="px-2">
-                        <img 
-                          src={photo} 
-                          alt={`${project.title} foto ${index + 1}`} 
-                          className="rounded-lg shadow-md w-full h-64 object-cover"
-                        />
-                      </div>
-                    ))}
-                  </Slider>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-800 flex items-center">
-                    <FileText className="mr-3 text-green-600" /> Dokumentasi
-                  </h3>
-                  <p className="text-gray-600 text-base sm:text-lg">{project.documentation}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+    <TeamPageLayout
+      teamName="Teknologi Lingkungan"
+      accentColor="green"
+      gradientFrom="green-400"
+      gradientTo="emerald-600"
+      icon={Droplet}
+      backgroundPattern={backgroundPattern}
+    >
+      <div className="space-y-16">
+        <TeamMembersGrid teamMembers={teamMembers} accentColor="green" />
+        {projects.map(project => (
+          <ProjectShowcase 
+            key={project.id} 
+            project={project}
+            accentColor="green"
+          />
+        ))}
       </div>
-    </DropletAnimation>
+    </TeamPageLayout>
   );
 };
 
