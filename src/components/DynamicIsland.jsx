@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Home, Info, Bot, Package, FileText } from 'lucide-react';
+import { Home, Info, Bot, Package } from 'lucide-react';
 
 const DynamicIsland = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,7 +13,6 @@ const DynamicIsland = () => {
     { title: "Tentang Kelas Kami", icon: <Info className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/our-class" },
     { title: "Robot C", icon: <Bot className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/robot-c" },
     { title: "Produk Kami", icon: <Package className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/produk-kami" },
-    { title: "Artikel", icon: <FileText className="w-5 h-5 sm:w-6 sm:h-6" />, path: "/artikel" },
   ];
 
   const islandVariants = {
