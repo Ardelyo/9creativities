@@ -55,6 +55,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.52.0",
     "react-markdown": "^9.0.1",
+    "react-medium-image-zoom": "^5.1.10",
     "react-resizable-panels": "^2.0.19",
     "react-router-dom": "^6.23.1",
     "react-slick": "^0.30.2",
