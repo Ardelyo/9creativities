@@ -8,42 +8,42 @@ const TeamGrid = () => {
     { 
       title: "Tentang Kelas Kami", 
       icon: Users, 
-      color: "bg-gradient-to-br from-blue-300 to-blue-500",
+      color: "bg-gradient-to-br from-yellow-400 to-yellow-600",
       description: "Mengenal lebih dekat dengan kelas 9C",
       to: "/our-class" 
     },
     { 
       title: "Teknologi Lingkungan", 
       icon: Droplet, 
-      color: "bg-gradient-to-br from-blue-600 to-blue-800",
+      color: "bg-gradient-to-br from-green-400 to-green-600",
       description: "Solusi inovatif untuk lingkungan berkelanjutan",
       to: "/environmental-team" 
     },
     { 
       title: "Teknologi Pangan", 
       icon: Utensils, 
-      color: "bg-gradient-to-br from-blue-500 to-blue-700",
+      color: "bg-gradient-to-br from-orange-400 to-orange-600",
       description: "Inovasi dalam pengolahan makanan sehat",
       to: "/food-team" 
     },
     { 
       title: "Teknologi Informasi", 
       icon: Cpu, 
-      color: "bg-gradient-to-br from-blue-600 to-blue-800",
+      color: "bg-gradient-to-br from-blue-400 to-blue-600",
       description: "Mengembangkan solusi digital masa depan",
       to: "/information-technology" 
     },
     { 
       title: "Teknologi Komunikasi", 
       icon: Wifi, 
-      color: "bg-gradient-to-br from-blue-700 to-blue-900",
+      color: "bg-gradient-to-br from-purple-400 to-purple-600",
       description: "Menghubungkan ide melalui teknologi",
       to: "/communication-technology" 
     },
     { 
       title: "Produk Kami", 
       icon: Package, 
-      color: "bg-gradient-to-br from-blue-800 to-blue-950",
+      color: "bg-gradient-to-br from-pink-400 to-pink-600",
       description: "Hasil karya inovatif tim kami",
       to: "/produk-kami" 
     },
