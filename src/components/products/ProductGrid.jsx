@@ -36,10 +36,10 @@ const ProductGrid = ({ category, products }) => {
       className="mb-16"
     >
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
           {category}
         </h2>
-        <div className="h-1 flex-grow mx-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
+        <div className="h-1 flex-grow mx-4 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -52,7 +52,7 @@ const ProductGrid = ({ category, products }) => {
                     {product.tag}
                   </Badge>
                 </div>
-                <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 rounded-t-lg flex items-center justify-center text-6xl">
+                <div className="h-48 bg-gradient-to-br from-blue-50 to-blue-100 rounded-t-lg flex items-center justify-center text-6xl">
                   {product.icon}
                 </div>
               </CardHeader>
@@ -60,7 +60,7 @@ const ProductGrid = ({ category, products }) => {
               <CardContent className="pt-6">
                 <CardTitle className="text-xl mb-2 flex items-center gap-2">
                   {product.name}
-                  <Star className="w-5 h-5 text-yellow-500" />
+                  <Star className="w-5 h-5 text-blue-500" />
                 </CardTitle>
                 <CardDescription className="text-gray-600">
                   {product.description}
@@ -91,7 +91,7 @@ const ProductGrid = ({ category, products }) => {
       </div>
 
       {products[0]?.videos && (
-        <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+        <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl">
           <h3 className="text-2xl font-bold mb-4 text-gray-800 flex items-center gap-2">
             <ImageIcon className="w-6 h-6 text-blue-600" />
             Related Videos

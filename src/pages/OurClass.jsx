@@ -59,9 +59,9 @@ const OurClass = () => {
       className="flex flex-col items-center"
     >
       <div className="relative group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-gray-900 px-6 py-4 rounded-lg shadow-xl">
-          <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+          <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
             {node.role}
           </div>
           <div className="text-sm text-gray-600 dark:text-gray-300">{node.name}</div>
@@ -78,10 +78,10 @@ const OurClass = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-gray-800 p-4 sm:p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4 sm:p-8 relative overflow-hidden">
       <BackgroundArt />
       <div className="max-w-7xl mx-auto relative z-10">
-        <Link to="/" className="text-purple-600 hover:text-purple-800 transition-colors mb-8 inline-block">
+        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
         </Link>
 
@@ -91,14 +91,13 @@ const OurClass = () => {
           variants={containerVariants}
           className="space-y-12"
         >
-          {/* Hero Section */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h1 className="text-5xl sm:text-7xl font-bold mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
                 {classInfo.name}
               </span>
             </h1>
-            <p className="text-2xl text-purple-600 font-semibold mb-4">
+            <p className="text-2xl text-blue-600 font-semibold mb-4">
               {classInfo.slogan}
             </p>
             <p className="text-xl text-gray-600 dark:text-gray-300 italic max-w-2xl mx-auto">
@@ -106,12 +105,11 @@ const OurClass = () => {
             </p>
           </motion.div>
 
-          {/* Values Section */}
           <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {classInfo.values.map((value, index) => (
               <Card key={index} className="group hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
-                  <value.icon className="w-12 h-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <value.icon className="w-12 h-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-xl font-bold mb-2">{value.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300">{value.desc}</p>
                 </CardContent>
@@ -119,20 +117,18 @@ const OurClass = () => {
             ))}
           </motion.div>
 
-          {/* Description Section */}
           <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl">
-            <h2 className="text-3xl font-bold mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-              <Users className="mr-3 text-purple-600" /> Tentang Kami
+            <h2 className="text-3xl font-bold mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
+              <Users className="mr-3 text-blue-600" /> Tentang Kami
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
               {classInfo.description}
             </p>
           </motion.div>
 
-          {/* Organization Structure */}
           <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl overflow-x-auto">
-            <h2 className="text-3xl font-bold mb-8 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-              <UserCircle2 className="mr-3 text-purple-600" /> Struktur Organisasi Kelas
+            <h2 className="text-3xl font-bold mb-8 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
+              <UserCircle2 className="mr-3 text-blue-600" /> Struktur Organisasi Kelas
             </h2>
             <div className="min-w-max p-4">
               <motion.div 
