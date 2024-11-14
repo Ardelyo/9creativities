@@ -59,9 +59,9 @@ const OurClass = () => {
       className="flex flex-col items-center"
     >
       <div className="relative group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-gray-900 px-6 py-4 rounded-lg shadow-xl">
-          <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+          <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
             {node.role}
           </div>
           <div className="text-sm text-gray-600 dark:text-gray-300">{node.name}</div>
@@ -94,7 +94,7 @@ const OurClass = () => {
           {/* Hero Section */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h1 className="text-5xl sm:text-7xl font-bold mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
                 {classInfo.name}
               </span>
             </h1>
@@ -121,7 +121,7 @@ const OurClass = () => {
 
           {/* Description Section */}
           <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl">
-            <h2 className="text-3xl font-bold mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+            <h2 className="text-3xl font-bold mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
               <Users className="mr-3 text-purple-600" /> Tentang Kami
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
@@ -131,7 +131,7 @@ const OurClass = () => {
 
           {/* Organization Structure */}
           <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl overflow-x-auto">
-            <h2 className="text-3xl font-bold mb-8 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+            <h2 className="text-3xl font-bold mb-8 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
               <UserCircle2 className="mr-3 text-purple-600" /> Struktur Organisasi Kelas
             </h2>
             <div className="min-w-max p-4">

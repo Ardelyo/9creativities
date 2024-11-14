@@ -31,7 +31,7 @@ const ProdukKami = () => {
               <span className="text-blue-600 font-medium">Our Products</span>
             </div>
             
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 bg-clip-text text-transparent">
               Produk Nine Creativities
             </h1>
             
@@ -47,7 +47,7 @@ const ProdukKami = () => {
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mx-auto mb-6 rounded-full"
+              className="h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 mx-auto mb-6 rounded-full"
             />
           </motion.div>
 
