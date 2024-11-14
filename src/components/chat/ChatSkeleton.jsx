@@ -3,22 +3,19 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const ChatSkeleton = () => {
   return (
-    <div className="space-y-4 p-4">
-      <div className="flex items-start gap-3">
-        <Skeleton className="w-8 h-8 rounded-full" />
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-3 p-4"
+    >
+      <div className="flex items-start gap-2 max-w-[85%]">
+        <Skeleton className="w-4 h-4 rounded-full flex-shrink-0" />
         <div className="space-y-2 flex-1">
           <Skeleton className="h-4 w-3/4" />
           <Skeleton className="h-4 w-1/2" />
         </div>
       </div>
-      <div className="flex items-start gap-3 justify-end">
-        <div className="space-y-2 flex-1">
-          <Skeleton className="h-4 w-2/3 ml-auto" />
-          <Skeleton className="h-4 w-1/2 ml-auto" />
-        </div>
-        <Skeleton className="w-8 h-8 rounded-full" />
-      </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { useToast } from "@/components/ui/use-toast";
-import BackgroundArt from '../components/BackgroundArt';
 import ChatMessage from '../components/chat/ChatMessage';
 import ChatSkeleton from '../components/chat/ChatSkeleton';
 import { getSystemPrompt, getSuggestions } from '../utils/robotCPrompt';
@@ -16,7 +15,7 @@ const RobotC = () => {
   const [chat, setChat] = useState([
     { 
       role: 'assistant', 
-      content: "👋 Halo! Saya Robot C, asisten AI untuk Nine Creativities. Ada yang bisa saya bantu tentang proyek-proyek inovatif kami? 🚀" 
+      content: "👋 Halo! Saya Robot C, asisten AI untuk Nine Creativities. Ada yang bisa saya bantu tentang proyek-proyek inovatif kami?" 
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,37 +76,36 @@ const RobotC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-4 relative">
-      <BackgroundArt />
-      <div className="max-w-4xl mx-auto">
-        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-flex items-center">
-          <ArrowLeft className="mr-2" /> Kembali
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 sm:p-6">
+      <div className="max-w-3xl mx-auto">
+        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-flex items-center gap-2">
+          <ArrowLeft className="w-4 h-4" /> Kembali
         </Link>
 
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100"
+          className="bg-white rounded-xl shadow-sm border border-blue-100 overflow-hidden"
         >
-          <div className="p-6 bg-blue-600">
+          <div className="p-4 bg-blue-600">
             <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-3">
-                <Bot className="w-8 h-8 text-white" />
-                <h1 className="text-2xl font-bold text-white">Robot C</h1>
+              <div className="flex items-center gap-2">
+                <Bot className="w-6 h-6 text-white" />
+                <h1 className="text-xl font-semibold text-white">Robot C</h1>
               </div>
               <Input
                 type="password"
                 placeholder="Enter Gemini API Key"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-                className="max-w-xs bg-white/10 border-white/20 text-white placeholder:text-white/70"
+                className="max-w-[200px] bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
             </div>
           </div>
 
           <div 
             ref={chatContainerRef}
-            className="h-[60vh] overflow-y-auto p-6 space-y-4"
+            className="h-[60vh] overflow-y-auto p-4 space-y-4"
           >
             {chat.map((msg, index) => (
               <ChatMessage key={index} {...msg} />
@@ -116,13 +114,14 @@ const RobotC = () => {
           </div>
 
           {chat.length === 1 && (
-            <div className="p-4 bg-blue-50">
-              <p className="text-blue-600 mb-2 font-medium">Suggested questions:</p>
+            <div className="p-4 bg-blue-50/50">
+              <p className="text-sm text-blue-600 mb-2">Suggested questions:</p>
               <div className="flex flex-wrap gap-2">
                 {getSuggestions().map((suggestion, index) => (
                   <Button
                     key={index}
                     variant="outline"
+                    size="sm"
                     className="text-blue-600 border-blue-200 hover:bg-blue-50"
                     onClick={() => setMessage(suggestion)}
                   >
@@ -146,6 +145,7 @@ const RobotC = () => {
               <Button
                 onClick={handleSendMessage}
                 disabled={isLoading || !apiKey}
+                size="icon"
                 className="bg-blue-600 hover:bg-blue-700"
               >
                 <Send className="w-4 h-4" />
