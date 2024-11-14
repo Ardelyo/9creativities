@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, UserCircle2 } from 'lucide-react';
+import { ArrowLeft, Users, UserCircle2, Trophy, Target, Heart } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
 import BackgroundArt from '../components/BackgroundArt';
 
 const OurClass = () => {
@@ -10,6 +11,11 @@ const OurClass = () => {
     slogan: "Cerdas, Cermat, Ceria",
     motto: "Bersatu dalam Kreativitas, Berinovasi untuk Masa Depan",
     description: "Kelas 9C adalah kumpulan siswa-siswi berbakat yang bersemangat dalam mengeksplorasi teknologi dan inovasi. Kami percaya bahwa melalui kolaborasi dan kreativitas, kami dapat menciptakan solusi-solusi yang berdampak positif bagi masyarakat dan lingkungan.",
+    values: [
+      { icon: Trophy, title: "Prestasi", desc: "Selalu berusaha mencapai yang terbaik" },
+      { icon: Target, title: "Fokus", desc: "Berkomitmen pada tujuan pembelajaran" },
+      { icon: Heart, title: "Kebersamaan", desc: "Mendukung satu sama lain" }
+    ],
     organization: [
       { role: "Wali Kelas", name: "Bu Eka Supriati", children: [] },
       { role: "Ketua Murid", name: "Julia Putri A.N.A", children: [
@@ -25,74 +31,122 @@ const OurClass = () => {
     ],
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
   const TreeNode = ({ node }) => (
-    <div className="flex flex-col items-center">
-      <div className="bg-blue-100 p-2 rounded-lg text-center mb-2">
-        <div className="font-semibold">{node.role}</div>
-        <div className="text-sm">{node.name}</div>
+    <motion.div 
+      variants={itemVariants}
+      className="flex flex-col items-center"
+    >
+      <div className="relative group">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+        <div className="relative bg-white dark:bg-gray-900 px-6 py-4 rounded-lg shadow-xl">
+          <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+            {node.role}
+          </div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">{node.name}</div>
+        </div>
       </div>
       {node.children.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-4 mt-2">
+        <div className="flex flex-wrap justify-center gap-4 mt-6">
           {node.children.map((child, index) => (
             <TreeNode key={index} node={child} />
           ))}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 
   return (
-    <div className="min-h-screen bg-white p-4 sm:p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50 dark:from-gray-900 dark:to-gray-800 p-4 sm:p-8 relative overflow-hidden">
       <BackgroundArt />
-      <div className="max-w-4xl mx-auto relative z-10">
-        <Link to="/" className="text-blue-600 hover:text-blue-800 transition-colors mb-8 inline-block">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <Link to="/" className="text-purple-600 hover:text-purple-800 transition-colors mb-8 inline-block">
           <ArrowLeft className="mr-2 inline" /> Kembali
         </Link>
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
-            Tentang <span className="text-blue-600">{classInfo.name}</span>
-          </h1>
-          <p className="text-2xl text-blue-600 font-semibold mb-2">
-            {classInfo.slogan}
-          </p>
-          <p className="text-xl text-gray-600 italic">
-            "{classInfo.motto}"
-          </p>
-        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="space-y-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
-            <Users className="mr-2 text-blue-600" /> Tentang Kami
-          </h2>
-          <p className="text-gray-600 mb-4 text-base sm:text-lg">
-            {classInfo.description}
-          </p>
-        </motion.div>
+          {/* Hero Section */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h1 className="text-5xl sm:text-7xl font-bold mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                {classInfo.name}
+              </span>
+            </h1>
+            <p className="text-2xl text-purple-600 font-semibold mb-4">
+              {classInfo.slogan}
+            </p>
+            <p className="text-xl text-gray-600 dark:text-gray-300 italic max-w-2xl mx-auto">
+              "{classInfo.motto}"
+            </p>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl overflow-x-auto"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 flex items-center">
-            <UserCircle2 className="mr-2 text-blue-600" /> Struktur Organisasi Kelas
-          </h2>
-          <div className="min-w-max">
-            {classInfo.organization.map((root, index) => (
-              <TreeNode key={index} node={root} />
+          {/* Values Section */}
+          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {classInfo.values.map((value, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <value.icon className="w-12 h-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-xl font-bold mb-2">{value.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{value.desc}</p>
+                </CardContent>
+              </Card>
             ))}
-          </div>
+          </motion.div>
+
+          {/* Description Section */}
+          <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl">
+            <h2 className="text-3xl font-bold mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+              <Users className="mr-3 text-purple-600" /> Tentang Kami
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+              {classInfo.description}
+            </p>
+          </motion.div>
+
+          {/* Organization Structure */}
+          <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl overflow-x-auto">
+            <h2 className="text-3xl font-bold mb-8 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+              <UserCircle2 className="mr-3 text-purple-600" /> Struktur Organisasi Kelas
+            </h2>
+            <div className="min-w-max p-4">
+              <motion.div 
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col items-center space-y-8"
+              >
+                {classInfo.organization.map((root, index) => (
+                  <TreeNode key={index} node={root} />
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
