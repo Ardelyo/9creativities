@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import DynamicIsland from "./components/DynamicIsland";
+import Home from "./pages/Home";
 import Index from "./pages/Index";
 import OurClass from "./pages/OurClass";
 import EnvironmentalTeam from "./pages/EnvironmentalTeam";
@@ -32,7 +33,8 @@ const App = () => (
           <div className="container mx-auto px-4 py-8 pt-24">
             <AnimatePresence mode="wait">
               <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/index" element={<Index />} />
                 <Route path="/our-class" element={<OurClass />} />
                 <Route path="/environmental-team" element={<EnvironmentalTeam />} />
                 <Route path="/food-team" element={<FoodTeam />} />
